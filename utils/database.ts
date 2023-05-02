@@ -1,6 +1,8 @@
 import { MongoClient, MongoClientOptions } from 'mongodb'
 
-const url = 'mongodb+srv://mrchu:mr.chu1992@mrchu.btk8iub.mongodb.net/?retryWrites=true&w=majority'
+const MONG_API = process.env.NEXT_PUBLIC_API_KEY
+
+const url = `${MONG_API}.mongodb.net/?retryWrites=true&w=majority`
 const options = { useNewUrlParser: true } as MongoClientOptions
 let connectDB: Promise<MongoClient>;
 
