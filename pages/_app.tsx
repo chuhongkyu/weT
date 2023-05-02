@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 
 export default function App({ Component, pageProps }: AppProps) {
+  
   useEffect(() => {
     const resizeHandler = () => {
       document.documentElement.style.setProperty('--vw', window.innerHeight * 0.01 + 'px');
