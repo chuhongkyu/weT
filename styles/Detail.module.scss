@@ -1,0 +1,17 @@
+#Detail{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .warrper{
+        width: __vw(1200);
+        h1{
+            display: block;
+            margin-top: __vw(100);
+            font-size: __vw(55);
+        }
+        .content{
+            margin-top: __vw(100);
+            font-size: __vw(24);
+        }
+    }
+}
