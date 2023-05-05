@@ -10,7 +10,7 @@ const Home: NextPage<{ data: any[] }> = ({ data }) => {
         <div className={styles.warrper}>
           <h1>HOME</h1>
           <div className={styles.edit}>
-            <Link href={""}>+</Link>
+            <Link href={'/write'}>+</Link>
           </div>
           <ul>
             {data ? data.map((item) => (

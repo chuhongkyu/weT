@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     .warrper{
+        position: relative;
         width: __vw(1200);
         h1{
             display: block;
@@ -38,17 +39,27 @@
             }
         }
         .edit{
+            position: absolute;
+            right: 0;
             width: fit-content;
             height: fit-content;
             a{
                 display: block;
-                width: __vw(100);
-                height: __vw(100);
+                width: __vw(60);
+                height: __vw(60);
                 border-radius: 50%;
                 background: #ACACAC;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex-direction: column;
+                font-size:__vw(25);
+                color: #fff;
+                &:hover{
+                    background: black;
+                    color: #fff;
+                    transition: 0.5s;
+                }
             }
         }
     }
