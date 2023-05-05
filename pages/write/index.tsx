@@ -1,15 +1,27 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/Write.module.scss';
 
-type WriteProps = {
-  onSubmit: (title: string, content: string) => void;
-};
+// type WriteProps = {
+//     onSubmit: (title: string, content: string, time: string) => void;
+// };
 
-const Write = ({ onSubmit }: WriteProps) => {
+
+
+const Write = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [popup, setPopup] = useState(false);
   const [check, setCheck] = useState(false)
+  const router = useRouter()
+
+  const makeTime = () => {
+    const time = new Date();
+    const year = time.getFullYear();
+    const month = time.getMonth() + 1;
+    const date = time.getDate();
+    const newDate = `${year}-${month >= 10 ? month : '0' + month}-${date >= 10 ? date : '0' + date}`
+    return newDate
+  }
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -19,16 +31,38 @@ const Write = ({ onSubmit }: WriteProps) => {
     setContent(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit(title, content);
-    setTitle('');
-    setContent('');
-  };
 
-  const handlePopup = (event: React.MouseEvent<HTMLDivElement>) =>{
-    setPopup(!popup)
+    const newTime = makeTime();
+  
+    const formData = {
+      title: title,
+      content: content,
+      time: newTime
+    }
+  
+    try {
+      const response = await fetch('/api/new', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      if (response.ok) {
+        // 성공적으로 게시글이 작성된 경우, 홈 화면으로 이동합니다.
+        router.push('/home');
+      } else {
+        // 에러가 발생한 경우, 상세 화면으로 이동합니다.
+        router.push('/detail');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
+
 
   useEffect(() => {
     if(title !== ''){
@@ -45,68 +79,51 @@ const Write = ({ onSubmit }: WriteProps) => {
         <div id={styles.Write}>
             <div className={styles.warrper}>
                 <h1 className={styles.title}>글 작성</h1>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                <label htmlFor="title" className={styles.label}>
-                    제목:
-                </label>
-                <div className={styles.input_title}>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder={"제목을 입력해 주세요."}
-                        className={styles.input_title}
-                        value={title}
-                        onChange={handleTitleChange}
-                    />
-                </div>
+                <form onSubmit={handleSubmit} action="/api/new" method="POST" className={styles.form}>
+                    <label htmlFor="title" className={styles.label}>
+                        제목:
+                    </label>
+                    <div className={styles.input_title}>
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder={"제목을 입력해 주세요."}
+                            className={styles.input_title}
+                            value={title}
+                            onChange={handleTitleChange}
+                        />
+                    </div>
 
-                <label htmlFor="content" className={styles.label}>
-                    내용 :
-                </label>
-                <div className={styles.textarea_content}>
-                    <textarea
-                        id="content"
-                        className={styles.textarea}
-                        value={content}
-                        rows={5}
-                        onChange={handleContentChange}
-                        placeholder={"내용을 입력해 주세요."}
-                    />
-                    <p className={styles.count_number}>
-                        <span className={styles.current}>{remainingChars}</span>/<span> 500</span>
-                    </p>
-                </div>
-                <div className={styles.buttons}>
-                    <span 
-                        className={styles.button}
-                        data-disabled={check}
-                        onClick={handlePopup}
-                    >
-                        제출하기
-                    </span>
-                </div>
-                
-            </form>
+                    <label htmlFor="content" className={styles.label}>
+                        내용 :
+                    </label>
+                    <div className={styles.textarea_content}>
+                        <textarea
+                            id="content"
+                            name="content"
+                            className={styles.textarea}
+                            value={content}
+                            rows={5}
+                            onChange={handleContentChange}
+                            placeholder={"내용을 입력해 주세요."}
+                        />
+                        <p className={styles.count_number}>
+                            <span className={styles.current}>{remainingChars}</span>/<span> 500</span>
+                        </p>
+                    </div>
+                    <div className={styles.buttons}>
+                        <button 
+                            type="submit"
+                            className={styles.button}
+                            data-disabled={check}
+                        >
+                            제출하기
+                        </button>
+                    </div>   
+                </form>
             </div>
         </div>
-        {popup ? 
-            <div className={styles.dim}>
-                <div className={styles.popup}>
-                    <h5>계시 하시겠습니까?</h5>
-                    <div className={styles.buttons}>
-                        <button type="submit" className={styles.button}>
-                            확인
-                        </button>
-                        <div className={styles.button} onClick={handlePopup}>
-                            아니오
-                        </div>
-                        {/* <button type="button" className={styles.button}>
-                            수정하기
-                        </button> */}
-                    </div>
-                </div>
-            </div> : null
-        }
+        
     </>
   );
 };
