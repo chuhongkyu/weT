@@ -37,6 +37,20 @@
                 
             }
         }
+        .edit{
+            width: fit-content;
+            height: fit-content;
+            a{
+                display: block;
+                width: __vw(100);
+                height: __vw(100);
+                border-radius: 50%;
+                background: #ACACAC;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
     }
     
 }

@@ -9,6 +9,9 @@ const Home: NextPage<{ data: any[] }> = ({ data }) => {
     <div id={styles.Home}>
         <div className={styles.warrper}>
           <h1>HOME</h1>
+          <div className={styles.edit}>
+            <Link href={""}>+</Link>
+          </div>
           <ul>
             {data ? data.map((item) => (
               <li key={item._id}>

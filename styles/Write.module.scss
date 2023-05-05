@@ -1,0 +1,86 @@
+#Write{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .warrper{
+        width: __vw(1200);
+        margin-bottom: __vw(150);
+        .title{
+            display: block;
+            margin-top: __vw(100);
+            font-size: __vw(55);
+        }
+        .form{
+            margin-top: __vw(50);
+            .label{
+                display: block;
+                margin-bottom: __vw(25);
+            }
+            .input_title{
+                display: block;
+                background: #F2F2F2;
+                font-size: __vw(32);
+                border-radius: __vw(5);
+                margin-bottom: __vw(50);
+                input{
+                    padding: __vw(20);
+                    width: 100%;
+                    border: none;
+                }
+            }
+            .textarea_content{
+                display: block;
+                height: 100%;
+                background: #F2F2F2;
+                font-size: __vw(22);
+                border-radius: __vw(5);
+                position: relative;
+                textarea{
+                    height: __vw(500);
+                    border: none;
+                    background: transparent;
+                    resize: none;
+                    padding: __vw(20);
+                }
+                .count_number{
+                    position: absolute;
+                    bottom: __vw(20);
+                    right: __vw(20);
+                    font-size: __vw(30);
+                    .current{
+                        display: inline-block;
+                        color: #666666;
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+            .buttons{
+                margin-top: __vw(50);
+                display: flex;
+                gap: __vw(20);
+                font-weight: 500;
+                button{
+                    font-size: __vw(30);
+                    width: 100%;
+                    border: none;
+                    padding: __vw(20);
+                    background: #000;
+                    border-radius: __vw(5);
+                    letter-spacing: -0.01em;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+.title {
+    font-size: 2
+}
