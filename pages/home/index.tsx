@@ -2,12 +2,14 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { connectDB } from "utils/database";
 import styles from "styles/Home.module.scss";
+import Nav from "components/Nav";
 
 const Home: NextPage<{ data: any[] }> = ({ data }) => {
   console.log(data);
   return (
     <div id={styles.Home}>
         <div className={styles.warrper}>
+          <Nav/>
           <h1>HOME</h1>
           <div className={styles.edit}>
             <Link href={'/write'}>+</Link>
@@ -18,6 +20,9 @@ const Home: NextPage<{ data: any[] }> = ({ data }) => {
                 <Link href={`/detail/${item._id}`}>
                   <h5 className={styles.title}>{item.title}</h5>
                   <p className={styles.content}>{item.content}</p>
+                  <div className={styles.container_bottom}>
+                    <p className={styles.date}>{item.time}</p>
+                  </div>
                 </Link>
               </li>
             )): null}

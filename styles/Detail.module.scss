@@ -10,8 +10,20 @@
             font-size: __vw(55);
         }
         .content{
-            margin-top: __vw(100);
+            margin-top: __vw(50);
             font-size: __vw(24);
+            line-height: 135%;
         }
+        .container_date{
+            margin-top: __vw(50);
+            width: 100%;
+            display: flex;
+            justify-content: end;
+            .date{
+                font-size: __vw(24);
+                line-height: 135%;
+            }
+        }
+        
     }
 }

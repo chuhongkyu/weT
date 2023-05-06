@@ -2,12 +2,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/Write.module.scss';
 
-// type WriteProps = {
-//     onSubmit: (title: string, content: string, time: string) => void;
-// };
-
-
-
 const Write = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');

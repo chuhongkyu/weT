@@ -10,3 +10,13 @@
 
   @return calc($px-vw * $vh100 / $base-vh)
 };
+
+@mixin ellipseText($line){
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-wrap: break-word;
+}

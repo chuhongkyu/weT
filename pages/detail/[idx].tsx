@@ -9,6 +9,9 @@ const Detail = ({ data }:any) => {
       <div id={styles.Detail}>
           <div className={styles.warrper}>
             <h1>{data.title}</h1>
+            <div className={styles.container_date}>
+              <p className={styles.date}>{data.time}</p>
+            </div>
             <p className={styles.content}>{data.content}</p>
           </div>
       </div>
