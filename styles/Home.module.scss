@@ -1,11 +1,11 @@
 #Home{
     width: 100%;
-    display: flex;
-    justify-content: center;
+    padding-top: $navHeight;
+    padding-bottom: $vw120;
     .warrper{
         position: relative;
-        width: __vw(1200);
-        margin-bottom: __vw(200);
+        margin: 0 auto;
+        width: $conentWidth;
         h1{
             display: block;
             margin-top: __vw(100);
@@ -14,6 +14,7 @@
         ul{
             display: block;
             margin-top: __vw(80);
+            margin-bottom: $vw120;
             li{
                 display: block;
                 width: 100%;
@@ -82,5 +83,4 @@
             }
         }
     }
-    
 }
