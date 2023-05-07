@@ -4,26 +4,52 @@
     justify-content: center;
     .warrper{
         width: __vw(1200);
-        h1{
-            display: block;
-            margin-top: __vw(100);
-            font-size: __vw(55);
+        .header{
+            h1{
+                display: block;
+                margin-top: __vw(100);
+                font-size: __vw(55);
+            }
+            .container_date{
+                margin-top: __vw(50);
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                .date{
+                    font-size: __vw(24);
+                    line-height: 135%;
+                }
+            }
         }
-        .content{
+        .main_content{
             margin-top: __vw(50);
-            font-size: __vw(24);
-            line-height: 135%;
-        }
-        .container_date{
-            margin-top: __vw(50);
-            width: 100%;
-            display: flex;
-            justify-content: end;
-            .date{
+            min-height: __vw(500);
+            .content{
                 font-size: __vw(24);
                 line-height: 135%;
             }
         }
+        
+        .bottom{
+            .edit_btn{
+                width: __vw(50);
+                height: __vw(50);
+                border: none;
+                border-radius: 50%;
+                background: #fff;
+                border: 1px solid black;
+                svg{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+                &:hover{
+                    transition: 0.5s;
+                    background: #ACACAC;
+                }
+            }
+        }
+        
         
     }
 }
