@@ -5,9 +5,10 @@ import styles from "styles/Write.module.scss";
 import { connectDB } from "utils/database";
 
 const Edit = ({ data }:any) => {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [check, setCheck] = useState(false)
+    const [title, setTitle] = useState(data.title);
+    const [content, setContent] = useState(data.content);
+    const [check, setCheck] = useState(true)
+    const [current, setCurrent] = useState(content.length);
     const router = useRouter()
     
     const makeTime = () => {
@@ -21,10 +22,12 @@ const Edit = ({ data }:any) => {
     
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setTitle(event.target.value);
+      setCheck(false)
     };
     
     const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setContent(event.target.value);
+      setCheck(false)
     };
     
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -33,13 +36,14 @@ const Edit = ({ data }:any) => {
       const newTime = makeTime();
     
       const formData = {
+        _id: router.query.idx,
         title: title,
         content: content,
-        time: newTime
+        time: newTime,
       }
     
       try {
-        const response = await fetch('/api/new', {
+        const response = await fetch('/api/edit', {
           method: 'POST',
           body: JSON.stringify(formData),
           headers: {
@@ -49,7 +53,7 @@ const Edit = ({ data }:any) => {
     
         if (response.ok) {
           // 성공적으로 게시글이 작성된 경우, 홈 화면으로 이동합니다.
-          router.push('/home');
+          router.push(`/detail/${router.query.idx}`);
         } else {
           // 에러가 발생한 경우, 상세 화면으로 이동합니다.
           router.push('/detail');
@@ -58,24 +62,17 @@ const Edit = ({ data }:any) => {
         console.error(error);
       }
     }
-    
-    
-    useEffect(() => {
-      if(title !== ''){
-          setCheck(false)
-      }else{
-          setCheck(true)
-      }
-    }, [title])
-    
-    const remainingChars = 0 + content.length;
+
+    useEffect(()=>{
+      setCurrent(0 + content.length);
+    }, [content])
     
     return (
       <>
           <div id={styles.Write}>
               <div className={styles.warrper}>
                   <h1 className={styles.title}>글 작성</h1>
-                  <form onSubmit={handleSubmit} action="/api/new" method="POST" className={styles.form}>
+                  <form onSubmit={handleSubmit} action="/api/edit" method="POST" className={styles.form}>
                       <label htmlFor="title" className={styles.label}>
                           제목:
                       </label>
@@ -104,7 +101,7 @@ const Edit = ({ data }:any) => {
                               placeholder={"내용을 입력해 주세요."}
                           />
                           <p className={styles.count_number}>
-                              <span className={styles.current}>{remainingChars}</span>/<span> 500</span>
+                              <span className={styles.current}>{current}</span>/<span> 500</span>
                           </p>
                       </div>
                       <div className={styles.buttons}>
@@ -113,7 +110,7 @@ const Edit = ({ data }:any) => {
                               className={styles.button}
                               data-disabled={check}
                           >
-                              제출하기
+                              수정하기
                           </button>
                       </div>   
                   </form>
