@@ -5,7 +5,7 @@
     .warrper{
         position: relative;
         margin: 0 auto;
-        width: $conentWidth;
+        max-width: $conentWidth;
         h1{
             display: block;
             margin-top: __vw(100);

@@ -1,9 +1,10 @@
 #Detail{
     width: 100%;
-    display: flex;
-    justify-content: center;
+    padding-top: $navHeight;
+    padding-bottom: $vw120;
     .warrper{
-        width: __vw(1200);
+        margin: 0 auto;
+        max-width: $conentWidth;
         .header{
             h1{
                 display: block;

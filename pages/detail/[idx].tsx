@@ -1,3 +1,4 @@
+import Nav from "components/Nav";
 import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import React from "react";
@@ -15,6 +16,7 @@ const Detail = ({ data }:any) => {
     
   return (
     <div id={styles.Detail}>
+        <Nav/>
         <div className={styles.warrper}>
           <div className={styles.header}>
             <h1>{data.title}</h1>

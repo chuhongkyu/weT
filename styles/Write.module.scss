@@ -1,11 +1,11 @@
 #Write{
     width: 100%;
-    display: flex;
-    justify-content: center;
+    padding-top: $navHeight;
+    padding-bottom: $vw120;
     .warrper{
         position: relative;
-        width: __vw(1200);
-        margin-bottom: __vw(150);
+        margin: 0 auto;
+        max-width: $conentWidth;
         .title{
             display: block;
             margin-top: __vw(100);

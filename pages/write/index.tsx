@@ -1,3 +1,4 @@
+import Nav from 'components/Nav';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/Write.module.scss';
@@ -71,6 +72,7 @@ const Write = () => {
   return (
     <>
         <div id={styles.Write}>
+            <Nav/>
             <div className={styles.warrper}>
                 <h1 className={styles.title}>글 작성</h1>
                 <form onSubmit={handleSubmit} action="/api/new" method="POST" className={styles.form}>
