@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { connectDB } from "utils/database";
 import styles from "styles/Home.module.scss";
-import Nav from "components/Nav";
+import Banner from "components/Banner";
 
 const Home: NextPage<{ data: any[] }> = ({ data }) => {
   console.log(data);
@@ -10,7 +10,7 @@ const Home: NextPage<{ data: any[] }> = ({ data }) => {
   return (
     <div id={styles.Home}>
         <div className={styles.warrper}>
-          <Nav/>
+          <Banner/>
           <h1>HOME</h1>
           <div className={styles.write_btn}>
             <Link href={'/write'}>+</Link>

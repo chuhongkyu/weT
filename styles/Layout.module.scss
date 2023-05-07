@@ -1,13 +1,17 @@
-#Nav{
+#Banner{
     width: 100%;
     height: __vw(250);
-    background: #19A7CE;
+    // background: #19A7CE;
+    background: linear-gradient(-30deg, #19A7CE, transparent), url('/img/img_cat.png');
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
     .__icon{
         height: 100%;
         display:flex;
         justify-content: center;
         align-items: center;
         color: white;
-        font-size: __vw(105);
+        font-size: __vw(155);
     }
 }
