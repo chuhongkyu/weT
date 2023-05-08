@@ -1,15 +1,12 @@
 import styles from "styles/Layout.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 export default function Nav(){
-
     const route = useRouter()
-    useEffect(() => {
-        console.log(route)
-        
-    }, [])
+    const onHandleBack = ()=>{
+        history.back()
+    }
     return (
         <div id={styles.Nav}>
             <nav>
@@ -18,7 +15,13 @@ export default function Nav(){
                 </div>
                 <ul className={styles.main}>
                     {route.pathname === '/detail/[idx]' || route.pathname === '/edit/[idx]' 
-                    ? null : (
+                    ? (
+                        <>
+                            <li className={styles.arrow_left}>
+                                <a onClick={onHandleBack}></a>
+                            </li>
+                        </>
+                    ) : (
                         <>
                             <li className={route.asPath === "/home" ? styles.active : ''}>
                                 <Link href={'/home'}>홈</Link>

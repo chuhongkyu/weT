@@ -53,6 +53,11 @@
         .main{
             display: flex;
             li{
+                &.arrow_left{
+                    cursor: pointer;
+                    background: url('/icon/arrow_left.png') 50% 50% / contain no-repeat;
+                    &:hover{a{&::after{opacity: 0}};}        
+                }
                 a{
                     position: relative;
                     vertical-align: middle;
