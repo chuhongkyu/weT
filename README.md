@@ -23,3 +23,12 @@ mongoDB
     - 유저가 작성한 글을 DB에 바로 저장 시키지 않고 중간 프로그램(서버)을 둠.
 
 
+2. npm run build 시 일어나는 일들
+    - ○ static rendering(default)
+    - λ (람다 기호) dynamic rendering(유저가 페이지 접속마다 html 새로 만들어서 보내줌)
+    - ● automatically generated as static HTML + JSON
+
+    ```
+    export const dynamic = 'force-dynamic'
+    export const dynamic = 'force-static'
+    ```
