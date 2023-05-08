@@ -49,6 +49,23 @@
                     background: #ACACAC;
                 }
             }
+            .delete_btn{
+                width: __vw(50);
+                height: __vw(50);
+                border: none;
+                border-radius: 50%;
+                background: #fff;
+                border: 1px solid black;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+                &:hover{
+                    transition: 0.5s;
+                    background: #ACACAC;
+                }
+            }
         }
         
         
