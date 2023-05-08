@@ -51,7 +51,7 @@ const Detail = ({ data }:any) => {
   return (
     <div id={styles.Detail}>
         <Nav/>
-        <div className={styles.warrper}>
+        <div className={styles.wrapper}>
           <div className={styles.header}>
             <h1>{data.title}</h1>
             <div className={styles.container_user}>

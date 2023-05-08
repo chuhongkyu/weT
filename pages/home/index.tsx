@@ -18,7 +18,7 @@ const Home = ({data}:Props) => {
     <div id={styles.Home}>
         <Nav/>
         <Banner/> 
-        <div className={styles.warrper}>
+        <div className={styles.wrapper}>
           <h1>HOME</h1>
           <div className={styles.write_btn}>
               <Link href={'/write'}>

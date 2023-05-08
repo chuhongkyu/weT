@@ -70,7 +70,7 @@ const Edit = ({ data }:any) => {
     return (
       <>
           <div id={styles.Write}>
-              <div className={styles.warrper}>
+              <div className={styles.wrapper}>
                   <h1 className={styles.title}>글 작성</h1>
                   <form onSubmit={handleSubmit} action="/api/edit" method="POST" className={styles.form}>
                       <label htmlFor="title" className={styles.label}>

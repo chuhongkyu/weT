@@ -73,7 +73,7 @@ const Write = () => {
     <>
         <div id={styles.Write}>
             <Nav/>
-            <div className={styles.warrper}>
+            <div className={styles.wrapper}>
                 <h1 className={styles.title}>글 작성</h1>
                 <form onSubmit={handleSubmit} action="/api/new" method="POST" className={styles.form}>
                     <label htmlFor="title" className={styles.label}>

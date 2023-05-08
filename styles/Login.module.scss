@@ -1,0 +1,32 @@
+#Login{
+    width: 100%;
+    padding-top: $navHeight;
+    padding-bottom: $vw120;
+    .wrapper{
+        margin: 0 auto;
+        max-width: $conentWidth;
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: $vw100;
+            .box{
+                width: 500px;
+                height: 300px;
+                background: $mainColor;
+                border-radius: 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                button{
+                    border: none;
+                    background: white;
+                    font-size: 25px;
+                    color: black;
+                    padding: 6px 12px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}
