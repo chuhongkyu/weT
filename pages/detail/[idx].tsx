@@ -54,8 +54,9 @@ const Detail = ({ data }:any) => {
         <div className={styles.warrper}>
           <div className={styles.header}>
             <h1>{data.title}</h1>
-            <div className={styles.container_date}>
-              <p className={styles.date}>{data.time}</p>
+            <div className={styles.container_user}>
+              <span className={styles.name}>익명</span>
+              <span className={styles.date}>{data.time}</span>
             </div>
           </div>
           

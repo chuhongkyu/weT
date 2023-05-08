@@ -11,11 +11,18 @@
                 margin-top: __vw(100);
                 font-size: __vw(55);
             }
-            .container_date{
+            .container_user{
                 margin-top: __vw(50);
                 width: 100%;
                 display: flex;
                 justify-content: flex-end;
+                align-items: center;
+                font-size: __vw(24);
+                span{
+                    &:not(:last-of-type){
+                        margin-right: 1rem;
+                    }
+                }
                 .date{
                     font-size: __vw(24);
                     line-height: 135%;
@@ -32,6 +39,12 @@
         }
         
         .bottom{
+            display: flex;
+            button{
+                &:not(:last-of-type){
+                    margin-right: 15px;
+                }
+            }
             .edit_btn{
                 width: __vw(50);
                 height: __vw(50);
