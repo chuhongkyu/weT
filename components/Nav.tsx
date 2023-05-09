@@ -10,9 +10,11 @@ export default function Nav(){
     return (
         <div id={styles.Nav}>
             <nav>
-                <div className={styles.left}>
-                    We T
-                </div>
+                <Link href={'/home'}>
+                    <div className={styles.left}>
+                        We T
+                    </div>
+                </Link>
                 <ul className={styles.main}>
                     {route.pathname === '/detail/[idx]' || route.pathname === '/edit/[idx]' 
                     ? (
@@ -36,8 +38,8 @@ export default function Nav(){
                     )}
                 </ul>
                 <div className={styles.right}>
-                    <span>💿</span>
-                    <span>📞</span>
+                    <Link href={'/login'}><span>로그인</span></Link>
+                    <Link href={'/login'}><span>회원가입</span></Link>
                 </div>
             </nav>
         </div>
