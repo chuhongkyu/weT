@@ -13,6 +13,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
       let newData = {
           title : request.body.title, 
           content : request.body.content,
+          category : request.body.category,
           time : request.body.time
         }
       const result = await db.collection('post').updateOne(

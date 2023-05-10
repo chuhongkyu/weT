@@ -29,6 +29,24 @@
                     border: none;
                 }
             }
+            .select_category{
+                display: block;
+                background: #F2F2F2;
+                font-size: __vw(32);
+                border-radius: __vw(5);
+                margin-bottom: __vw(50);
+                max-width: 200px;
+                padding: 0 __vw(20);
+                select{
+                    padding: __vw(20) 0;
+                    width: 100%;
+                    border: none;
+                    background: transparent;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
             .textarea_content{
                 display: block;
                 height: 100%;

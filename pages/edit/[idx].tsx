@@ -7,6 +7,7 @@ import { connectDB } from "utils/database";
 const Edit = ({ data }:any) => {
     const [title, setTitle] = useState(data.title);
     const [content, setContent] = useState(data.content);
+    const [category, setCategory] = useState(data.category);
     const [check, setCheck] = useState(true)
     const [current, setCurrent] = useState(content.length);
     const router = useRouter()
@@ -29,6 +30,11 @@ const Edit = ({ data }:any) => {
       setContent(event.target.value);
       setCheck(false)
     };
+
+    const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setCategory(event.target.value);
+      setCheck(false)
+    };
     
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -38,6 +44,7 @@ const Edit = ({ data }:any) => {
       const formData = {
         _id: router.query.idx,
         title: title,
+        category: category,
         content: content,
         time: newTime,
       }
@@ -86,7 +93,19 @@ const Edit = ({ data }:any) => {
                               onChange={handleTitleChange}
                           />
                       </div>
-    
+                      <label htmlFor="category" className={styles.label}>
+                        카테고리:
+                      </label>
+                      <div className={styles.select_category}>
+                          <select id="category" name="category" value={category} onChange={handleCategoryChange}>
+                              {/* <option value="" >카테고리 선택</option> */}
+                              <option value="default" selected>전체</option>
+                              <option value="netflix">NETFLIX</option>
+                              <option value="tving">TVING</option>
+                              <option value="wave">WAVE</option>
+                              <option value="disney plus">DISNEY PLUS</option>
+                          </select>
+                      </div>
                       <label htmlFor="content" className={styles.label}>
                           내용 :
                       </label>

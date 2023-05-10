@@ -6,6 +6,7 @@ import styles from 'styles/Write.module.scss';
 const Write = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [category, setCategory] = useState('');
   const [check, setCheck] = useState(false)
   const router = useRouter()
 
@@ -26,6 +27,10 @@ const Write = () => {
     setContent(event.target.value);
   };
 
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(event.target.value);
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -34,6 +39,7 @@ const Write = () => {
     const formData = {
       title: title,
       content: content,
+      category: category,
       time: newTime
     }
   
@@ -89,7 +95,19 @@ const Write = () => {
                             onChange={handleTitleChange}
                         />
                     </div>
-
+                    <label htmlFor="category" className={styles.label}>
+                        카테고리:
+                    </label>
+                    <div className={styles.select_category}>
+                        <select id="category" name="category" value={category} onChange={handleCategoryChange}>
+                            {/* <option value="" >카테고리 선택</option> */}
+                            <option value="default" selected>전체</option>
+                            <option value="netflix">NETFLIX</option>
+                            <option value="tving">TVING</option>
+                            <option value="wave">WAVE</option>
+                            <option value="disney plus">DISNEY PLUS</option>
+                        </select>
+                    </div>
                     <label htmlFor="content" className={styles.label}>
                         내용 :
                     </label>

@@ -3,7 +3,7 @@ import { connectDB } from 'utils/database';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
   if (request.method === 'POST') {
-    const { title, content, time } = request.body;
+    const { title, content, category, time } = request.body;
 
     if (title === '') {
       return response.status(500).redirect('/detail');
@@ -16,7 +16,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
       const post = {
         title: title,
         content: content,
-        time: time
+        time: time,
+        category: category
       };
 
       const result = await db.collection('post').insertOne(post);

@@ -56,6 +56,7 @@ const Detail = ({ data }:any) => {
             <h1>{data.title}</h1>
             <div className={styles.container_user}>
               <span className={styles.name}>익명</span>
+              <span className={styles.name}>{data.category}</span>
               <span className={styles.date}>{data.time}</span>
             </div>
           </div>
