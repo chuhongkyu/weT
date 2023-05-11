@@ -1,12 +1,15 @@
 import styles from "styles/Layout.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Nav(){
     const route = useRouter()
     const onHandleBack = ()=>{
         history.back()
     }
+    const { data: session, status } = useSession()
+
     return (
         <div id={styles.Nav}>
             <nav>
@@ -28,9 +31,11 @@ export default function Nav(){
                             <li className={route.asPath === "/home" ? styles.active : ''}>
                                 <Link href={'/home'}>홈</Link>
                             </li>
-                            <li className={route.asPath === "/write" ? styles.active : ''}>
-                                <Link href={'/write'}>글쓰기</Link>
-                            </li>
+                            {session ?
+                                <li className={route.asPath === "/write" ? styles.active : ''}>
+                                    <Link href={'/write'}>글쓰기</Link>
+                                </li> : null
+                            }
                             <li>
                                 <Link href={'/home'}>고객센터</Link>
                             </li>
@@ -38,8 +43,13 @@ export default function Nav(){
                     )}
                 </ul>
                 <div className={styles.right}>
-                    <Link href={'/login'}><span>로그인</span></Link>
-                    <Link href={'/login'}><span>회원가입</span></Link>
+                    {session ? <span className={styles.log_out} onClick={()=> signOut()}>로그아웃</span> : 
+                    (
+                    <>
+                        <Link href={'/login'}><span>로그인</span></Link>
+                        <Link href={'/login'}><span>회원가입</span></Link>
+                    </>
+                    )}
                 </div>
             </nav>
         </div>

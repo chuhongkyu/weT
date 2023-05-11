@@ -7,8 +7,9 @@ const options = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
-    })
-  ]
+    }),
+  ],
+  secret : 'N$%R12G5'
 }
 
 export default (req: NextApiRequest, res: NextApiResponse) =>

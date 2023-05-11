@@ -1,12 +1,15 @@
 import Nav from "components/Nav";
-import { ObjectId } from "mongodb";
-import { useRouter } from "next/router";
 import React from "react";
 import styles from "styles/Detail.module.scss";
+import { ObjectId } from "mongodb";
+import { useRouter } from "next/router";
 import { connectDB } from "utils/database";
+import { useSession } from 'next-auth/react'
 import Footer from "components/Footer"
 
 const Detail = ({ data }:any) => {
+  const { data: session, status } = useSession()
+
   const routes = useRouter()
   const onHandleWrite = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -66,14 +69,19 @@ const Detail = ({ data }:any) => {
           <p className={styles.content} dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
           </div>
           
-          <div className={styles.bottom}>
-            <button onClick={(e)=> onHandleWrite(data._id, e)} className={styles.edit_btn}>
-              <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" width="64px" height="64px"><path d="M38.406 22.234l11.36 11.36L28.784 54.576l-12.876 4.307c-1.725.577-3.367-1.065-2.791-2.79l4.307-12.876L38.406 22.234zM41.234 19.406l5.234-5.234c1.562-1.562 4.095-1.562 5.657 0l5.703 5.703c1.562 1.562 1.562 4.095 0 5.657l-5.234 5.234L41.234 19.406z"/></svg>
-            </button>
-            <button onClick={()=>onHandleDelete(data._id)} className={styles.delete_btn}>
-              <img src={'/icon/delete.png'} alt="delete"/>
-            </button>
-          </div>
+          {session ? (
+            <>
+              <div className={styles.bottom}>
+                <button onClick={(e)=> onHandleWrite(data._id, e)} className={styles.edit_btn}>
+                  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" width="64px" height="64px"><path d="M38.406 22.234l11.36 11.36L28.784 54.576l-12.876 4.307c-1.725.577-3.367-1.065-2.791-2.79l4.307-12.876L38.406 22.234zM41.234 19.406l5.234-5.234c1.562-1.562 4.095-1.562 5.657 0l5.703 5.703c1.562 1.562 1.562 4.095 0 5.657l-5.234 5.234L41.234 19.406z"/></svg>
+                </button>
+                <button onClick={()=> onHandleDelete(data._id)} className={styles.delete_btn}>
+                  <img src={'/icon/delete.png'} alt="delete"/>
+                </button>
+              </div>
+            </>
+          ): null}
+          
         </div>
         <Footer/>
     </div>

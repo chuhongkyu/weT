@@ -97,9 +97,9 @@ const Edit = ({ data }:any) => {
                       카테고리:
                     </label>
                     <div className={styles.select_category}>
-                        <select id="category" name="category" value={category} onChange={handleCategoryChange}>
+                        <select id="category" name="category" defaultValue={data.category} onChange={handleCategoryChange}>
                             {/* <option value="" >카테고리 선택</option> */}
-                            <option value="default" selected>전체</option>
+                            <option value="default">전체</option>
                             <option value="netflix">NETFLIX</option>
                             <option value="tving">TVING</option>
                             <option value="wave">WAVE</option>
