@@ -6,6 +6,7 @@ import Banner from "components/Banner";
 import Nav from "components/Nav";
 import List from "components/home/list";
 import { IData } from "utils/typeGroup";
+import Footer from "components/Footer"
 
 interface Props {
   data: IData[];
@@ -27,6 +28,7 @@ const Home = ({data}:Props) => {
           </div>
           <List data={data} />
         </div>
+        <Footer/>
     </div>
   )
 }

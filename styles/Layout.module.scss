@@ -1,7 +1,8 @@
 #Banner{
     width: 100%;
+    margin-top: 20px;
     .content_1{
-        height: 250px;
+        height: 280px;
         background: linear-gradient(-30deg, #19A7CE, transparent), url('/img/img_cat.png');
         background-position: top right;
         background-repeat: no-repeat;
@@ -16,7 +17,7 @@
         }
     }
     .content_2{
-        height: 250px;
+        height: 280px;
         background: #19A7CE;
         img{
             object-fit: cover;
@@ -101,6 +102,51 @@
                     margin-right: 5px;
                 }
             }
+        }
+    }
+}
+
+#Footer{
+    margin-top: $vw120;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,.1);
+    padding-bottom: $vw120;
+    .wrapper{
+        margin: 0 auto;
+        max-width: $conentWidth;
+        .top{
+            display: flex;
+            border-bottom: 1px solid rgba(0,0,0,.1);
+            li{
+                padding: 18px 0 18px;
+                font-size: 15px;
+                color: #3a3a3a;
+                font-weight: 500;
+                line-height: 2.6;
+                white-space: nowrap;
+                &:not(:last-of-type){
+                    margin-right: 45px;
+                }
+                &.logo{
+                    padding: 5px 10px;
+                    margin: auto 45px auto 0;
+                    height: $navHeight;
+                    font-size: 15px;
+                    background: #19A7CE;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+        .bottom{
+            padding-top: 25px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 150%;
+            color: #767676;
         }
     }
 }

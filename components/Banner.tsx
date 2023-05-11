@@ -2,7 +2,6 @@ import styles from "styles/Layout.module.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper";
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function Banner(){
@@ -10,11 +9,10 @@ export default function Banner(){
         <div id={styles.Banner}>
             <Swiper
                 modules={[Navigation, Pagination]}
-                spaceBetween={50}
-                slidesPerView={1.2}
+                spaceBetween={24}
+                slidesPerView={1.1}
                 centeredSlides={true}
                 loop={true}
-                navigation
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
             >

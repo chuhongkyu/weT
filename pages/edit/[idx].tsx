@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "styles/Write.module.scss";
 import { connectDB } from "utils/database";
+import Footer from "components/Footer"
 
 const Edit = ({ data }:any) => {
     const [title, setTitle] = useState(data.title);
@@ -75,68 +76,66 @@ const Edit = ({ data }:any) => {
     }, [content])
     
     return (
-      <>
-          <div id={styles.Write}>
-              <div className={styles.wrapper}>
-                  <h1 className={styles.title}>글 작성</h1>
-                  <form onSubmit={handleSubmit} action="/api/edit" method="POST" className={styles.form}>
-                      <label htmlFor="title" className={styles.label}>
-                          제목:
-                      </label>
-                      <div className={styles.input_title}>
-                          <input
-                              type="text"
-                              name="title"
-                              defaultValue={data.title}
-                              placeholder={"제목을 입력해 주세요."}
-                              className={styles.input_title}
-                              onChange={handleTitleChange}
-                          />
-                      </div>
-                      <label htmlFor="category" className={styles.label}>
-                        카테고리:
-                      </label>
-                      <div className={styles.select_category}>
-                          <select id="category" name="category" value={category} onChange={handleCategoryChange}>
-                              {/* <option value="" >카테고리 선택</option> */}
-                              <option value="default" selected>전체</option>
-                              <option value="netflix">NETFLIX</option>
-                              <option value="tving">TVING</option>
-                              <option value="wave">WAVE</option>
-                              <option value="disney plus">DISNEY PLUS</option>
-                          </select>
-                      </div>
-                      <label htmlFor="content" className={styles.label}>
-                          내용 :
-                      </label>
-                      <div className={styles.textarea_content}>
-                          <textarea
-                              id="content"
-                              name="content"
-                              className={styles.textarea}
-                              defaultValue={data.content}
-                              rows={5}
-                              onChange={handleContentChange}
-                              placeholder={"내용을 입력해 주세요."}
-                          />
-                          <p className={styles.count_number}>
-                              <span className={styles.current}>{current}</span>/<span> 500</span>
-                          </p>
-                      </div>
-                      <div className={styles.buttons}>
-                          <button 
-                              type="submit"
-                              className={styles.button}
-                              data-disabled={check}
-                          >
-                              수정하기
-                          </button>
-                      </div>   
-                  </form>
-              </div>
-          </div>
-          
-      </>
+        <div id={styles.Write}>
+            <div className={styles.wrapper}>
+                <h1 className={styles.title}>글 작성</h1>
+                <form onSubmit={handleSubmit} action="/api/edit" method="POST" className={styles.form}>
+                    <label htmlFor="title" className={styles.label}>
+                        제목:
+                    </label>
+                    <div className={styles.input_title}>
+                        <input
+                            type="text"
+                            name="title"
+                            defaultValue={data.title}
+                            placeholder={"제목을 입력해 주세요."}
+                            className={styles.input_title}
+                            onChange={handleTitleChange}
+                        />
+                    </div>
+                    <label htmlFor="category" className={styles.label}>
+                      카테고리:
+                    </label>
+                    <div className={styles.select_category}>
+                        <select id="category" name="category" value={category} onChange={handleCategoryChange}>
+                            {/* <option value="" >카테고리 선택</option> */}
+                            <option value="default" selected>전체</option>
+                            <option value="netflix">NETFLIX</option>
+                            <option value="tving">TVING</option>
+                            <option value="wave">WAVE</option>
+                            <option value="disney plus">DISNEY PLUS</option>
+                        </select>
+                    </div>
+                    <label htmlFor="content" className={styles.label}>
+                        내용 :
+                    </label>
+                    <div className={styles.textarea_content}>
+                        <textarea
+                            id="content"
+                            name="content"
+                            className={styles.textarea}
+                            defaultValue={data.content}
+                            rows={5}
+                            onChange={handleContentChange}
+                            placeholder={"내용을 입력해 주세요."}
+                        />
+                        <p className={styles.count_number}>
+                            <span className={styles.current}>{current}</span>/<span> 500</span>
+                        </p>
+                    </div>
+                    <div className={styles.buttons}>
+                        <button 
+                            type="submit"
+                            className={styles.button}
+                            data-disabled={check}
+                        >
+                            수정하기
+                        </button>
+                    </div>   
+                </form>
+            </div>
+            <Footer/>
+        </div>
     );
 };
 

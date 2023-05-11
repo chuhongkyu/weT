@@ -2,6 +2,7 @@ import Nav from 'components/Nav';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/Write.module.scss';
+import Footer from "components/Footer"
 
 const Write = () => {
   const [title, setTitle] = useState('');
@@ -136,6 +137,7 @@ const Write = () => {
                     </div>   
                 </form>
             </div>
+            <Footer/>
         </div>
         
     </>

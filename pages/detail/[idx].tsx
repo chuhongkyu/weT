@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import styles from "styles/Detail.module.scss";
 import { connectDB } from "utils/database";
+import Footer from "components/Footer"
 
 const Detail = ({ data }:any) => {
   const routes = useRouter()
@@ -74,6 +75,7 @@ const Detail = ({ data }:any) => {
             </button>
           </div>
         </div>
+        <Footer/>
     </div>
   )
 }
