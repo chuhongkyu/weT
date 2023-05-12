@@ -86,12 +86,11 @@ const Write = () => {
                     <label htmlFor="title" className={styles.label}>
                         제목:
                     </label>
-                    <div className={styles.input_title}>
+                    <div className={styles.input_container}>
                         <input
                             type="text"
                             name="title"
                             placeholder={"제목을 입력해 주세요."}
-                            className={styles.input_title}
                             value={title}
                             onChange={handleTitleChange}
                         />

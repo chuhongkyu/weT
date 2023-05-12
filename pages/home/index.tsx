@@ -1,13 +1,12 @@
-import { NextPage } from "next";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { connectDB } from "utils/database";
+import { IData } from "utils/typeGroup";
 import styles from "styles/Home.module.scss";
 import Banner from "components/Banner";
 import Nav from "components/Nav";
 import List from "components/home/list";
-import { IData } from "utils/typeGroup";
 import Footer from "components/Footer"
-import { useSession } from "next-auth/react";
 
 interface Props {
   data: IData[];

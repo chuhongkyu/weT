@@ -8,7 +8,7 @@
             h1{
                 display: block;
                 margin-top: __vw(100);
-                font-size: __vw(55);
+                font-size: $h1;
             }
             .container_user{
                 margin-top: __vw(50);
@@ -16,14 +16,15 @@
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                font-size: __vw(24);
+                font-size: 20px;
                 span{
+                    font-size: inherit;
                     &:not(:last-of-type){
                         margin-right: 1rem;
                     }
                 }
                 .date{
-                    font-size: __vw(24);
+                    font-size: 20px;
                     line-height: 135%;
                 }
             }
@@ -32,7 +33,7 @@
             margin-top: __vw(50);
             min-height: __vw(500);
             .content{
-                font-size: __vw(24);
+                font-size: 18px;
                 line-height: 135%;
             }
         }

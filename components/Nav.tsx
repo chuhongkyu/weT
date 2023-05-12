@@ -47,7 +47,7 @@ export default function Nav(){
                     (
                     <>
                         <Link href={'/login'}><span>로그인</span></Link>
-                        <Link href={'/login'}><span>회원가입</span></Link>
+                        <Link href={'/register'}><span>회원가입</span></Link>
                     </>
                     )}
                 </div>

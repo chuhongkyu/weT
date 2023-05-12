@@ -1,0 +1,14 @@
+#Register{
+    width: 100%;
+    padding-top: $navHeight;
+    .wrapper{
+        margin: 0 auto;
+        max-width: $conentWidth;
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: $vw100;
+        }
+    }
+}

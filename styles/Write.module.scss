@@ -8,21 +8,24 @@
         .title{
             display: block;
             margin-top: __vw(100);
-            font-size: __vw(55);
+            font-size: $h1;
         }
         .form{
             margin-top: __vw(50);
             .label{
                 display: block;
                 margin-bottom: __vw(25);
+                font-size: 22px;
             }
-            .input_title{
+            .input_container{
                 display: block;
                 background: #F2F2F2;
-                font-size: __vw(32);
-                border-radius: __vw(5);
+                font-size: 20px;
+                border-radius: 5px;
                 margin-bottom: __vw(50);
                 input{
+                    background: #F2F2F2;
+                    font-size: inherit;
                     padding: __vw(20);
                     width: 100%;
                     border: none;
@@ -31,13 +34,14 @@
             .select_category{
                 display: block;
                 background: #F2F2F2;
-                font-size: __vw(32);
-                border-radius: __vw(5);
+                font-size: 20px;
+                border-radius: 5px;
                 margin-bottom: __vw(50);
                 max-width: 200px;
                 padding: 0 __vw(20);
                 select{
                     padding: __vw(20) 0;
+                    font-size: inherit;
                     width: 100%;
                     border: none;
                     background: transparent;
@@ -50,11 +54,11 @@
                 display: block;
                 height: 100%;
                 background: #F2F2F2;
-                font-size: __vw(22);
-                border-radius: __vw(5);
+                font-size: 20px;
+                border-radius: 5px;
                 position: relative;
                 textarea{
-                    font-size: __vw(22);
+                    font-size: inherit;
                     line-height: 150%;
                     height: __vw(500);
                     border: none;
@@ -66,8 +70,9 @@
                     position: absolute;
                     bottom: __vw(20);
                     right: __vw(20);
-                    font-size: __vw(30);
+                    font-size: 20px;
                     .current{
+                        font-size: inherit;
                         display: inline-block;
                         color: #666666;
                         margin-right: 0.5rem;
