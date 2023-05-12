@@ -18,17 +18,16 @@ export default function Banner(){
             >
                 <SwiperSlide>
                     <div className={styles.content_1}>
-                        <h5 className={styles.__icon}>We T</h5>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className={styles.content_2}>
-                        <img src={"/img/img_cat2.png"} alt="2"/>
+                        <img src={"/img/banner_2.png"} alt="2"/>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className={styles.content_2}>
-                        <img src={"/img/img_cat2.png"} alt="2"/>
+                    <div className={styles.content_3}>
+                        <img src={"/img/img_cat2.png"} alt="3"/>
                     </div>
                 </SwiperSlide>
             </Swiper>

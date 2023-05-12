@@ -3,23 +3,31 @@
     margin-top: 20px;
     .content_1{
         height: 280px;
-        background: linear-gradient(-30deg, #19A7CE, transparent), url('/img/img_cat.png');
-        background-position: top right;
+        background: linear-gradient(to top, #19A7CE ,10%, transparent), url('/img/img_cat.png');
+        background-position: 0 95%;
         background-repeat: no-repeat;
-        background-size: contain;
-        .__icon{
-            height: 100%;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: __vw(155);
-        }
+        background-size: cover;
+        animation: topAni 5s 0.5 ease-in-out forwards;
     }
     .content_2{
         height: 280px;
-        background: #19A7CE;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url('/img/banner_4.png');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: cover;
         img{
+            height: 250px;
+            object-fit: cover;
+        }
+    }
+    .content_3{
+        height: 280px;
+        background:#02c5e5;
+        img{
+            width: 100%;
             object-fit: cover;
         }
     }
