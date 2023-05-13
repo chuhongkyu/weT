@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import Loading from 'components/Loading';
 
 const IndexPage = () => {
   const router = useRouter();
@@ -9,7 +10,7 @@ const IndexPage = () => {
     router.replace('/home');
   }, []);
 
-  return null;
+  return <Loading/>;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
