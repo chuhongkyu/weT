@@ -103,9 +103,10 @@ const Write = () => {
                             {/* <option value="" >카테고리 선택</option> */}
                             <option value="default">전체</option>
                             <option value="netflix">NETFLIX</option>
+                            <option value="disney plus">DISNEY PLUS</option>
+                            <option value="watcha">WATCHA</option>
                             <option value="tving">TVING</option>
                             <option value="wave">WAVE</option>
-                            <option value="disney plus">DISNEY PLUS</option>
                         </select>
                     </div>
                     <label htmlFor="content" className={styles.label}>

@@ -14,6 +14,16 @@ const categoryGroup = [
         active: false,
     },
     {
+        id:"disney plus",
+        text:"DISNEY PLUS",
+        active: false,
+    },
+    {
+        id:"watcha",
+        text:"WATCHA",
+        active: false,
+    },
+    {
         id:"tving",
         text:"TVING",
         active: false,
@@ -23,11 +33,6 @@ const categoryGroup = [
         text:"WAVE",
         active: false,
     },
-    {
-        id:"disney plus",
-        text:"DISNEY PLUS",
-        active: false,
-    }
 ]
 
 interface Props {
