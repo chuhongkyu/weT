@@ -1,5 +1,6 @@
 import { MouseEvent, useEffect, useState } from "react";
 import styles from "styles/Home.module.scss";
+import { IData } from "utils/typeGroup";
 
 const categoryGroup = [
     {
@@ -29,9 +30,13 @@ const categoryGroup = [
     }
 ]
 
-export default function Capsule(){
+interface Props {
+    onHandleCategory: (id: string) => void;
+}
+
+export default function Capsule({ onHandleCategory }: Props){
     const [categorys, setCategory] = useState(categoryGroup);
-    const onHandleCategory = (event: MouseEvent<HTMLLIElement>) =>{
+    const onHandleCategoryClick = (event: MouseEvent<HTMLLIElement>) =>{
         const _id = event.currentTarget.id;
         setCategory(
             categorys.map((el) => ({
@@ -39,6 +44,7 @@ export default function Capsule(){
               active: el.id === _id,
             }))
         );
+        onHandleCategory(_id);
     }
     
     useEffect(() => {
@@ -53,7 +59,7 @@ export default function Capsule(){
                             key={el.id + index + "ID"}
                             id={el.id} 
                             className={`${styles.item} ${el.active && styles.active}`}
-                            onClick={(e)=> onHandleCategory(e)}>
+                            onClick={(e)=> onHandleCategoryClick(e)}>
                             <button>
                                 <span>{el.text}</span>
                             </button>
