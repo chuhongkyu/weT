@@ -1,13 +1,14 @@
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { connectDB } from "utils/database";
 import { IData } from "utils/typeGroup";
 import styles from "styles/Home.module.scss";
-import Banner from "components/Banner";
 import Nav from "components/Nav";
+import Banner from "components/Banner";
+import Capsule from "components/home/capsule";
+import ButtonWrite from "components/home/ButtonWrite";
 import List from "components/home/list";
-import Footer from "components/Footer"
-import Capsule from "components/home/capsule"
+import Pagination from "components/home/Pagination";
+import Footer from "components/Footer";
 import { useState } from "react";
 
 interface Props {
@@ -17,16 +18,35 @@ interface Props {
 const Home = ({data: initialData }:Props) => {
   const { data: session, status } = useSession()
   const [data, setData] = useState<IData[]>(initialData);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(5);
 
   // category 선택 핸들러
   const handleCategory = (id: string) => {
-    if (id === 'all') {
+    if (id === "all") {
       setData(initialData);
     } else {
       const filteredData = initialData.filter((el) => el.category === id);
       setData(filteredData);
     }
+    setCurrentPage(1); // 카테고리 변경 시 현재 페이지를 1페이지로 초기화
   };
+
+  // 현재 페이지에 해당하는 아이템들의 배열
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  // 페이지 번호 클릭 핸들러
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setCurrentPage(Number(event.currentTarget.value));
+  };
+
+  // 페이지 번호 버튼 배열
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div id={styles.Home}>
@@ -35,13 +55,19 @@ const Home = ({data: initialData }:Props) => {
         <div className={styles.wrapper}>
           <h1>HOME</h1>
           <Capsule onHandleCategory={handleCategory}/>
-          {session ? <div className={styles.write_btn}>
-              <Link href={'/write'}>
-                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 64 64" width="48px" height="48px"><path d="M32,10c12.15,0,22,9.85,22,22s-9.85,22-22,22s-22-9.85-22-22S19.85,10,32,10z M40,34c1.104,0,2-0.895,2-2	c0-1.105-0.896-2-2-2c-0.248,0-2.913,0-6,0c0-3.087,0-5.752,0-6c0-1.104-0.895-2-2-2c-1.104,0-2,0.896-2,2c0,0.248,0,2.913,0,6	c-3.087,0-5.752,0-6,0c-1.104,0-2,0.895-2,2c0,1.105,0.896,2,2,2c0.248,0,2.913,0,6,0c0,3.087,0,5.752,0,6c0,1.104,0.896,2,2,2	c1.105,0,2-0.896,2-2c0-0.248,0-2.913,0-6C37.087,34,39.752,34,40,34z"/></svg>
-              </Link>
-          </div> : null}
+          {session ? <ButtonWrite/> : null}
+          <div className={styles.list_container}>
+            <h5 className={styles.description}>
+              우리들의 추억을 공유해 봐요 📺
+            </h5>
+            <List data={currentItems} />
+            <Pagination
+              pageNumbers={pageNumbers} 
+              currentNumber={currentPage} 
+              handleClick={handleClick}
+            />
+          </div>
           
-          <List data={data} />
         </div>
         <Footer/>
     </div>

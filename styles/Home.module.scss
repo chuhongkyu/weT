@@ -15,34 +15,45 @@
             color: #333;
         }
         .list_container{
+            padding: 29px 29px 31px;
+            border: 1px solid #e1e2e3;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-bottom: $vw120;
             .items{
                 display: block;
-                margin-top: __vw(80);
-                margin-bottom: $vw120;
+                margin-top: 20px;
+                .description{
+                    font-size: 22px;
+                    font-weight: 500;
+                }
                 .item{
                     display: block;
                     width: 100%;
-                    min-height: __vw(100);
+                    padding: 24px 0;
                     transition: transform 200ms ease-in-out;
                     &:hover{
-                        transform: translateY(-5px);
+                        transform: translateY(-1px);
                     }
                     &:not(:last-of-type){
-                        margin-bottom: __vw(30);
+                        border-bottom: 1px solid #e1e2e3;
+                    }
+                    &:last-of-type{
+                        margin-bottom: 20px;
                     }
                     a{
                         display: block;
                         width: 100%;
                         height: 100%;
-                        padding: __vw(30);
-                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-                        border-radius: __vw(20);
                         .title{
-                            font-size: __vw(35);
+                            font-size: 19px;
+                            font-weight: 500;
                         }
                         .content{
                             margin-top: 0.9rem;
-                            font-size: __vw(24);
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: #333;
                             line-height: 135%;
                             @include ellipseText(2);
                         }
@@ -53,7 +64,8 @@
                             justify-content: flex-start;
                             align-items: center;
                             .date{
-                                font-size: __vw(24);
+                                font-size: 16px;
+                                color: #8a8a8a;
                                 line-height: 135%;
                             }
                             
@@ -117,6 +129,30 @@
             button{
                 border: none;
                 background: none;
+            }
+        }
+    }
+}
+
+#Pagination{
+    width: 100%;
+    margin-top: 20px;
+    .pagination{
+        display: flex;
+        justify-content: center;
+        li{
+            &:not(:last-of-type){
+                margin-right: 5px;
+            }
+            button{
+                background: none;
+                border: none;
+                font-size: 13px;
+                color: #8a8a8a;
+                cursor: pointer;
+                &.active,&:hover{
+                    color: black;
+                }
             }
         }
     }
