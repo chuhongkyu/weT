@@ -32,3 +32,5 @@ mongoDB
     export const dynamic = 'force-dynamic'
     export const dynamic = 'force-static'
     ```
+
+homepage[https://we-t-ott.vercel.app/]
