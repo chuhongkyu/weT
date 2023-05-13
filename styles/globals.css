@@ -43,8 +43,13 @@ table {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
+}
+
+button,input,select{
+	color: inherit;
+	font-size: inherit;
 }
 
 * {
@@ -61,20 +66,5 @@ ul,
 li {
   list-style: none;
   padding: unset;
-}
-
-a {
-  text-decoration: none;
-}
-
-img{
-  max-width: 100%;
-}
-
-.section--lg {
-  width: 100%;
-  height : var(--app-height, 100vh);
-  overflow: hidden;
-  margin: 0 auto;
 }
 

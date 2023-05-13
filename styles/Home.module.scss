@@ -7,56 +7,63 @@
         max-width: $conentWidth;
         h1{
             display: block;
-            margin-top: __vw(100);
-            font-size: __vw(55);
+            text-align: center;
+            margin-top: 60px;
+            font-size: 22px;
+            line-height: 1.33;
+            font-weight: 700;
+            color: #333;
         }
-        ul{
-            display: block;
-            margin-top: __vw(80);
-            margin-bottom: $vw120;
-            li{
+        .list_container{
+            .items{
                 display: block;
-                width: 100%;
-                min-height: __vw(100);
-                transition: transform 200ms ease-in-out;
-                &:hover{
-                    transform: translateY(-5px);
-                }
-                &:not(:last-of-type){
-                    margin-bottom: __vw(30);
-                }
-                a{
+                margin-top: __vw(80);
+                margin-bottom: $vw120;
+                .item{
                     display: block;
                     width: 100%;
-                    height: 100%;
-                    padding: __vw(30);
-                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-                    border-radius: __vw(20);
-                    .title{
-                        font-size: __vw(35);
+                    min-height: __vw(100);
+                    transition: transform 200ms ease-in-out;
+                    &:hover{
+                        transform: translateY(-5px);
                     }
-                    .content{
-                        margin-top: 0.9rem;
-                        font-size: __vw(24);
-                        line-height: 135%;
-                        @include ellipseText(2);
+                    &:not(:last-of-type){
+                        margin-bottom: __vw(30);
                     }
-                    .container_bottom{
-                        margin-top: __vw(20);
+                    a{
+                        display: block;
                         width: 100%;
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        .date{
+                        height: 100%;
+                        padding: __vw(30);
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                        border-radius: __vw(20);
+                        .title{
+                            font-size: __vw(35);
+                        }
+                        .content{
+                            margin-top: 0.9rem;
                             font-size: __vw(24);
                             line-height: 135%;
+                            @include ellipseText(2);
                         }
-                        
+                        .container_bottom{
+                            margin-top: __vw(20);
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            .date{
+                                font-size: __vw(24);
+                                line-height: 135%;
+                            }
+                            
+                        }
                     }
+                    
                 }
-                
             }
         }
+        
         .write_btn{
             position: absolute;
             right: 0;
@@ -78,6 +85,37 @@
                 &:hover{
                     transition: 0.5s;
                 }
+            }
+        }
+    }
+}
+
+#main_cateogry{
+    margin: 30px 0;
+    .items{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .item{
+            display: flex;
+            padding: 9px 22px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 146.7%;
+            color: #8a8a8a;
+            border: 1px solid #e1e2e4;
+            border-radius: 25px;
+            cursor: pointer;
+            &.active{
+                border: 1px solid $mainColor;
+                color: $mainColor;
+            }
+            &:not(:last-of-type){
+                margin-right: 8px;
+            }
+            button{
+                border: none;
+                background: none;
             }
         }
     }
