@@ -4,6 +4,7 @@ import { Navigation, Pagination, Autoplay } from "swiper";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Img = [
     {
@@ -29,14 +30,15 @@ const Img = [
 export default function Banner(){
     return (
         <div id={styles.Banner}>
-            <div style={{width: "200%"}}
-                 className={styles.banner_center}
+            <div 
+                style={{width: "100%"}}
+                className={styles.banner_center}
                 >
                     <Swiper 
                         className={styles.wrapper}
                         modules={[Navigation, Pagination, Autoplay]}
                         spaceBetween={24}
-                        slidesPerView={3}
+                        slidesPerView={1.5}
                         centeredSlides={true}
                         loop={true}
                         autoplay={{ delay: 5000}}
@@ -45,10 +47,12 @@ export default function Banner(){
                     >
                         {Img ? Img.map((img, index)=>{
                             return(
-                                <SwiperSlide key={index + "Id"} style={{width: "calc(200% / 3)"}}>
+                                <SwiperSlide key={index + "Id"} 
+                                // style={{width: "calc(200% / 3)"}}
+                                >
                                     <div className={styles.content}>
                                         <div className={styles.content_child}>
-                                            <img src={img.background} alt={"1" + index}/>
+                                            <Image layout="fill" objectFit="cover" src={img.background} alt={"1" + index}/>
                                             {img.text ? (
                                                 <div className={styles.texts}>
                                                     <h5>{img.text}</h5>
@@ -62,8 +66,6 @@ export default function Banner(){
                         }):null}
                     </Swiper>
             </div>
-            
-            
         </div>
     )
 }
