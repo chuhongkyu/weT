@@ -7,16 +7,22 @@ import { useEffect, useState } from "react";
 
 const Img = [
     {
-        background: "/img/banner_1.png"
+        background: "/img/banner_1.png",
+        text: "우리들의 OTT",
+        text2: "We T"
     },
     {
-        background: "/img/banner_2.png"
+        background: "/img/banner_2.png",
+        text: "우리들의 OTT",
+        text2: "We T"
     },
     {
         background: "/img/banner_3.png"
     },
     {
-        background: "/img/banner_2.png"
+        background: "/img/banner_2.png",
+        text: "우리들의 OTT",
+        text2: "We T"
     },
 ]
 
@@ -43,6 +49,12 @@ export default function Banner(){
                                     <div className={styles.content}>
                                         <div className={styles.content_child}>
                                             <img src={img.background} alt={"1" + index}/>
+                                            {img.text ? (
+                                                <div className={styles.texts}>
+                                                    <h5>{img.text}</h5>
+                                                    <p>{img.text2}</p>
+                                                </div>
+                                            ):null}
                                         </div>
                                     </div>
                                 </SwiperSlide>
