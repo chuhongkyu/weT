@@ -27,9 +27,8 @@ const Detail = ({ data }:any) => {
   }
 
   const requestDelete = async (id:string) =>{
-    const formData = {
-      _id: id,
-    }
+    if(!session?.user?.email == data.email) return routes.push('/home');
+    const formData = {_id: id,}
     try{
       const response = await fetch('/api/delete', {
         method: 'DELETE',

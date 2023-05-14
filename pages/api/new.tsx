@@ -4,11 +4,6 @@ import { connectDB } from 'utils/database';
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
   if (request.method === 'POST') {
     const { title, content, category, time, email } = request.body;
-
-    if (title === '') {
-      return response.status(500).redirect('/detail');
-    }
-
     try {
       const client = await connectDB;
       const db = client.db('forum');

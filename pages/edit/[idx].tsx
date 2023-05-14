@@ -13,7 +13,7 @@ const Edit = ({ data }:any) => {
     const [check, setCheck] = useState(true)
     const [current, setCurrent] = useState(content.length);
     const router = useRouter()
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     
     const makeTime = () => {
       const time = new Date();
@@ -52,7 +52,8 @@ const Edit = ({ data }:any) => {
         time: newTime,
         email: session?.user ? session?.user.email : "익명"
       }
-    
+      // user 확인
+      if(!session?.user?.email == data.email) return 
       try {
         const response = await fetch('/api/edit', {
           method: 'POST',
@@ -104,9 +105,10 @@ const Edit = ({ data }:any) => {
                             {/* <option value="" >카테고리 선택</option> */}
                             <option value="default">전체</option>
                             <option value="netflix">NETFLIX</option>
+                            <option value="disney plus">DISNEY PLUS</option>
+                            <option value="watcha">WATCHA</option>
                             <option value="tving">TVING</option>
                             <option value="wave">WAVE</option>
-                            <option value="disney plus">DISNEY PLUS</option>
                         </select>
                     </div>
                     <label htmlFor="content" className={styles.label}>
