@@ -10,7 +10,7 @@ const Write = () => {
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
   const [check, setCheck] = useState(false);
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
 
   const makeTime = () => {
@@ -81,7 +81,8 @@ const Write = () => {
 
   return (
     <>
-        <div id={styles.Write}>
+      {session?.user ? 
+        (<div id={styles.Write}>
             <Nav/>
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>글 작성</h1>
@@ -141,8 +142,8 @@ const Write = () => {
                 </form>
             </div>
             <Footer/>
-        </div>
-        
+        </div>): router.push('/home')
+        }
     </>
   );
 };

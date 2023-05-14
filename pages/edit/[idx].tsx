@@ -13,7 +13,7 @@ const Edit = ({ data }:any) => {
     const [check, setCheck] = useState(true)
     const [current, setCurrent] = useState(content.length);
     const router = useRouter()
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     
     const makeTime = () => {
       const time = new Date();
@@ -78,22 +78,29 @@ const Edit = ({ data }:any) => {
     useEffect(()=>{
       setCurrent(0 + content.length);
     }, [content])
+
+    if (status === "loading") {
+      return <div className={styles.container}>Loading...</div>
+    }
+
     
+
     return (
-        <div id={styles.Write}>
+      <>
+        {session?.user ? 
+          (<div id={styles.Write}>
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>글 작성</h1>
                 <form onSubmit={handleSubmit} action="/api/edit" method="POST" className={styles.form}>
                     <label htmlFor="title" className={styles.label}>
                         제목:
                     </label>
-                    <div className={styles.input_title}>
+                    <div className={styles.input_container}>
                         <input
                             type="text"
                             name="title"
                             defaultValue={data.title}
                             placeholder={"제목을 입력해 주세요."}
-                            className={styles.input_title}
                             onChange={handleTitleChange}
                         />
                     </div>
@@ -140,7 +147,8 @@ const Edit = ({ data }:any) => {
                 </form>
             </div>
             <Footer/>
-        </div>
+        </div>): router.push('/home')}
+        </>
     );
 };
 
