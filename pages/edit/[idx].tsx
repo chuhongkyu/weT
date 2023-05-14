@@ -5,6 +5,7 @@ import styles from "styles/Write.module.scss";
 import { connectDB } from "utils/database";
 import Footer from "components/Footer"
 import { useSession } from "next-auth/react";
+import Nav from "components/Nav";
 
 const Edit = ({ data }:any) => {
     const [title, setTitle] = useState(data.title);
@@ -89,6 +90,7 @@ const Edit = ({ data }:any) => {
       <>
         {session?.user ? 
           (<div id={styles.Write}>
+            <Nav/>
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>글 작성</h1>
                 <form onSubmit={handleSubmit} action="/api/edit" method="POST" className={styles.form}>
