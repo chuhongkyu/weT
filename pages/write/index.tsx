@@ -3,13 +3,15 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/Write.module.scss';
 import Footer from "components/Footer"
+import { useSession } from 'next-auth/react';
 
 const Write = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
-  const [check, setCheck] = useState(false)
-  const router = useRouter()
+  const [check, setCheck] = useState(false);
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   const makeTime = () => {
     const time = new Date();
@@ -41,7 +43,8 @@ const Write = () => {
       title: title,
       content: content,
       category: category,
-      time: newTime
+      time: newTime,
+      email: session?.user ? session?.user.email : "익명"
     }
   
     try {

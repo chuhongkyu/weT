@@ -5,7 +5,7 @@ import { connectDB } from 'utils/database';
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
   console.log(request.body)
   if (request.method === 'DELETE') {
-
+    
     try {
       const client = await connectDB;
       const db = client.db('forum');

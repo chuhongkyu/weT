@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "styles/Write.module.scss";
 import { connectDB } from "utils/database";
 import Footer from "components/Footer"
+import { useSession } from "next-auth/react";
 
 const Edit = ({ data }:any) => {
     const [title, setTitle] = useState(data.title);
@@ -12,6 +13,7 @@ const Edit = ({ data }:any) => {
     const [check, setCheck] = useState(true)
     const [current, setCurrent] = useState(content.length);
     const router = useRouter()
+    const { data: session, status } = useSession();
     
     const makeTime = () => {
       const time = new Date();
@@ -48,6 +50,7 @@ const Edit = ({ data }:any) => {
         category: category,
         content: content,
         time: newTime,
+        email: session?.user ? session?.user.email : "익명"
       }
     
       try {

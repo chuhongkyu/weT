@@ -59,7 +59,7 @@ const Detail = ({ data }:any) => {
           <div className={styles.header}>
             <h1>{data.title}</h1>
             <div className={styles.container_user}>
-              <span className={styles.name}>익명</span>
+              <span className={styles.name}>{data.email ? data.email.substring(0, 5) + '...' : "익명"}</span>
               <span className={styles.name}>{data.category}</span>
               <span className={styles.date}>{data.time}</span>
             </div>
@@ -69,7 +69,7 @@ const Detail = ({ data }:any) => {
           <p className={styles.content} dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
           </div>
           
-          {session ? (
+          {session?.user?.email == data.email ? (
             <>
               <div className={styles.bottom}>
                 <button onClick={(e)=> onHandleWrite(data._id, e)} className={styles.edit_btn}>

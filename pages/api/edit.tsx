@@ -14,7 +14,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
           title : request.body.title, 
           content : request.body.content,
           category : request.body.category,
-          time : request.body.time
+          time : request.body.time,
+          email : request.body.email,
         }
       const result = await db.collection('post').updateOne(
           {_id : new ObjectId(request.body._id)},
