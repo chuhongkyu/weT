@@ -1,7 +1,6 @@
 import styles from "styles/Register.module.scss";
 import { useState, FormEvent } from "react";
 interface RegisterFormValues {
-  user_id: string;
   name: string;
   email_title: string;
   email_domain: string;
@@ -10,7 +9,6 @@ interface RegisterFormValues {
 
 export default function RegisterContainer(): JSX.Element {
   const [formValues, setFormValues] = useState<RegisterFormValues>({
-    user_id: "",
     name: "",
     email_title: "",
     email_domain: "",
@@ -24,13 +22,13 @@ export default function RegisterContainer(): JSX.Element {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const {user_id, name, email_title, email_domain, password,  } = formValues;
+    const { name, email_title, email_domain, password,  } = formValues;
     fetch("/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({user_id, name, email: `${email_title}@${email_domain}`, password }),
+      body: JSON.stringify({ name, email: `${email_title}@${email_domain}`, password }),
     })
       .then((response) => {
         if (response.ok) {
@@ -64,19 +62,6 @@ export default function RegisterContainer(): JSX.Element {
               placeholder="이름"
               maxLength={10}
               value={formValues.name}
-              onChange={handleChange}
-            />
-            <span className={styles.check}></span>
-          </div>
-          <div className={styles.input_id}>
-            <label htmlFor="user_id">아이디</label>
-            <input
-              id="user_id"
-              name="user_id"
-              type="text"
-              placeholder="아이디"
-              maxLength={10}
-              value={formValues.user_id}
               onChange={handleChange}
             />
             <span className={styles.check}></span>

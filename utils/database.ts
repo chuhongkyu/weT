@@ -1,8 +1,10 @@
 import { MongoClient, MongoClientOptions } from 'mongodb'
+import dotenv from 'dotenv';
+dotenv.config();
 
 const MONG_API = process.env.NEXT_PUBLIC_API_KEY
 
-const url = `${MONG_API}.mongodb.net/?retryWrites=true&w=majority`
+const url = `mongodb+srv://mrchu:${MONG_API}@mrchu.btk8iub.mongodb.net/?retryWrites=true&w=majority`
 const options = { useNewUrlParser: true } as MongoClientOptions
 let connectDB: Promise<MongoClient>;
 
