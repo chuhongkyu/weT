@@ -5,6 +5,7 @@ interface RegisterFormValues {
   email_title: string;
   email_domain: string;
   password: string;
+  confirmPassword: string;
 }
 
 export default function RegisterContainer(): JSX.Element {
@@ -13,7 +14,10 @@ export default function RegisterContainer(): JSX.Element {
     email_title: "",
     email_domain: "",
     password: "",
+    confirmPassword: "",
   });
+
+  const [formErrors, setFormErrors] = useState<Partial<RegisterFormValues>>({});
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -22,6 +26,7 @@ export default function RegisterContainer(): JSX.Element {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    errorMessage();
     const { name, email_title, email_domain, password,  } = formValues;
     fetch("/api/auth/signup", {
       method: "POST",
@@ -43,10 +48,52 @@ export default function RegisterContainer(): JSX.Element {
       });
   };
 
+  const errorMessage = () => {
+    const errors: Partial<RegisterFormValues> = {};
+
+    if (!formValues.name) {
+      errors.name = "이름을 입력해주세요";
+    }
+
+    if (!formValues.email_title || !formValues.email_domain) {
+      errors.email_title = "이메일을 입력해주세요";
+      errors.email_domain = "이메일을 입력해주세요";
+    }
+
+    if (!formValues.password) {
+      errors.password = "비밀번호를 입력해주세요";
+    }
+
+    if (!formValues.confirmPassword) {
+      errors.confirmPassword = "비밀번호 확인을 입력해주세요";
+    } else if (formValues.password !== formValues.confirmPassword) {
+      errors.confirmPassword = "비밀번호가 일치하지 않습니다";
+    }
+
+    const hasErrors = Object.keys(errors).length > 0;
+    if (hasErrors) {
+      setFormErrors(errors);
+      return;
+    }
+  }
+
   const handleDomain = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
   }
+
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    const errors: Partial<RegisterFormValues> = {};
+
+    if (name === "password") {
+      if (!/^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{8,}$/.test(value)) {
+        errors.password = "비밀번호는 특수문자가 포함된 8자리 이상이어야 합니다";
+      }
+    }
+    setFormErrors((prev) => ({ ...prev, ...errors }));
+  };
 
   return (
     <div className={styles.container}>
@@ -65,6 +112,7 @@ export default function RegisterContainer(): JSX.Element {
               onChange={handleChange}
             />
             <span className={styles.check}></span>
+            <span className={styles.error}>{formErrors.name ? formErrors.name : null}</span>
           </div>
           <div className={styles.input_password}>
             <label htmlFor="password">비밀번호</label>
@@ -74,10 +122,27 @@ export default function RegisterContainer(): JSX.Element {
               type="password"
               placeholder="비밀번호"
               maxLength={16}
+              onBlur={handleBlur}
               value={formValues.password}
               onChange={handleChange}
             />
             <span className={styles.check}></span>
+            <span className={styles.error}>{formErrors.password ? formErrors.password : null}</span>
+          </div>
+          <div className={styles.input_password}>
+            <label htmlFor="confirmPassword">비밀번호 확인</label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="confirmPassword"
+              placeholder="비밀번호"
+              maxLength={16}
+              onBlur={handleBlur}
+              value={formValues.confirmPassword}
+              onChange={handleChange}
+            />
+            <span className={styles.check}></span>
+            <span className={styles.error}>{formErrors.confirmPassword ? formErrors.confirmPassword : null}</span>
           </div>
           <div className={styles.input_email}>
             <label htmlFor="email">이메일</label>
@@ -113,6 +178,7 @@ export default function RegisterContainer(): JSX.Element {
                 <option value="yahoo.com">yahoo.com</option>
             </select>
             <span className={styles.check}></span>
+            <span className={styles.error}>{formErrors.email_domain ? formErrors.email_domain : null}</span>
           </div>
           
           <div className={styles.button_container}>
