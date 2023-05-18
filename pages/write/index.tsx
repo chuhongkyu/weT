@@ -77,12 +77,15 @@ const Write = () => {
     }
   }, [title])
 
+  useEffect(() => {
+    if (!session?.user) {
+      router.push('/home');
+    }
+  }, []);
+
   const remainingChars = 0 + content.length;
 
-  return (
-    <>
-      {session?.user ? 
-        (<div id={styles.Write}>
+  return (<div id={styles.Write}>
             <Nav/>
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>글 작성</h1>
@@ -142,10 +145,7 @@ const Write = () => {
                 </form>
             </div>
             <Footer/>
-        </div>): router.push('/home')
-        }
-    </>
-  );
+        </div>);
 };
 
 export default Write;
