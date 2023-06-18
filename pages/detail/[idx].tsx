@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { connectDB } from "utils/database";
 import { useSession } from 'next-auth/react'
 import Footer from "components/Footer"
+import Comment from "./Comment";
 
 const Detail = ({ data }:any) => {
   const { data: session, status } = useSession()
@@ -67,7 +68,7 @@ const Detail = ({ data }:any) => {
           <div className={styles.main_content}>
           <p className={styles.content} dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
           </div>
-          
+
           {session?.user?.email == data.email ? (
             <>
               <div className={styles.bottom}>
@@ -80,6 +81,10 @@ const Detail = ({ data }:any) => {
               </div>
             </>
           ): null}
+          {session?.user?.email == data.email ? (
+            <Comment parentId={data._id} />
+          ): null}
+          
           
         </div>
         <Footer/>

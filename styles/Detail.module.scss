@@ -32,9 +32,19 @@
         .main_content{
             margin-top: __vw(50);
             min-height: __vw(500);
+            border-bottom: 1px solid #ACACAC;
             .content{
                 font-size: 18px;
                 line-height: 135%;
+                letter-spacing: -0.03em;
+                padding-bottom: 20px;
+            }
+        }
+
+        .comment_container{
+            margin-top: __vw(40);
+            .comment_input{
+                
             }
         }
         
@@ -80,7 +90,5 @@
                 }
             }
         }
-        
-        
     }
 }
