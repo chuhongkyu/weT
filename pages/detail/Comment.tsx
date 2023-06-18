@@ -8,7 +8,7 @@ const limitLength = 200
 export default function Comment(props:any){
     const { parentId } = props
     const [commentInput, setComment] = useState<string>('')
-    const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
         console.log(e.target.value)
         setComment(e.target.value)
     }
@@ -59,8 +59,10 @@ export default function Comment(props:any){
               
             </div>
             <div className={styles.comment_input}>
-              <input value={commentInput} onChange={onChange} maxLength={limitLength}/>
-              <div className={styles.number}><p>{commentInput.length}</p>/<b>{limitLength}</b></div>
+              <textarea value={commentInput} onChange={onChange} maxLength={limitLength}/>
+              <div className={styles.count_number}>
+                  <p className={styles.current}>{commentInput.length}</p>/
+                  <b>{limitLength}</b></div>
               <button onClick={handleSubmit}>입력</button>
               
             </div>

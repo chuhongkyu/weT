@@ -42,9 +42,36 @@
         }
 
         .comment_container{
-            margin-top: __vw(40);
+            margin-top: 30px;
             .comment_input{
-                
+                width: 100%;
+                margin: 5px;
+                background: #F2F2F2;
+                border-radius: 8px;
+                position: relative;
+                textarea{
+                    width: 100%;
+                    font-size: inherit;
+                    line-height: 150%;
+                    height: 100px;
+                    border: none;
+                    background: transparent;
+                    resize: none;
+                    padding: __vw(20);
+                    outline: none;
+                }
+                .count_number{
+                    position: absolute;
+                    bottom: __vw(20);
+                    right: __vw(20);
+                    font-size: 20px;
+                    .current{
+                        font-size: inherit;
+                        display: inline-block;
+                        color: #666666;
+                        margin-right: 0.5rem;
+                    }
+                }
             }
         }
         

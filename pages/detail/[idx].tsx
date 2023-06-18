@@ -81,7 +81,7 @@ const Detail = ({ data }:any) => {
               </div>
             </>
           ): null}
-          {session?.user?.email == data.email ? (
+          {session?.user?.email ? (
             <Comment parentId={data._id} />
           ): null}
           
