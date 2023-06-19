@@ -44,6 +44,30 @@
         .comment_container{
             margin-top: 30px;
             padding: 0 20px;
+            .small_comment_lists{
+                .small_comment_list{
+                    padding-bottom: 32px;
+                    &:not(:last-of-type){
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid #F2F2F2;
+                    }
+                    ._email{
+                        font-size: 18px;
+                        color: #333;
+                    }
+                    ._desc{
+                        margin-top: 15px;
+                        font-size: 16px;
+                        color: #333;
+                        line-height: 135%;
+                        letter-spacing: -0.03em;
+                    }
+                }
+            }
+            .comment_wrapper{
+                padding-top: 20px;
+                border-top: 1px solid #ACACAC;
+            }
             .comment_name{
                 font-size: 18px;
                 line-height: 135%;

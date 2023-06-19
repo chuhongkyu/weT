@@ -1,5 +1,6 @@
 'use client'
 
+import SmallComment from "components/SmallComment";
 import React, { useEffect, useState } from "react";
 import styles from "styles/Detail.module.scss";
 
@@ -73,34 +74,39 @@ export default function Comment(props:any){
     }
     return(
         <div className={styles.comment_container}>
-            <div className={styles.comment_lists}>
+            <div className={styles.small_comment_lists}>
               {lists.length > 0 ? lists.map((list,key)=>{
                   return(
-                      <div key={key + "_list-num"}>{list.comment}</div>
+                      <SmallComment 
+                        id={list._id + ""} 
+                        key={key + "_list-num"}
+                        comment={list.comment}
+                        email={list.email}
+                        />
                   )
               }): null}
             </div>
             {emailName ? (
-                <>
-                <div className={styles.comment_name}>{emailName }</div>
-                <div className={styles.comment_input}>
-                  <textarea 
-                    value={commentInput}
-                    onChange={onChange}
-                    rows={3}
-                    maxLength={limitLength}
-                    placeholder={"댓글 남기기"}
+                <div className={styles.comment_wrapper}>
+                    <div className={styles.comment_name}>{emailName}</div>
+                    <div className={styles.comment_input}>
+                    <textarea 
+                        value={commentInput}
+                        onChange={onChange}
+                        rows={3}
+                        maxLength={limitLength}
+                        placeholder={"댓글 남기기"}
                     />
-                    
-                  <div className={styles.count_number}>
-                      <p className={styles.current}>{commentInput.length}</p>/ 
-                      <b> {limitLength}</b></div>
+                        
+                    <div className={styles.count_number}>
+                        <p className={styles.current}>{commentInput.length}</p>/ 
+                        <b> {limitLength}</b></div>
+                    </div>
+                    <div className={styles.btn_container}>
+                        <button onClick={handleSubmit}>등록하기</button>
+                    </div>
                 </div>
-                <div className={styles.btn_container}>
-                    <button onClick={handleSubmit}>등록하기</button>
-                </div>
-                </>
-            ): (<div>로그인 하러 가기</div>)}
+            ): null}
 
         </div>  
     )

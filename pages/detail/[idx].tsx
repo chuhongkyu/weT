@@ -85,11 +85,7 @@ const Detail = ({ data }:any) => {
               </div>
             </>
           ): null}
-          {session?.user?.email ? (
-            <Comment parentId={data._id} emailName={session?.user?.email} />
-          ): null}
-          
-          
+          <Comment parentId={data._id} emailName={session?.user?.email} />   
         </div>
         <Footer/>
     </div>
