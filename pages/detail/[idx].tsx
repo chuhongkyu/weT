@@ -1,5 +1,5 @@
 import Nav from "components/Nav";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "styles/Detail.module.scss";
 import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
@@ -50,6 +50,10 @@ const Detail = ({ data }:any) => {
     }
   }
 
+  useEffect(()=>{
+    console.log("이메일",session?.user?.email)
+  },[])
+
   const formattedContent = data.content.replace(/\n/g, "<br>");
     
   return (
@@ -82,7 +86,7 @@ const Detail = ({ data }:any) => {
             </>
           ): null}
           {session?.user?.email ? (
-            <Comment parentId={data._id} />
+            <Comment parentId={data._id} emailName={session?.user?.email} />
           ): null}
           
           

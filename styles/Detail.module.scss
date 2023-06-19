@@ -43,22 +43,32 @@
 
         .comment_container{
             margin-top: 30px;
+            padding: 0 20px;
+            .comment_name{
+                font-size: 18px;
+                line-height: 135%;
+                letter-spacing: -0.03em;
+                margin-bottom: 20px;
+            }
             .comment_input{
                 width: 100%;
-                margin: 5px;
                 background: #F2F2F2;
                 border-radius: 8px;
                 position: relative;
+                font-size: 18px;
+                line-height: 135%;
+                letter-spacing: -0.03em;
                 textarea{
                     width: 100%;
                     font-size: inherit;
-                    line-height: 150%;
+                    line-height: 135%;
                     height: 100px;
                     border: none;
                     background: transparent;
                     resize: none;
-                    padding: __vw(20);
+                    padding: 16px 20px;
                     outline: none;
+                    letter-spacing: -0.03em;
                 }
                 .count_number{
                     position: absolute;
@@ -73,6 +83,18 @@
                     }
                 }
             }
+            .btn_container{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 10px;
+                button{
+                    cursor: pointer;
+                    border-radius: 25px;
+                    padding: __vw(6) __vw(12);
+                }
+            }
+            
         }
         
         .bottom{
