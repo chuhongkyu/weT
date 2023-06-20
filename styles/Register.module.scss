@@ -20,11 +20,11 @@ $label : 150px;
     padding-top: $navHeight;
     .wrapper{
         margin: 0 auto;
-        max-width: $conentWidth;
+        width: 100%;
+        display: flex;
+        justify-content: center;
         .container{
-            // display: flex;
-            // justify-content: center;
-            // align-items: center;
+            max-width: $conentWidth;
             margin-top: $vw100;
             .text{
                 font-size: $h1;
@@ -46,7 +46,7 @@ $label : 150px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        max-width: 500px;
+                        min-width: 500px;
                         font-weight: 500;
                         width: 100%;
                         background: $mainColor;
@@ -80,7 +80,7 @@ $label : 150px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        max-width: 500px;
+                        min-width: 500px;
                         font-weight: 500;
                         width: 100%;
                         background: white;
@@ -91,8 +91,7 @@ $label : 150px;
                         border-radius: 25px;
                         line-height: 150%;
                     }
-                }
-                
+                } 
             }
             .form_container{
                 width: 100%;
