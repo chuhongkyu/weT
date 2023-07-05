@@ -2,6 +2,8 @@ import styles from "styles/Register.module.scss";
 import { useState, FormEvent } from "react";
 import Footer from "components/Footer";
 import Nav from "components/Nav";
+import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 interface RegisterFormValues {
   name: string;
   email_title: string;
@@ -18,6 +20,12 @@ export default function Local(): JSX.Element {
     password: "",
     confirmPassword: "",
   });
+
+  const routes = useRouter()
+
+  const [checkN, setCheckN] = useState(false)
+  const [checkP, setCheckP] = useState(false)
+  const [checkPP, setCheckPP] = useState(false)
 
   const [formErrors, setFormErrors] = useState<Partial<RegisterFormValues>>({});
 
@@ -41,6 +49,7 @@ export default function Local(): JSX.Element {
         if (response.ok) {
           // 회원가입 성공 시 처리
           console.log("성공")
+          routes.push('/home');
         } else {
           // 회원가입 실패 시 처리
         }
@@ -59,7 +68,7 @@ export default function Local(): JSX.Element {
 
     if (!formValues.email_title || !formValues.email_domain) {
       errors.email_title = "이메일을 입력해주세요";
-      errors.email_domain = "이메일을 입력해주세요";
+      errors.email_domain = "이메일 도메인을 입력해주세요";
     }
 
     if (!formValues.password) {
@@ -89,11 +98,44 @@ export default function Local(): JSX.Element {
 
     const errors: Partial<RegisterFormValues> = {};
 
+    if (name === "name") {
+      if (!value) {
+        errors.password = "이름을 입력해주세요";
+        setCheckN(false)
+      }else if(value){
+        setCheckN(true)
+      }else{
+        setCheckN(false)
+      }
+    }
+
     if (name === "password") {
       if (!/^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{8,}$/.test(value)) {
         errors.password = "비밀번호는 특수문자가 포함된 8자리 이상이어야 합니다";
+        setCheckP(false)
+      }else if(/^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{8,}$/.test(value)){
+        errors.password = "";
+        setCheckP(true)
+      }else{
+        setCheckP(false)
       }
     }
+
+    if (name === "confirmPassword") {
+      if (!value) {
+        errors.confirmPassword = "비밀번호 확인을 입력해주세요";
+        setCheckPP(false)
+      }
+      else if(formValues.password !== value){
+        errors.confirmPassword = "비밀번호가 일치하지 않습니다";
+        setCheckPP(false)
+      }
+      else if(formValues.password == value) {
+        errors.confirmPassword = "";
+        setCheckPP(true)
+      }
+    }
+ 
     setFormErrors((prev) => ({ ...prev, ...errors }));
   };
 
@@ -113,10 +155,14 @@ export default function Local(): JSX.Element {
                         type="text"
                         placeholder="이름"
                         maxLength={10}
+                        onBlur={handleBlur}
                         value={formValues.name}
                         onChange={handleChange}
                         />
-                        <span className={styles.check}></span>
+                        <motion.span 
+                          initial={{background: "#fff"}}
+                          animate={checkN ? {background: "#68d868"}: {}}
+                         className={styles.check}></motion.span>
                         <span className={styles.error}>{formErrors.name ? formErrors.name : null}</span>
                     </div>
                     <div className={styles.input_password}>
@@ -131,7 +177,10 @@ export default function Local(): JSX.Element {
                         value={formValues.password}
                         onChange={handleChange}
                         />
-                        <span className={styles.check}></span>
+                        <motion.span 
+                          initial={{background: "#fff"}}
+                          animate={checkP ? {background: "#68d868"}: {}}
+                         className={styles.check}></motion.span>
                         <span className={styles.error}>{formErrors.password ? formErrors.password : null}</span>
                     </div>
                     <div className={styles.input_password}>
@@ -146,7 +195,10 @@ export default function Local(): JSX.Element {
                         value={formValues.confirmPassword}
                         onChange={handleChange}
                         />
-                        <span className={styles.check}></span>
+                        <motion.span 
+                          initial={{background: "#fff"}}
+                          animate={checkPP ? {background: "#68d868"}: {}}
+                         className={styles.check}></motion.span>
                         <span className={styles.error}>{formErrors.confirmPassword ? formErrors.confirmPassword : null}</span>
                     </div>
                     <div className={styles.input_email}>
@@ -154,7 +206,7 @@ export default function Local(): JSX.Element {
                         <input 
                             name="email_title"
                             id="email_title"
-                            type="email" 
+                            type="text"
                             value={formValues.email_title} 
                             placeholder="이메일" 
                             maxLength={18}
@@ -162,7 +214,7 @@ export default function Local(): JSX.Element {
                         <input 
                             name="email_domain"
                             id="email_domain"
-                            type="email" 
+                            type="text" 
                             value={formValues.email_domain} 
                             placeholder="도메인" 
                             maxLength={15}
@@ -182,7 +234,7 @@ export default function Local(): JSX.Element {
                             <option value="nate.com">nate.com</option>
                             <option value="yahoo.com">yahoo.com</option>
                         </select>
-                        <span className={styles.check}></span>
+                        {/* <span className={styles.check}></span> */}
                         <span className={styles.error}>{formErrors.email_domain ? formErrors.email_domain : null}</span>
                     </div>
                     

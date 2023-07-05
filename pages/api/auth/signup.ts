@@ -18,8 +18,11 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     console.log(hash)
     console.log(request.body)
-
-    const result = await db.collection('user_information').insertOne(request.body);
-  
+    try {
+      const result = await db.collection('user_information').insertOne(request.body);
+      response.status(200).json(result);
+    }catch (error) {
+        response.status(500).json({ message: '서버 에러가 발생했습니다.' });
+    }
   }
 }
