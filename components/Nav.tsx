@@ -37,7 +37,7 @@ export default function Nav(){
                                 </li> : null
                             }
                             <li>
-                                <Link href={'/home'}>고객센터</Link>
+                                <Link href={'/contents'}>콘텐츠</Link>
                             </li>
                         </>
                     )}

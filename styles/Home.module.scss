@@ -99,6 +99,22 @@
                 }
             }
         }
+
+        .contents_container{
+            h5{
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 135%;
+                margin-top: 32px;
+            }
+            .chart_container{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        
     }
 }
 
