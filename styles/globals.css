@@ -47,11 +47,13 @@ table {
 
 a {
 	color: inherit;
+	font-family: inherit;
 	text-decoration: none;
 }
 
 button,input,select{
 	color: inherit;
+	font-family: inherit;
 	font-size: inherit;
 }
 
@@ -69,5 +71,6 @@ ul,
 li {
   list-style: none;
   padding: unset;
+  font-family: inherit;
 }
 
