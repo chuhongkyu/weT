@@ -56,12 +56,12 @@ const Chart = (data:any) => {
   return (
     <RadarChart
         id={"CHART"}
-      cx={200}
-      cy={200}
-      outerRadius={100}
-      width={400}
-      height={400}
-      data={chart}
+        cx={200}
+        cy={200}
+        outerRadius={100}
+        width={400}
+        height={400}
+        data={chart}
     >
       <PolarGrid />
       <PolarAngleAxis dataKey="category" />

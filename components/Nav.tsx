@@ -31,12 +31,16 @@ export default function Nav(){
                             <li className={route.asPath === "/home" ? styles.active : ''}>
                                 <Link href={'/home'}>홈</Link>
                             </li>
+                            
                             {session ?
                                 <li className={route.asPath === "/write" ? styles.active : ''}>
                                     <Link href={'/write'}>글쓰기</Link>
-                                </li> : null
+                                </li> : 
+                                <li>
+                                    <Link href={'/login'}>글쓰기</Link>
+                                </li>
                             }
-                            <li>
+                            <li className={route.asPath === "/contents" ? styles.active : ''}>
                                 <Link href={'/contents'}>콘텐츠</Link>
                             </li>
                         </>
