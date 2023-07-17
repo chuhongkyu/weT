@@ -37,13 +37,19 @@ export default function Banner(){
                     <Swiper 
                         className={styles.wrapper}
                         modules={[Navigation, Pagination, Autoplay]}
-                        spaceBetween={24}
-                        slidesPerView={1.5}
+                        spaceBetween={20}
+                        slidesPerView={1.2}
                         centeredSlides={true}
                         loop={true}
                         autoplay={{ delay: 5000}}
                         pagination={{ clickable: true }}
                         scrollbar={{ draggable: true }}
+                        breakpoints={{
+                            1024: {
+                                slidesPerView: 1.5,
+                                spaceBetween: 24,
+                            }}
+                        }
                     >
                         {Img ? Img.map((img, index)=>{
                             return(

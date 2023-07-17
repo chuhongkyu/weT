@@ -2,6 +2,8 @@ import styles from "styles/Layout.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Nav(){
     const route = useRouter()
@@ -9,6 +11,7 @@ export default function Nav(){
         history.back()
     }
     const { data: session, status } = useSession()
+    const [menu, setMenu] = useState(false)
 
     return (
         <div id={styles.Nav}>
@@ -54,7 +57,12 @@ export default function Nav(){
                         <Link href={'/register'}><span>회원가입</span></Link>
                     </>
                     )}
+                    <div className={styles.more_btn} onClick={()=> setMenu(!menu)}>
+                        <span><Image layout="fill" objectFit="cover" src="/icon/more.png" alt="icon"/></span>
+                    </div>
+                    {menu ? null : null}
                 </div>
+                
             </nav>
         </div>
     )
