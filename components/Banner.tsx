@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from "swiper";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const Img = [
@@ -58,7 +57,7 @@ export default function Banner(){
                                 >
                                     <div className={styles.content}>
                                         <div className={styles.content_child}>
-                                            <Image layout="fill" objectFit="cover" src={img.background} alt={"1" + index}/>
+                                            <Image layout="fill" src={img.background} alt={"1" + index}/>
                                             {img.text ? (
                                                 <div className={styles.texts}>
                                                     <h5>{img.text}</h5>

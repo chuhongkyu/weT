@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { SessionProvider } from 'next-auth/react';
+import { RecoilRoot } from 'recoil';
 import Head from 'next/head'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -28,7 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <AnimatePresence>
         <SessionProvider session={pageProps.session}>
-          <Component {...pageProps} />
+          <RecoilRoot>
+            <Component {...pageProps} />
+          </RecoilRoot>
         </SessionProvider>
       </AnimatePresence>
     </>

@@ -3,15 +3,33 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
-import { useState } from "react";
+import { RecoilState, useRecoilState } from "recoil";
+import { menuState } from "utils/atom";
+import Menu from "./Menu";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { lockScroll, unlockScroll} from "utils/help"
+
 
 export default function Nav(){
+    const [menu, setMenu] = useRecoilState(menuState)
     const route = useRouter()
     const onHandleBack = ()=>{
         history.back()
     }
     const { data: session, status } = useSession()
-    const [menu, setMenu] = useState(false)
+
+    const onClick = () => {
+        setMenu((prev) => !prev)
+    }
+
+    useEffect(()=>{
+        if(window != undefined){
+            let position = window.scrollY
+            menu ? lockScroll(position) : unlockScroll(position);
+        }
+        
+    },[menu])
 
     return (
         <div id={styles.Nav}>
@@ -57,13 +75,24 @@ export default function Nav(){
                         <Link href={'/register'}><span>회원가입</span></Link>
                     </>
                     )}
-                    <div className={styles.more_btn} onClick={()=> setMenu(!menu)}>
-                        <span><Image layout="fill" objectFit="cover" src="/icon/more.png" alt="icon"/></span>
+                    <div className={styles.more_btn} onClick={onClick}>
+                        <span><Image layout="fill" src="/icon/more.png" alt="icon"/></span>
                     </div>
-                    {menu ? null : null}
+                    
                 </div>
-                
             </nav>
+            {menu ? (
+                <>
+                    <motion.div 
+                        id={styles.Dimmed} 
+                        onClick={onClick}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{duration: 0.3}}
+                    />    
+                    <Menu/>
+                </>
+                ) : null}
         </div>
     )
 }
