@@ -275,4 +275,12 @@
     height: 100vh;
     background: #fff;
     z-index: 100;
+    padding: 24px 20px;
+    li{
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0,0,0,.26);
+        &:not(:last-of-type){
+            margin-bottom: 5px;
+        }
+    }
 }

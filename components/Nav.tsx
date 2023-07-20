@@ -90,7 +90,14 @@ export default function Nav(){
                         animate={{opacity: 1}}
                         transition={{duration: 0.3}}
                     />    
-                    <Menu/>
+                    <Menu>
+                        <li><Link href={'/home'}>홈</Link></li>  
+                        {session ?
+                            <li><Link href={'/write'}>글쓰기</Link></li> : 
+                            <li><Link href={'/login'}>글쓰기</Link></li>
+                        }
+                        <li><Link href={'/contents'}>콘텐츠</Link></li>
+                    </Menu>
                 </>
                 ) : null}
         </div>
