@@ -276,6 +276,21 @@
     background: #fff;
     z-index: 100;
     padding: 24px 20px;
+    .btn_container{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        position: relative;
+        height: 24px;
+        .x_btn{
+            position: absolute;
+            right: 0px;
+            width: 24px;
+            height: 24px;
+            display: block;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
     li{
         padding: 12px 0;
         border-bottom: 1px solid rgba(0,0,0,.26);

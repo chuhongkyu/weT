@@ -91,6 +91,11 @@ export default function Nav(){
                         transition={{duration: 0.3}}
                     />    
                     <Menu>
+                        <div className={styles.btn_container}>
+                            <span className={styles.x_btn} onClick={onClick}>
+                                <Image layout="fill" src="/icon/x-btn.png" alt="x-btn"/>
+                            </span>
+                        </div>
                         <li><Link href={'/home'}>홈</Link></li>  
                         {session ?
                             <li><Link href={'/write'}>글쓰기</Link></li> : 
