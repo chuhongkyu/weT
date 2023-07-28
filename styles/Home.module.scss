@@ -17,6 +17,12 @@
         .list_container{
             padding: 29px 29px 31px;
             border: 1px solid #e1e2e3;
+            @media screen and (max-width: 1024px) {
+                border-top: 1px solid #e1e2e3;
+                border-bottom: 11px solid #e1e2e3;
+                border-left: none;
+                border-right: none;
+            }
             background-color: #fff;
             border-radius: 5px;
             margin-bottom: $vw120;
@@ -123,24 +129,25 @@
     overflow-x: hidden;
     width: 100%;
     .items{
+        width: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        overflow-x: scroll;
+        overflow: scroll;
+        -ms-overflow-style: none;
         &::-webkit-scrollbar{display: none;}
         scrollbar-width: none;
         .item{
             display: flex;
             padding: 9px 22px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 15px;
             line-height: 146.7%;
             color: #8a8a8a;
             border: 1px solid #e1e2e4;
             border-radius: 25px;
-            cursor: pointer;
             white-space: nowrap;
-
+            cursor: pointer;
             &.active{
                 border: 1px solid $mainColor;
                 color: $mainColor;
@@ -149,16 +156,14 @@
             &:not(:last-of-type){
                 margin-right: 8px;
             }
-            button{
-                border: none;
-                background: none;
-            }
         }
         @media screen and (max-width: 1024px) {
+            padding-left: 20px;
             .item{
                 padding: 6px 18px;
-                font-weight: 600;
+                font-weight: 700;
                 font-size: 13px;
+                min-height: 25px;
                 &:not(:last-of-type){
                     margin-right: 7px;
                 }

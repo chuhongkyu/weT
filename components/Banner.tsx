@@ -1,6 +1,6 @@
 import styles from "styles/Layout.module.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from "swiper";
+import { Pagination, Autoplay } from "swiper";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Image from "next/image";
@@ -35,14 +35,14 @@ export default function Banner(){
                 >
                     <Swiper 
                         className={styles.wrapper}
-                        modules={[Navigation, Pagination, Autoplay]}
+                        modules={[ Pagination, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={1.2}
                         centeredSlides={true}
                         loop={true}
-                        autoplay={{ delay: 5000}}
+                        autoplay={{ delay: 5000, disableOnInteraction: false}}
                         pagination={{ clickable: true }}
-                        scrollbar={{ draggable: true }}
+                        grabCursor={true}
                         breakpoints={{
                             1024: {
                                 slidesPerView: 1.5,

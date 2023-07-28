@@ -1,4 +1,5 @@
 import 'styles/globals.css'
+import 'styles/font-face.scss'
 import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'

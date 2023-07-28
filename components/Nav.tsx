@@ -90,7 +90,7 @@ export default function Nav(){
                         animate={{opacity: 1}}
                         transition={{duration: 0.3}}
                     />    
-                    <Menu>
+                    <Menu key={"menu"}>
                         <div className={styles.btn_container}>
                             <span className={styles.x_btn} onClick={onClick}>
                                 <Image layout="fill" src="/icon/x-btn.png" alt="x-btn"/>
