@@ -61,7 +61,7 @@ const Detail = ({ data }:any) => {
         <Nav/>
         <div className={styles.wrapper}>
           <div className={styles.header}>
-            <h1>{data.title}</h1>
+            <h1 className="head-line-1">{data.title}</h1>
             <div className={styles.container_user}>
               <span className={styles.name}>{data.email ? data.email.substring(0, 5) + '...' : "익명"}</span>
               <span className={styles.name}>{data.category}</span>

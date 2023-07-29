@@ -4,11 +4,15 @@
     .wrapper{
         margin: 0 auto;
         max-width: $conentWidth;
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+            margin: 0;
+            padding: 0 20px;
+        }
         .header{
             h1{
                 display: block;
                 margin-top: __vw(100);
-                font-size: $h1;
             }
             .container_user{
                 margin-top: __vw(50);
@@ -30,7 +34,7 @@
             }
         }
         .main_content{
-            margin-top: __vw(50);
+            margin-top: max(2.6041666667vw, 20px);
             min-height: __vw(500);
             border-bottom: 1px solid #ACACAC;
             .content{

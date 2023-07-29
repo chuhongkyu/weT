@@ -1,0 +1,23 @@
+@import './variables';
+
+.head-line-2{
+    font-size: 22px;
+    line-height: 1.33;
+    font-weight: 600;
+    color: #333;
+}
+
+.head-line-1{
+    font-size: $h1;
+    line-height: 135%;
+    font-weight: 500;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .head-line-1{
+        font-size: 24px;
+        line-height: 135%;
+        font-weight: 500;
+    }
+}

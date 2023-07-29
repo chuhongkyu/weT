@@ -53,7 +53,7 @@ const Home = ({data: initialData }:Props) => {
         <Nav/>
         <Banner/> 
         <div className={styles.wrapper}>
-          <h1>HOME</h1>
+          <h1 className="head-line-2">HOME</h1>
           <Capsule onHandleCategory={handleCategory}/>
           {session ? <ButtonWrite/> : null}
           <div className={styles.list_container}>
