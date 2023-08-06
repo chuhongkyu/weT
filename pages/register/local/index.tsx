@@ -24,9 +24,12 @@ export default function Local(): JSX.Element {
 
   const routes = useRouter()
 
-  const [checkN, setCheckN] = useState(false)
-  const [checkP, setCheckP] = useState(false)
-  const [checkPP, setCheckPP] = useState(false)
+  const [checkN, setCheckN] = useState({
+    name: false,
+    password: false,
+    confirmPassword: false,
+    email: false,
+  })
 
   const [formErrors, setFormErrors] = useState<Partial<RegisterFormValues>>({});
 
@@ -38,7 +41,7 @@ export default function Local(): JSX.Element {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     errorMessage();
-    const { name, email_title, email_domain, password,  } = formValues;
+    const { name, email_title, email_domain, password } = formValues;
     fetch("/api/auth/signup", {
       method: "POST",
       headers: {
@@ -102,38 +105,65 @@ export default function Local(): JSX.Element {
     if (name === "name") {
       if (!value) {
         errors.name = "이름을 입력해주세요";
-        setCheckN(false)
+        setCheckN((prevState) => ({
+          ...prevState,
+          name: false,
+        }))
       }else if(value){
-        setCheckN(true)
+        setCheckN((prevState) => ({
+          ...prevState,
+          name: true,
+        }))
       }else{
-        setCheckN(false)
+        setCheckN((prevState) => ({
+          ...prevState,
+          name: false,
+        }))
       }
     }
 
     if (name === "password") {
       if (!/^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{8,}$/.test(value)) {
         errors.password = "비밀번호는 특수문자가 포함된 8자리 이상이어야 합니다";
-        setCheckP(false)
+        setCheckN((prevState) => ({
+          ...prevState,
+          password: false,
+        }))
       }else if(/^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{8,}$/.test(value)){
         errors.password = "";
-        setCheckP(true)
+        setCheckN((prevState) => ({
+          ...prevState,
+          password: true,
+        }))
       }else{
-        setCheckP(false)
+        setCheckN((prevState) => ({
+          ...prevState,
+          password: false,
+        }))
       }
     }
 
     if (name === "confirmPassword") {
       if (!value) {
         errors.confirmPassword = "비밀번호 확인을 입력해주세요";
-        setCheckPP(false)
+        setCheckN((prevState) => ({
+          ...prevState,
+          confirmPassword: false,
+        }))
       }
       else if(formValues.password !== value){
         errors.confirmPassword = "비밀번호가 일치하지 않습니다";
-        setCheckPP(false)
+        setCheckN((prevState) => ({
+          ...prevState,
+          confirmPassword: false,
+        }))
       }
       else if(formValues.password == value) {
         errors.confirmPassword = "";
-        setCheckPP(true)
+        setCheckN((prevState) => ({
+          ...prevState,
+          confirmPassword: true,
+        }))
       }
     }
  
@@ -162,7 +192,7 @@ export default function Local(): JSX.Element {
                         />
                         <motion.span 
                           initial={{background: "#fff"}}
-                          animate={checkN ? {background: "#68d868"}: {}}
+                          animate={checkN.name ? {background: "#68d868"}: {}}
                          className={styles.check}></motion.span>
                         <span className={styles.error}>{formErrors.name ? formErrors.name : null}</span>
                     </div>
@@ -180,7 +210,7 @@ export default function Local(): JSX.Element {
                         />
                         <motion.span 
                           initial={{background: "#fff"}}
-                          animate={checkP ? {background: "#68d868"}: {}}
+                          animate={checkN.password ? {background: "#68d868"}: {}}
                          className={styles.check}></motion.span>
                         <span className={styles.error}>{formErrors.password ? formErrors.password : null}</span>
                     </div>
@@ -198,7 +228,7 @@ export default function Local(): JSX.Element {
                         />
                         <motion.span 
                           initial={{background: "#fff"}}
-                          animate={checkPP ? {background: "#68d868"}: {}}
+                          animate={checkN.confirmPassword ? {background: "#68d868"}: {}}
                          className={styles.check}></motion.span>
                         <span className={styles.error}>{formErrors.confirmPassword ? formErrors.confirmPassword : null}</span>
                     </div>
