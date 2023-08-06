@@ -4,6 +4,7 @@ import Footer from "components/Footer";
 import Nav from "components/Nav";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+
 interface RegisterFormValues {
   name: string;
   email_title: string;
@@ -100,7 +101,7 @@ export default function Local(): JSX.Element {
 
     if (name === "name") {
       if (!value) {
-        errors.password = "이름을 입력해주세요";
+        errors.name = "이름을 입력해주세요";
         setCheckN(false)
       }else if(value){
         setCheckN(true)
@@ -141,12 +142,12 @@ export default function Local(): JSX.Element {
 
   return (
     <div id={styles.Register}>
-            <Nav/>
-            <div className={styles.wrapper}>
-                <div className={styles.container}>
-                <div className={styles.form_container}>
-                    <h1>회원가입</h1>
-                    <form onSubmit={handleSubmit}>
+      <Nav/>
+        <div className={styles.wrapper}>
+          <div className={styles.container}>
+            <div className={styles.form_container}>
+              <h1>회원가입</h1>
+                <form onSubmit={handleSubmit}>
                     <div className={styles.input_name}>
                         <label htmlFor="name">이름</label>
                         <input
@@ -241,11 +242,11 @@ export default function Local(): JSX.Element {
                     <div className={styles.button_container}>
                         <button type="submit">회원가입</button>
                     </div>
-                    </form>
-                </div>
-                </div>
+                </form>
             </div>
-            <Footer/>
+          </div>
         </div>
+      <Footer/>
+    </div>
   );
 }
