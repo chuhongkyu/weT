@@ -91,4 +91,73 @@ export const questions = [
             }
         }
     },
+    {
+        title: "당신은 OTT를 다양한 기기에서 시청하나요? ",
+        answer: {
+            yes: "네, 데스크탑, 모바일, 패드등 다양해요.",
+            no: "아니요, 저는 하나의 디바이스에서 활용해요!"
+        },
+        score: {
+            yes :{
+                nef: 1,
+                wat: 0,
+                wav: 1,
+                tiv: 0,
+                dis: 1,
+            },
+            no : {
+                nef: 0,
+                wat: 1,
+                wav: 0,
+                tiv: 1,
+                dis: 0,
+            }
+        }
+    },
+    {
+        title: "당신은 OTT를 어디서 가장 많이 시청하나요? ",
+        answer: {
+            yes: "이동 시간(대중 교통), 카페, 사람이 많은 곳",
+            no: "집과 같은 혼자만 있는 곳"
+        },
+        score: {
+            yes :{
+                nef: -1,
+                wat: -1,
+                wav: 1,
+                tiv: 1,
+                dis: 1,
+            },
+            no : {
+                nef: 1,
+                wat: 1,
+                wav: 0,
+                tiv: 0,
+                dis: 0,
+            }
+        }
+    },
+    {
+        title: "당신은 OTT에서 일본 만화를 즐겨 보나요?",
+        answer: {
+            yes: "네, 저는 만화를 아주 좋아해요 ~ ",
+            no: "아니요, 저는 일본 만화는 좀..."
+        },
+        score: {
+            yes :{
+                nef: 1,
+                wat: -1,
+                wav: 1,
+                tiv: 1,
+                dis: -1,
+            },
+            no : {
+                nef: 0,
+                wat: 0,
+                wav: 0,
+                tiv: 0,
+                dis: 0,
+            }
+        }
+    },
 ]

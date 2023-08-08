@@ -48,12 +48,37 @@
             background: $mainColor;
             padding: max(2.0833vw, 40px);
             border-radius: max(1rem, 0.8334vw);
+            position: relative;
             h1{
                 font-size: 32px;
                 color: #fff;
                 font-weight: 500;
                 line-height: 135%;
                 margin-bottom: max(2.0833vw, 52px);
+                b{
+                    font-weight: 600;
+                }
+            }
+            .orders{
+                background: #fff;
+                font-size: 22px;
+                font-weight: 500;
+                color: #000;
+                padding: max(2.0833vw, 20px);
+                border-radius: max(1rem, 0.8334vw);
+                span{
+                    display: block;
+                    &:not(:last-of-type){
+                        margin-bottom: 18px;
+                    }
+                }
+            }
+            .circle-chart{
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 300px;
+                height: 300px;
             }
             .btns-group{
                 button{

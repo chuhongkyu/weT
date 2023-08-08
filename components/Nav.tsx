@@ -52,7 +52,9 @@ export default function Nav(){
                             <li className={route.asPath === "/contents" ? styles.active : ''}>
                                 <Link href={'/contents'}>홈</Link>
                             </li>
-                            
+                            <li className={route.asPath === "/contents/recommend" ? styles.active : ''}>
+                                <Link href={'/contents/recommend'}>추천</Link>
+                            </li>
                             {session ?
                                 <li className={route.asPath === "/write" ? styles.active : ''}>
                                     <Link href={'/write'}>글쓰기</Link>
