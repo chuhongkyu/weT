@@ -7,7 +7,7 @@ const IndexPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace('/home');
+    router.replace('/contents');
   }, []);
 
   return <Loading/>;

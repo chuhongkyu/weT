@@ -49,8 +49,8 @@ export default function Nav(){
                         </>
                     ) : (
                         <>
-                            <li className={route.asPath === "/home" ? styles.active : ''}>
-                                <Link href={'/home'}>홈</Link>
+                            <li className={route.asPath === "/contents" ? styles.active : ''}>
+                                <Link href={'/contents'}>홈</Link>
                             </li>
                             
                             {session ?
@@ -61,8 +61,8 @@ export default function Nav(){
                                     <Link href={'/login'}>글쓰기</Link>
                                 </li>
                             }
-                            <li className={route.asPath === "/contents" ? styles.active : ''}>
-                                <Link href={'/contents'}>콘텐츠</Link>
+                            <li className={route.asPath === "/home" ? styles.active : ''}>
+                                <Link href={'/home'}>게시판</Link>
                             </li>
                         </>
                     )}
@@ -96,12 +96,12 @@ export default function Nav(){
                                 <Image layout="fill" src="/icon/x-btn.png" alt="x-btn"/>
                             </span>
                         </div>
-                        <li><Link href={'/home'}>홈</Link></li>  
+                        <li><Link href={'/contents'}>홈</Link></li>  
                         {session ?
                             <li><Link href={'/write'}>글쓰기</Link></li> : 
                             <li><Link href={'/login'}>글쓰기</Link></li>
                         }
-                        <li><Link href={'/contents'}>콘텐츠</Link></li>
+                        <li><Link href={'/home'}>게시판</Link></li>
                     </Menu>
                 </>
                 ) : null}
