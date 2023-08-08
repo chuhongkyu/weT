@@ -7,11 +7,11 @@ export const questions = [
         },
         score: {
             yes :{
-                nef: 3,
-                wat: 3,
+                nef: 2,
+                wat: 2,
                 wav: 1,
                 tiv: 1,
-                dis: 3,
+                dis: 2,
             },
             no : {
                 nef: 1,
@@ -39,8 +39,8 @@ export const questions = [
             no : {
                 nef: -1,
                 wat: -1,
-                wav: 0,
-                tiv: 0,
+                wav: 1,
+                tiv: 1,
                 dis: 2,
             }
         }
@@ -53,11 +53,11 @@ export const questions = [
         },
         score: {
             yes :{
-                nef: 0,
-                wat: 0,
+                nef: -1,
+                wat: -1,
                 wav: 1,
                 tiv: 1,
-                dis: 3,
+                dis: 2,
             },
             no : {
                 nef: 1,

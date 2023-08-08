@@ -22,8 +22,9 @@ const Contents = ({data: initialData }:Props) => {
         <Banner/>
         <div className="wrapper">    
           <div className="contents_container recommend">
-            <h5>나 에게 맞는 OTT는? </h5>
+            <h5>나에게 맞는 OTT는? </h5>
             <Link href={'/contents/recommend'} className="recommend_container">
+              <h5>NETFLIX</h5>
               <Image width={300} height={300} src="/img/chart.png" alt="chart"/>
             </Link>
           </div>  

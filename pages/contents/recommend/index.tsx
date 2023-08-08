@@ -47,14 +47,22 @@ const Recommend = () => {
     );
 
     useEffect(()=>{
+
         const endData = [
             { name: Object.keys(score)[0], value: Object.values(score)[0] },
             { name: Object.keys(score)[1], value: Object.values(score)[1] },
             { name: Object.keys(score)[2], value: Object.values(score)[2] },
         ]
         if(end){
+            setSort()
             setData(endData)
         }
+
+        console.log(
+           "1", Object.keys(score)[0], Object.values(score)[0],
+           "2", Object.keys(score)[1], Object.values(score)[1],
+           "4", Object.keys(score)[3], Object.values(score)[3]
+        )
     },[end])
 
     const makeName = (title:string) =>{
@@ -94,7 +102,6 @@ const Recommend = () => {
             setCurrent((prev) => prev + 1)
         }else{
             setEnd(true);
-            setSort();
         }
 
         if(target == 'yes'){
@@ -135,7 +142,7 @@ const Recommend = () => {
             </div> */}
 
             {end ? 
-                    <div className="quiz-container">
+                    (<div className="quiz-container">
                         <h1>당신에게 어울리는 OTT는 바로~ <b>{makeName(Object.keys(score)[0])}</b></h1>
                         <div className="orders">
                             <span><b style={{color: "#0088FE" }}>1위</b> {makeName(Object.keys(score)[0])}</span>
@@ -162,15 +169,16 @@ const Recommend = () => {
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
-                        
-                    </div> :
+                    </div>) : (
                     <div className="quiz-container" key={'ques' + current}> 
+                        <span className="number"><p>0{current + 1}</p>/<p>0{ques.length}</p></span>
                         <h1>{ques[current].title}</h1>
                         <div className="btns-group">
                             <button onClick={onHandleClick} id='yes'><b>Yes, </b><p>{ques[current].answer.yes}</p></button>
                             <button onClick={onHandleClick} id='no'><b>No, </b><p>{ques[current].answer.no}</p></button>
                         </div>
                     </div>
+                    )
             }    
         </div>
       <Footer/>

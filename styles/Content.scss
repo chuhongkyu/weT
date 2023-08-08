@@ -24,22 +24,34 @@
                 background: rgb(6, 9, 197);
                 display: block;
                 width: 100%;
-                height: 400px;
+                height: 450px;
                 border-radius: max(1rem, 0.8334vw);
                 transform-origin: center;
                 transition: 300ms ease-in-out;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                position: relative;
                 &:hover{
                     transform: scale(0.98);
                     transition: 300ms ease-in-out;
+                }
+                h5{
+                    display: none;
+                    position: absolute;
+                    left: 20px;
+                    font-size: 32px;
+                    font-weight: 500;
+                    color: #fff;
                 }
             }
             .chart_container{
                 width: 100%;
                 display: flex;
                 justify-content: center;
+                border-radius: max(1rem, 0.8334vw);
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                height: 450px;
             }
         } 
 
@@ -49,12 +61,24 @@
             padding: max(2.0833vw, 40px);
             border-radius: max(1rem, 0.8334vw);
             position: relative;
+            .number{
+                display: flex;
+                font-size: 28px;
+                color: #fff;
+                font-weight: 500;
+                line-height: 150%;
+                margin-bottom: max(1.0417vw, 20px);
+                p{
+                    letter-spacing: 0.02em;
+                }
+            }
             h1{
                 font-size: 32px;
                 color: #fff;
                 font-weight: 500;
                 line-height: 135%;
-                margin-bottom: max(2.0833vw, 52px);
+                display: flex;
+                margin-bottom: max(2.7083vw, 52px);
                 b{
                     font-weight: 600;
                 }
@@ -89,6 +113,7 @@
                     font-size: 22px;
                     font-weight: 500;
                     cursor: pointer;
+                    transition: 300ms ease-in-out;
                     b{
                         margin-right: 1rem;
                         font-weight: 600;
@@ -98,6 +123,10 @@
                     }
                     &:first-of-type{
                         margin-bottom: 20px;
+                    }
+                    &:hover{
+                        transform: translateY(-5px);
+                        transition: 300ms ease-in-out;
                     }
                 }
             }
@@ -110,4 +139,9 @@
             }
         }
     }
+}
+
+
+tspan{
+    text-transform: uppercase;   
 }
