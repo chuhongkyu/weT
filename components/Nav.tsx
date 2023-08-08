@@ -34,7 +34,7 @@ export default function Nav(){
     return (
         <div id={styles.Nav}>
             <nav>
-                <Link href={'/home'}>
+                <Link href={'/contents'}>
                     <div className={styles.left}>
                         We T
                     </div>
