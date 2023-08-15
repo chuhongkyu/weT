@@ -82,6 +82,8 @@
                     font-weight: 700;
                     padding: 15px;
                     display: inline-block;
+                    opacity: 0.4;
+                    transition: 300ms ease-in-out;
                     &::after{
                         content: "";
                         position: absolute;
@@ -94,15 +96,23 @@
                     }
                 }
                 &:hover{
-                    a{&::after{opacity: 1}};
+                    a{
+                        opacity: 1;
+                        transition: 300ms ease-in-out;
+                    }
                 } 
                 &.active{
-                    a{&::after{opacity: 1}};
+                    a{
+                        opacity: 1;
+                        transition: 300ms ease-in-out;
+                        &::after{
+                            opacity: 1
+                        }};
                 }
                 
-                &:not(:last-of-type){
-                    margin-right: 15px;
-                }
+                // &:not(:last-of-type){
+                //     margin-right: 15px;
+                // }
             }
             @media screen and (max-width: 1024px) {
                 li{

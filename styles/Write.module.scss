@@ -52,12 +52,14 @@
             }
             .textarea_content{
                 display: block;
+                
                 height: 100%;
                 background: #F2F2F2;
                 font-size: 20px;
                 border-radius: 5px;
                 position: relative;
                 textarea{
+                    width: 100%;
                     font-size: inherit;
                     line-height: 150%;
                     height: __vw(500);
