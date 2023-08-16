@@ -36,7 +36,7 @@
         .main_content{
             margin-top: max(2.6041666667vw, 20px);
             min-height: __vw(500);
-            border-bottom: 1px solid #ACACAC;
+            // border-bottom: 1px solid #ACACAC;
             .content{
                 font-size: 18px;
                 line-height: 135%;
@@ -50,6 +50,10 @@
             padding: 0 20px;
             .small_comment_lists{
                 .small_comment_list{
+                    &:first-of-type{
+                        border-top: 1px solid #ACACAC;
+                        padding-top: 20px;
+                    }
                     padding-bottom: 32px;
                     &:not(:last-of-type){
                         margin-bottom: 20px;

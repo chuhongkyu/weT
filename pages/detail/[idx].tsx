@@ -70,7 +70,7 @@ const Detail = ({ data }:any) => {
           </div>
           
           <div className={styles.main_content}>
-          <p className={styles.content} dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
+            <p className={styles.content} dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
           </div>
 
           {session?.user?.email == data.email ? (

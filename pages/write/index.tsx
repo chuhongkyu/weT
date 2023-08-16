@@ -4,6 +4,12 @@ import { useEffect, useState } from 'react';
 import styles from 'styles/Write.module.scss';
 import Footer from "components/Footer"
 import { useSession } from 'next-auth/react';
+import dynamic from 'next/dynamic';
+import 'react-quill/dist/quill.snow.css';
+
+const ReactQuill = dynamic( () => import('react-quill'), {
+  ssr : false
+})
 
 const Write = () => {
   const [title, setTitle] = useState('');
@@ -26,8 +32,9 @@ const Write = () => {
     setTitle(event.target.value);
   };
 
-  const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(event.target.value);
+  const handleContentChange = (event: any) => {
+    console.log(content)
+    setContent(event);
   };
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -120,7 +127,10 @@ const Write = () => {
                         내용 :
                     </label>
                     <div className={styles.textarea_content}>
-                        <textarea
+                        <ReactQuill 
+                        style={{ height: "89%" }}
+                        onChange={handleContentChange}/>
+                        {/* <textarea
                             id="content"
                             name="content"
                             className={styles.textarea}
@@ -128,7 +138,7 @@ const Write = () => {
                             rows={5}
                             onChange={handleContentChange}
                             placeholder={"내용을 입력해 주세요."}
-                        />
+                        />*/}
                         <p className={styles.count_number}>
                             <span className={styles.current}>{remainingChars}</span>/<span> 500</span>
                         </p>
