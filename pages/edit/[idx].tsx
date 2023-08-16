@@ -6,6 +6,12 @@ import { connectDB } from "utils/database";
 import Footer from "components/Footer"
 import { useSession } from "next-auth/react";
 import Nav from "components/Nav";
+import dynamic from "next/dynamic";
+import 'react-quill/dist/quill.snow.css';
+
+const ReactQuill = dynamic( () => import('react-quill'), {
+  ssr : false
+})
 
 const Edit = ({ data }:any) => {
     const [title, setTitle] = useState(data.title);
@@ -30,8 +36,8 @@ const Edit = ({ data }:any) => {
       setCheck(false)
     };
     
-    const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setContent(event.target.value);
+    const handleContentChange = (event: any) => {
+      setContent(event);
       setCheck(false)
     };
 
@@ -124,15 +130,11 @@ const Edit = ({ data }:any) => {
                         내용 :
                     </label>
                     <div className={styles.textarea_content}>
-                        <textarea
-                            id="content"
-                            name="content"
-                            className={styles.textarea}
-                            defaultValue={data.content}
-                            rows={5}
-                            onChange={handleContentChange}
-                            placeholder={"내용을 입력해 주세요."}
-                        />
+                        <ReactQuill 
+                          style={{ height: "89%" }}
+                          onChange={handleContentChange}
+                          defaultValue={data.content}
+                          />
                         <p className={styles.count_number}>
                             <span className={styles.current}>{current}</span>/<span> 500</span>
                         </p>
