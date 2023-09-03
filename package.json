@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@next/font": "13.0.7",
+    "@react-three/drei": "^9.80.9",
+    "@react-three/fiber": "^8.13.7",
     "@types/dotenv": "^8.2.0",
     "@types/next-auth": "^3.15.0",
     "@types/node": "18.11.17",
@@ -20,6 +22,7 @@
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
     "framer-motion": "^8.0.0",
+    "leva": "^0.9.35",
     "mongodb": "^5.3.0",
     "mongoose": "^7.1.0",
     "next": "^13.0.7",
@@ -31,6 +34,7 @@
     "recoil": "^0.7.7",
     "scss": "^0.2.4",
     "swiper": "^9.2.4",
+    "three": "^0.156.0",
     "tls": "^0.0.1",
     "typescript": "4.9.4"
   },
