@@ -90,6 +90,27 @@ const Write = () => {
     }
   }, []);
 
+  const preventGoBack = () => {
+    history.pushState(null, "", location.href);
+    const confirmExit = confirm('변경 사항을 저장하지 않고 떠나시겠습니까?');
+      
+    if (confirmExit) {
+      window.location.replace(document.referrer); 
+      // history.back();
+      // 작동안함
+    } else {
+    }
+  };
+   
+  useEffect(() => {
+    history.pushState(null, "", location.href);
+    window.addEventListener("popstate", preventGoBack);
+    
+    return () => {
+      window.removeEventListener("popstate", preventGoBack);
+    };
+  }, []);
+
   const remainingChars = 0 + content.length;
 
   return (<div id={styles.Write}>
