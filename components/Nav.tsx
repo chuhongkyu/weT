@@ -78,7 +78,7 @@ export default function Nav(){
                     </>
                     )}
                     <div className={styles.more_btn} onClick={onClick}>
-                        <span><Image layout="fill" src="/icon/more.png" alt="icon"/></span>
+                        <span><Image fill src="/icon/more.png" alt="icon"/></span>
                     </div>
                     
                 </div>
@@ -92,10 +92,10 @@ export default function Nav(){
                         animate={{opacity: 1}}
                         transition={{duration: 0.3}}
                     />    
-                    <Menu key={"menu"}>
+                    <Menu>
                         <div className={styles.btn_container}>
                             <span className={styles.x_btn} onClick={onClick}>
-                                <Image layout="fill" src="/icon/x-btn.png" alt="x-btn"/>
+                                <Image fill src="/icon/x-btn.png" alt="x-btn"/>
                             </span>
                         </div>
                         <li><Link href={'/contents'}>홈</Link></li>  

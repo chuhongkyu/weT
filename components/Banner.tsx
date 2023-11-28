@@ -57,7 +57,7 @@ export default function Banner(){
                                 >
                                     <div className={styles.content}>
                                         <div className={styles.content_child}>
-                                            <Image layout="fill" src={img.background} alt={"1" + index}/>
+                                            <Image fill src={img.background} alt={"1" + index}/>
                                             {img.text ? (
                                                 <div className={styles.texts}>
                                                     <h5>{img.text}</h5>
