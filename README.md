@@ -27,10 +27,16 @@ mongoDB
     - ○ static rendering(default)
     - λ (람다 기호) dynamic rendering(유저가 페이지 접속마다 html 새로 만들어서 보내줌)
     - ● automatically generated as static HTML + JSON
-
+  
     ```
     export const dynamic = 'force-dynamic'
     export const dynamic = 'force-static'
     ```
+  
+3. UX란
+    - 사용자의 실수를 줄여줘야한다.
+    - 글쓰기 페이지에서 브라우저의 뒤로가기를 실행시 경고창이 뜨게 변경함.
+
+   
 
 homepage[https://we-t-ott.vercel.app/]
