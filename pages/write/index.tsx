@@ -86,7 +86,7 @@ const Write = () => {
 
   useEffect(() => {
     if (!session?.user) {
-      router.push('/home');
+      router.push('/login');
     }
   }, []);
 

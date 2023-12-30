@@ -1,19 +1,17 @@
-import styles from "styles/Layout.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
-import { RecoilState, useRecoilState } from "recoil";
-import { menuState } from "utils/atom";
 import Menu from "./Menu";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { lockScroll, unlockScroll} from "utils/help"
 
 
 export default function Nav(){
-    const [menu, setMenu] = useRecoilState(menuState)
+    const [menu, setMenu] = useState(false)
     const route = useRouter()
+
     const onHandleBack = ()=>{
         history.back()
     }
@@ -22,6 +20,7 @@ export default function Nav(){
     const onClick = () => {
         setMenu((prev) => !prev)
     }
+
 
     useEffect(()=>{
         if(window != undefined){
@@ -32,81 +31,54 @@ export default function Nav(){
     },[menu])
 
     return (
-        <div id={styles.Nav}>
-            <nav>
-                <Link href={'/contents'}>
-                    <div className={styles.left}>
-                        We T
+        <>
+            <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="/img/img_cat2.png" className="h-8" alt="logo"/>
+                        <span className="self-center text-2xl font-semibold whitespace-nowrap">We T</span>
+                    </a>
+
+                    <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                        {!session?.user ? 
+                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                            <li>
+                                <Link href="login" className="block py-2 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-600 md:p-0">로그인</Link>
+                            </li>
+                            <li>
+                                <Link href="register" className="block py-2 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-600 md:p-0">회원가입</Link>
+                            </li>
+                        </ul>
+                        : 
+                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                            <li>
+                                <span className="block py-2 px-3 text-gray-900 md:bg-transparent md:text-cyan-600 md:p-0" onClick={()=> signOut()}>로그아웃</span>
+                            </li>
+                        </ul>}
+
+                        <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+                            <span className="sr-only">menu</span>
+                            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
+                            </svg>
+                        </button>
                     </div>
-                </Link>
-                <ul className={styles.main}>
-                    {route.pathname === '/detail/[idx]' || route.pathname === '/edit/[idx]' 
-                    ? (
-                        <>
-                            <li className={styles.arrow_left}>
-                                <a onClick={onHandleBack}></a>
+
+                    <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium borde bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                            <li>
+                                <Link href="/" className="block py-2 px-3 text-gray-900 md:bg-transparent md:hover:text-cyan-600 md:p-0" aria-current="page">홈</Link>
                             </li>
-                        </>
-                    ) : (
-                        <>
-                            <li className={route.asPath === "/contents" ? styles.active : ''}>
-                                <Link href={'/contents'}>홈</Link>
+                            <li>
+                                <Link href="contents" className="block py-2 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-600 md:p-0">나만의 OTT</Link>
                             </li>
-                            <li className={route.asPath === "/contents/recommend" ? styles.active : ''}>
-                                <Link href={'/contents/recommend'}>추천</Link>
+                            <li>
+                                <Link href="write" className="block py-2 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-600 md:p-0">글쓰기</Link>
                             </li>
-                            {session ?
-                                <li className={route.asPath === "/write" ? styles.active : ''}>
-                                    <Link href={'/write'}>글쓰기</Link>
-                                </li> : 
-                                <li>
-                                    <Link href={'/login'}>글쓰기</Link>
-                                </li>
-                            }
-                            <li className={route.asPath === "/home" ? styles.active : ''}>
-                                <Link href={'/home'}>게시판</Link>
-                            </li>
-                        </>
-                    )}
-                </ul>
-                <div className={styles.right}>
-                    {session ? <span className={styles.log_out} onClick={()=> signOut()}>로그아웃</span> : 
-                    (
-                    <>
-                        <Link href={'/login'}><span>로그인</span></Link>
-                        <Link href={'/register'}><span>회원가입</span></Link>
-                    </>
-                    )}
-                    <div className={styles.more_btn} onClick={onClick}>
-                        <span><Image fill src="/icon/more.png" alt="icon"/></span>
+                        </ul>
                     </div>
-                    
                 </div>
             </nav>
-            {menu ? (
-                <>
-                    <motion.div 
-                        id={styles.Dimmed} 
-                        onClick={onClick}
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        transition={{duration: 0.3}}
-                    />    
-                    <Menu>
-                        <div className={styles.btn_container}>
-                            <span className={styles.x_btn} onClick={onClick}>
-                                <Image fill src="/icon/x-btn.png" alt="x-btn"/>
-                            </span>
-                        </div>
-                        <li><Link href={'/contents'}>홈</Link></li>  
-                        {session ?
-                            <li><Link href={'/write'}>글쓰기</Link></li> : 
-                            <li><Link href={'/login'}>글쓰기</Link></li>
-                        }
-                        <li><Link href={'/home'}>게시판</Link></li>
-                    </Menu>
-                </>
-                ) : null}
-        </div>
+        </>
     )
 }

@@ -6,19 +6,7 @@ import { SessionProvider } from 'next-auth/react';
 import { RecoilRoot } from 'recoil';
 import Head from 'next/head'
 
-export default function App({ Component, pageProps }: AppProps) {
-  const resizeHandler = () => {
-    document.documentElement.style.setProperty('--vw', window.innerHeight * 0.01 + 'px');
-    document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
-    document.documentElement.style.setProperty('--app-height', window.innerHeight + 'px');
-  }
-
-  useEffect(() => {
-    resizeHandler();
-    window.addEventListener('resize', resizeHandler);
-    return () => window.removeEventListener('resize', resizeHandler)
-  }, [])
-  
+export default function App({ Component, pageProps }: AppProps) { 
   return (
     <>
       <Head>

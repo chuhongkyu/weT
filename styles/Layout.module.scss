@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
     overflow-x: hidden;
+    margin-top: calc(64px + 1.5rem);
     .banner_center{
         .content{
             width: 100%;
@@ -24,7 +24,6 @@
                 font-size: 32px;
                 font-weight: 700;
                 line-height: 150%;
-                h5{}
                 p{font-style: italic; font-size: 37px;}
             }
             img{

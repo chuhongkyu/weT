@@ -1,4 +1,3 @@
-import styles from "styles/Layout.module.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from "swiper";
 import 'swiper/css';
@@ -28,13 +27,11 @@ const Img = [
 
 export default function Banner(){
     return (
-        <div id={styles.Banner}>
+        <div id="Banner">
             <div 
                 style={{width: "100%"}}
-                className={styles.banner_center}
                 >
                     <Swiper 
-                        className={styles.wrapper}
                         modules={[ Pagination, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={1.2}
@@ -55,11 +52,11 @@ export default function Banner(){
                                 <SwiperSlide key={index + "Id"} 
                                 // style={{width: "calc(200% / 3)"}}
                                 >
-                                    <div className={styles.content}>
-                                        <div className={styles.content_child}>
+                                    <div className="content">
+                                        <div className="content-child">
                                             <Image fill src={img.background} alt={"1" + index}/>
                                             {img.text ? (
-                                                <div className={styles.texts}>
+                                                <div className="texts">
                                                     <h5>{img.text}</h5>
                                                     <p>{img.text2}</p>
                                                 </div>
