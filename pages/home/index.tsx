@@ -5,7 +5,7 @@ import styles from "styles/Home.module.scss";
 import Nav from "components/Nav";
 import Banner from "components/Banner";
 import Capsule from "components/home/capsule";
-import ButtonWrite from "components/home/ButtonWrite";
+import ButtonWrite from "components/home/ButtonWriteIcon";
 import List from "components/home/list";
 import Pagination from "components/home/Pagination";
 import Footer from "components/Footer";

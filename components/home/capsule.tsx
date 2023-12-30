@@ -1,6 +1,4 @@
 import { MouseEvent, useEffect, useState } from "react";
-import styles from "styles/Home.module.scss";
-import { IData } from "utils/typeGroup";
 
 const categoryGroup = [
     {
@@ -41,7 +39,7 @@ interface Props {
 
 export default function Capsule({ onHandleCategory }: Props){
     const [categorys, setCategory] = useState(categoryGroup);
-    const onHandleCategoryClick = (event: MouseEvent<HTMLLIElement>) =>{
+    const onHandleCategoryClick = (event: MouseEvent<HTMLButtonElement>) =>{
         const _id = event.currentTarget.id;
         setCategory(
             categorys.map((el) => ({
@@ -56,22 +54,20 @@ export default function Capsule({ onHandleCategory }: Props){
     }, [categorys]);
 
     return(
-        <div id={styles.main_cateogry}>
-            <ul className={styles.items}>
-                {categorys ? categorys.map((el, index)=>{
+        <div>
+            <div className="space-x-5 space-y-5">
+                {categorys?.map((el, index)=>{
                     return(
-                        <li 
+                        <button 
+                            className="py-2 px-5 rounded-full text-sm text-cyan-500 hover:text-gray-100 border border-cyan-500 hover:bg-cyan-500 duration-300"
                             key={el.id + index + "ID"}
                             id={el.id} 
-                            className={`${styles.item} ${el.active && styles.active}`}
                             onClick={(e)=> onHandleCategoryClick(e)}>
-                            <button>
-                                <span>{el.text}</span>
-                            </button>
-                        </li>
+                            {el.text}
+                        </button>
                     )
-                }): null}
-            </ul>
+                })}
+            </div>
         </div>
     )
 }

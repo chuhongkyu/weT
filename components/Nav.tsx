@@ -1,16 +1,16 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Menu from "./Menu";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { lockScroll, unlockScroll} from "utils/help"
+import { usePathname } from "next/navigation";
 
 
 export default function Nav(){
     const [menu, setMenu] = useState(false)
-    const route = useRouter()
+    const pathname = usePathname()
 
     const onHandleBack = ()=>{
         history.back()
@@ -20,7 +20,6 @@ export default function Nav(){
     const onClick = () => {
         setMenu((prev) => !prev)
     }
-
 
     useEffect(()=>{
         if(window != undefined){
@@ -33,8 +32,8 @@ export default function Nav(){
     return (
         <>
             <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 pt-4">
+                    <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse pb-4">
                         <img src="/img/img_cat2.png" className="h-8" alt="logo"/>
                         <span className="self-center text-2xl font-semibold whitespace-nowrap">We T</span>
                     </a>
@@ -43,16 +42,16 @@ export default function Nav(){
                         {!session?.user ? 
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
-                                <Link href="login" className="block py-2 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-600 md:p-0">로그인</Link>
+                                <Link href="login" className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500">로그인</Link>
                             </li>
                             <li>
-                                <Link href="register" className="block py-2 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-600 md:p-0">회원가입</Link>
+                                <Link href="register" className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500">회원가입</Link>
                             </li>
                         </ul>
                         : 
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
-                                <span className="block py-2 px-3 text-gray-900 md:bg-transparent md:text-cyan-600 md:p-0" onClick={()=> signOut()}>로그아웃</span>
+                                <span className="block pt-2 pb-6 px-3 text-gray-900 md:bg-transparent md:text-cyan-500 md:p-0" onClick={()=> signOut()}>로그아웃</span>
                             </li>
                         </ul>}
 
@@ -66,14 +65,14 @@ export default function Nav(){
 
                     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium borde bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
-                            <li>
-                                <Link href="/" className="block py-2 px-3 text-gray-900 md:bg-transparent md:hover:text-cyan-600 md:p-0" aria-current="page">홈</Link>
+                            <li className="list">
+                                <Link href="/" className={`block pt-2 pb-6 px-3 ${pathname == "/" ? "text-cyan-500 active" : "text-gray-900 md:bg-transparent md:hover:text-cyan-500"}`} aria-current="page">홈</Link>
                             </li>
-                            <li>
-                                <Link href="contents" className="block py-2 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-600 md:p-0">나만의 OTT</Link>
+                            <li className="list">
+                                <Link href="contents" className={`block pt-2 pb-6 px-3 ${pathname == "/contents" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>나만의 OTT</Link>
                             </li>
-                            <li>
-                                <Link href="write" className="block py-2 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-600 md:p-0">글쓰기</Link>
+                            <li className="list">
+                                <Link href="write" className={`block pt-2 pb-6 px-3 ${pathname == "/write" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>글쓰기</Link>
                             </li>
                         </ul>
                     </div>
