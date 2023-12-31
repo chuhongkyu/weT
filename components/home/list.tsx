@@ -1,6 +1,4 @@
-import styles from "styles/Home.module.scss";
 import Link from "next/link";
-import { useEffect } from "react";
 import { IData } from "utils/typeGroup";
 
 interface IListProps {
@@ -10,20 +8,21 @@ interface IListProps {
 export default function List({ data }: IListProps) {
   
   return (
-    <ul className={styles.items}>
-      {data
-        ? data.map((item: IData) => (
-            <li key={item._id} className={styles.item}>
-              <Link href={`/detail/${item._id}`}>
-                <h5 className={styles.title}>{item.title}</h5>
-                <p className={styles.content}></p>
-                <div className={styles.container_bottom}>
-                  <p className={styles.date}>{item.time}</p>
+    <ul className="bg-white rounded-lg shadow">
+      {data?.map((item: IData) => (
+          <li key={item._id} className="item px-6 pt-2">
+            <Link href={`/detail/${item._id}`}>
+              <div className="flex items-center justify-between py-4">
+                <h5 className="font-semibold text-lg">{item.title}</h5>
+                <div className="text-gray-500 text-sm">
+                  <p className="">{item.time}</p>
                 </div>
-              </Link>
-            </li>
-          ))
-        : null}
+              </div>
+              <p className="text-gray-700 pb-8">{item.content}</p>
+            </Link>
+          </li>
+        ))
+      }
     </ul>
   );
 }

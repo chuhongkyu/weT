@@ -39,8 +39,9 @@ export default function Nav(){
                     </a>
 
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                        <div className="hidden md:flex">
                         {!session?.user ? 
-                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
                                 <Link href="login" className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500">로그인</Link>
                             </li>
@@ -49,13 +50,13 @@ export default function Nav(){
                             </li>
                         </ul>
                         : 
-                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
                                 <span className="block pt-2 pb-6 px-3 text-gray-900 md:bg-transparent md:text-cyan-500 md:p-0" onClick={()=> signOut()}>로그아웃</span>
                             </li>
                         </ul>}
-
-                        <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+                        </div>
+                        <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center px-2 pb-4 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
                             <span className="sr-only">menu</span>
                             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>

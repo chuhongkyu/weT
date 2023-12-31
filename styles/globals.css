@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Noto Sans KR";
+    src: url(/fonts/NotoSansKR400.woff2) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Noto Sans KR";
+    src: url(/fonts/NotoSansKR500.woff2) format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Noto Sans KR";
+    src: url(/fonts/NotoSansKR700.woff2) format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,9 +49,14 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 100%;
 	font-family: 'Noto Sans KR', sans-serif;
 }
+
+p{
+	line-height: 135%;
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -142,4 +168,20 @@ li {
 .list a.active::after{
 	opacity: 1;
 	transition: 300ms ease-in-out;
+}
+
+.items{
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	overflow: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.items::-webkit-scrollbar{display: none;}
+
+.item:not(:last-of-type){
+	border-bottom: 1px solid rgba(107, 114, 128, 0.228);
 }

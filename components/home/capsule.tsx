@@ -55,7 +55,7 @@ export default function Capsule({ onHandleCategory }: Props){
 
     return(
         <div>
-            <div className="space-x-5 space-y-5">
+            <div className="space-x-5 space-y-2 py-4">
                 {categorys?.map((el, index)=>{
                     return(
                         <button 

@@ -2,7 +2,9 @@ import Banner from "components/Banner";
 import MainLayOut from "components/MainLayOut";
 import Nav from "components/Nav";
 import ButtonWriteIcon from "components/home/ButtonWriteIcon";
+import Pagination from "components/home/Pagination";
 import Capsule from "components/home/capsule";
+import List from "components/home/list";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { connectDB } from "utils/database";
@@ -27,7 +29,7 @@ const IndexPage = ({data: initialData }:Props) => {
       const filteredData = initialData.filter((el) => el.category === id);
       setData(filteredData);
     }
-    setCurrentPage(1); // 카테고리 변경 시 현재 페이지를 1페이지로 초기화
+    setCurrentPage(1);
   };
 
   // 현재 페이지에 해당하는 아이템들의 배열
@@ -51,11 +53,19 @@ const IndexPage = ({data: initialData }:Props) => {
       <Nav/>
       <Banner/>
       <div className="mx-8 max-w-5xl py-20 sm:mx-auto">
-        <h1>HOME</h1>
+        <h1 className="text-xl">HOME</h1>
         <Capsule onHandleCategory={handleCategory}/>
-        {!session?.user && <ButtonWriteIcon/>}
+        {session?.user && <ButtonWriteIcon/>}
+        <section className="py-2">
+          <h5 className="text-base pb-5">우리들의 추억을 공유해 봐요 📺</h5>
+          <List data={currentItems} />
+          <Pagination
+            pageNumbers={pageNumbers} 
+            currentNumber={currentPage} 
+            handleClick={handleClick}
+          />
+        </section>
       </div>
-      
     </MainLayOut>
   )
 };
