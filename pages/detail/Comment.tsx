@@ -73,8 +73,37 @@ export default function Comment(props:any){
         }
     }
     return(
-        <div className={styles.comment_container}>
-            <div className={styles.small_comment_lists}>
+        <section className="comment py-4">
+            {lists?.length != 0 ?
+            <div className="flex justify-between items-center mb-6">
+                <h2 className="text-lg lg:text-2xl font-bold text-gray-900">댓글 ({lists?.length})</h2>
+            </div> : null}
+            {emailName &&
+            <form className="mb-6 bg-gray-200 rounded-lg rounded-t-lg p-4">
+                <div className="relative mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200">
+                    <label htmlFor="comment" className="sr-only">Your comment</label>
+                    <textarea 
+                        id="comment"
+                        value={commentInput}
+                        onChange={onChange}
+                        rows={6}
+                        maxLength={limitLength}
+                        className="py-2 px-4 w-full text-sm text-gray-900 border-0 bg-transparent focus:ring-0"
+                        placeholder={"댓글 남기기"}>
+                    </textarea>
+                    <div className="absolute bottom-2 right-2 flex items-center">
+                        <p className={styles.current}>{commentInput.length}</p>/ 
+                        <b>{limitLength}</b>
+                    </div>
+                </div>
+                <button 
+                    onClick={handleSubmit}
+                    type="submit"
+                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-cyan-500 rounded-lg focus:ring-4 focus:ring-cyan-200 hover:bg-cyan-800">
+                    제출하기
+                </button>
+            </form>}
+            <div>
               {lists.length > 0 ? lists.map((list,key)=>{
                   return(
                       <SmallComment 
@@ -86,28 +115,8 @@ export default function Comment(props:any){
                   )
               }): null}
             </div>
-            {emailName ? (
-                <div className={styles.comment_wrapper}>
-                    <div className={styles.comment_name}>{emailName}</div>
-                    <div className={styles.comment_input}>
-                    <textarea 
-                        value={commentInput}
-                        onChange={onChange}
-                        rows={3}
-                        maxLength={limitLength}
-                        placeholder={"댓글 남기기"}
-                    />
-                        
-                    <div className={styles.count_number}>
-                        <p className={styles.current}>{commentInput.length}</p>/ 
-                        <b> {limitLength}</b></div>
-                    </div>
-                    <div className={styles.btn_container}>
-                        <button onClick={handleSubmit}>등록하기</button>
-                    </div>
-                </div>
-            ): null}
-
-        </div>  
+            
+            
+        </section>  
     )
 }

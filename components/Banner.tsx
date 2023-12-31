@@ -47,7 +47,7 @@ export default function Banner(){
                             }}
                         }
                     >
-                        {Img ? Img.map((img, index)=>{
+                        {Img?.map((img, index)=>{
                             return(
                                 <SwiperSlide key={index + "Id"} 
                                 // style={{width: "calc(200% / 3)"}}
@@ -65,7 +65,7 @@ export default function Banner(){
                                     </div>
                                 </SwiperSlide>
                             )
-                        }):null}
+                        })}
                     </Swiper>
             </div>
         </div>

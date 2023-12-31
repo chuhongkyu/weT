@@ -206,3 +206,11 @@ li {
 .no-style br{
 	display: none;
 }
+
+.comment-list:first-of-type{
+	border-top: 1px solid rgba(107, 114, 128, 0.228);
+}
+
+.comment-list:not(:last-of-type){
+	border-bottom: 1px solid rgba(107, 114, 128, 0.228);
+}

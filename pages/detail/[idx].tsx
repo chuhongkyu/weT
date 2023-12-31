@@ -1,12 +1,11 @@
-import Nav from "components/Nav";
 import React, { useEffect } from "react";
 import styles from "styles/Detail.module.scss";
 import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import { connectDB } from "utils/database";
 import { useSession } from 'next-auth/react'
-import Footer from "components/Footer"
 import Comment from "./Comment";
+import MainLayOut from "components/MainLayOut";
 
 const Detail = ({ data }:any) => {
   const { data: session, status } = useSession()
@@ -57,38 +56,40 @@ const Detail = ({ data }:any) => {
   const formattedContent = data.content.replace(/\n/g, "<br>");
     
   return (
-    <div id={styles.Detail}>
-        <Nav/>
-        <div className={styles.wrapper}>
-          <div className={styles.header}>
-            <h1 className="head-line-1">{data.title}</h1>
-            <div className={styles.container_user}>
-              <span className={styles.name}>{data.email ? data.email.substring(0, 5) + '...' : "익명"}</span>
-              <span className={styles.name}>{data.category}</span>
-              <span className={styles.date}>{data.time}</span>
+    <MainLayOut>
+      <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
+        <header className="mb-4 lg:mb-6 not-format">
+            <address className="flex items-center mb-6 not-italic">
+                <div className="inline-flex items-center mr-3 text-sm text-gray-900">
+                    <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.png" alt="Jese Leos"/>
+                    <div>
+                        <p className="text-xl font-bold text-gray-900">{data.email ? data.email.substring(0, 10) + '...' : "익명"}</p>
+                        <p className="text-base text-gray-500 dark:text-gray-400">{data.category}</p>
+                        <p className="text-base text-gray-500 dark:text-gray-400">{data.title}</p>
+                    </div>
+                </div>
+            </address>
+            <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl">{data.title}</h1>
+        </header>
+        
+        <section className="py-4 mb-4">
+          <div className="blog-from text-base" dangerouslySetInnerHTML={{ __html: formattedContent }}></div>
+        </section>
+        {session?.user?.email == data.email ? (
+          <>
+            <div className="flex gap-2">
+              <button className="flex items-center justify-center p-0 w-8 h-8 bg-cyan-500 rounded-full hover:bg-cyan-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none" onClick={(e)=> onHandleWrite(data._id, e)}>
+                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" className="w-4 h-4" aria-hidden="true"><path d="M38.406 22.234l11.36 11.36L28.784 54.576l-12.876 4.307c-1.725.577-3.367-1.065-2.791-2.79l4.307-12.876L38.406 22.234zM41.234 19.406l5.234-5.234c1.562-1.562 4.095-1.562 5.657 0l5.703 5.703c1.562 1.562 1.562 4.095 0 5.657l-5.234 5.234L41.234 19.406z"/></svg>
+              </button>
+              <button className="flex items-center justify-center p-0 w-8 h-8 bg-cyan-500 rounded-full hover:bg-cyan-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none" onClick={()=> onHandleDelete(data._id)}>
+                <img className="w-4 h-4" src={'/icon/delete.png'} alt="delete"/>
+              </button>
             </div>
-          </div>
-          
-          <div className={styles.main_content}>
-            <p className={styles.content} dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
-          </div>
-
-          {session?.user?.email == data.email ? (
-            <>
-              <div className={styles.bottom}>
-                <button onClick={(e)=> onHandleWrite(data._id, e)} className={styles.edit_btn}>
-                  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" width="64px" height="64px"><path d="M38.406 22.234l11.36 11.36L28.784 54.576l-12.876 4.307c-1.725.577-3.367-1.065-2.791-2.79l4.307-12.876L38.406 22.234zM41.234 19.406l5.234-5.234c1.562-1.562 4.095-1.562 5.657 0l5.703 5.703c1.562 1.562 1.562 4.095 0 5.657l-5.234 5.234L41.234 19.406z"/></svg>
-                </button>
-                <button onClick={()=> onHandleDelete(data._id)} className={styles.delete_btn}>
-                  <img src={'/icon/delete.png'} alt="delete"/>
-                </button>
-              </div>
-            </>
-          ): null}
-          <Comment parentId={data._id} emailName={session?.user?.email} />   
-        </div>
-        <Footer/>
-    </div>
+          </>
+        ): null}
+        <Comment parentId={data._id} emailName={session?.user?.email} />   
+      </section>
+    </MainLayOut>
   )
 }
 
