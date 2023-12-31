@@ -17,7 +17,7 @@ export default function List({ data }: IListProps) {
                   <p className="">{item.time}</p>
                 </div>
               </div>
-              <p className="text-gray-700 pb-8">{item.content.length >= 230 ? `${item.content.substring(0, 230)}...` : item.content }</p>
+              <p className="text-base text-gray-700 pb-8 no-style" dangerouslySetInnerHTML={{__html: item.content.length >= 230 ? `${item.content.substring(0, 230)}...` : item.content }}></p>
             </Link>
           </li>
         ))

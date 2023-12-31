@@ -198,3 +198,11 @@ li {
 .item:not(:last-of-type){
 	border-bottom: 1px solid rgba(107, 114, 128, 0.228);
 }
+
+.no-style{
+	font-size: 1rem !important;
+    line-height: 1.5rem !important;
+}
+.no-style br{
+	display: none;
+}

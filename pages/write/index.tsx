@@ -64,8 +64,7 @@ const Write = () => {
       });
   
       if (response.ok) {
-        // 성공적으로 게시글이 작성된 경우, 홈 화면으로 이동합니다.
-        router.push('/home');
+        router.push('/');
       } else {
         // 에러가 발생한 경우, 상세 화면으로 이동합니다.
         router.push('/detail');

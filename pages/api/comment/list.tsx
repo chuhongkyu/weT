@@ -2,7 +2,6 @@ import { ObjectId } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { connectDB } from 'utils/database';
 
-
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
     if (request.method === 'GET') {
         let parentId:any = request.query.id;

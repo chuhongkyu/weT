@@ -43,10 +43,10 @@ export default function Nav(){
                         {!session?.user ? 
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
-                                <Link href="login" className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500">로그인</Link>
+                                <Link href="/login" className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500">로그인</Link>
                             </li>
                             <li>
-                                <Link href="register" className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500">회원가입</Link>
+                                <Link href="/register" className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500">회원가입</Link>
                             </li>
                         </ul>
                         : 
@@ -70,10 +70,10 @@ export default function Nav(){
                                 <Link href="/" className={`block pt-2 pb-6 px-3 ${pathname == "/" ? "text-cyan-500 active" : "text-gray-900 md:bg-transparent md:hover:text-cyan-500"}`} aria-current="page">홈</Link>
                             </li>
                             <li className="list">
-                                <Link href="recommend" className={`block pt-2 pb-6 px-3 ${pathname == "/contents" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>나만의 OTT</Link>
+                                <Link href="/recommend" className={`block pt-2 pb-6 px-3 ${pathname == "/contents" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>나만의 OTT</Link>
                             </li>
                             <li className="list">
-                                <Link href="write" className={`block pt-2 pb-6 px-3 ${pathname == "/write" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>글쓰기</Link>
+                                <Link href="/write" className={`block pt-2 pb-6 px-3 ${pathname == "/write" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>글쓰기</Link>
                             </li>
                         </ul>
                     </div>
