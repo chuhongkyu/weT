@@ -9,12 +9,12 @@ interface IProps {
 
 export default function Pagination({ pageNumbers, currentNumber, handleClick }: IProps){
     return(
-        <div id={styles.Pagination}>
-            <ul className={styles.pagination}>
+        <div className="py-4 flex justify-center">
+            <ul className="flex gap-3 text-sm">
                 {pageNumbers.map((number) => (
                     <li key={number}>
                         <button
-                            className={currentNumber === number ? styles.active : ''}
+                            className={`text-gray-600 ${currentNumber === number ? '' : 'opacity-50'}`   }
                             value={number}
                             onClick={handleClick}
                         >

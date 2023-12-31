@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ButtonWriteIcon(){
     return(
-        <div>
+        <div className="absolute right-5 top-5">
           <Link href={'/write'}>
             <button
                   className="p-0 w-12 h-12 bg-cyan-500 rounded-full hover:bg-cyan-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">

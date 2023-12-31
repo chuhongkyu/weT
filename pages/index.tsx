@@ -55,9 +55,9 @@ const IndexPage = ({data: initialData }:Props) => {
       <div className="mx-8 max-w-5xl py-20 sm:mx-auto">
         <h1 className="text-xl">HOME</h1>
         <Capsule onHandleCategory={handleCategory}/>
-        {session?.user && <ButtonWriteIcon/>}
-        <section className="py-2">
-          <h5 className="text-base pb-5">우리들의 추억을 공유해 봐요 📺</h5>
+        <section className="py-2 bg-white rounded-lg shadow relative">
+          {session?.user && <ButtonWriteIcon/>}
+          <h5 className="text-xl px-6 py-4">우리들의 추억을 공유해 봐요 📺</h5>
           <List data={currentItems} />
           <Pagination
             pageNumbers={pageNumbers} 

@@ -91,6 +91,10 @@ button,input,select{
     background: none;
 }
 
+button{
+	cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
 }
