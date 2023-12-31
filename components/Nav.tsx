@@ -70,7 +70,7 @@ export default function Nav(){
                                 <Link href="/" className={`block pt-2 pb-6 px-3 ${pathname == "/" ? "text-cyan-500 active" : "text-gray-900 md:bg-transparent md:hover:text-cyan-500"}`} aria-current="page">홈</Link>
                             </li>
                             <li className="list">
-                                <Link href="contents" className={`block pt-2 pb-6 px-3 ${pathname == "/contents" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>나만의 OTT</Link>
+                                <Link href="recommend" className={`block pt-2 pb-6 px-3 ${pathname == "/contents" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>나만의 OTT</Link>
                             </li>
                             <li className="list">
                                 <Link href="write" className={`block pt-2 pb-6 px-3 ${pathname == "/write" ? "text-cyan-500 active" : "text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500"}`}>글쓰기</Link>

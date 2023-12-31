@@ -1,11 +1,8 @@
-'use client'
-
-import Nav from "components/Nav";
-import Footer from "components/Footer";
 import { useState, useEffect } from 'react';
 import { MouseEvent } from 'react'
 import { questions } from "utils/recommendData";
 import { PieChart, ResponsiveContainer, Pie, Cell } from "recharts";
+import MainLayOut from "components/MainLayOut";
 
 interface IScore {
     [key: string]: number;
@@ -123,31 +120,23 @@ const Recommend = () => {
             };
             setScore(updatedScore)
         }else{
-            console.log(target)
+            // console.log(target)
         }
-        console.log("update",updatedScore)
+        // console.log("update",updatedScore)
     }
 
     return(
-    <div id="Content">
-      <Nav/>
-      <div className="wrapper">    
-            {/* <div>
-                <h1>현재</h1>
-                <p>nef:{score.nef}</p>
-                <p>wat:{score.wat}</p>
-                <p>wav:{score.wav}</p>
-                <p>tiv:{score.tiv}</p>
-                <p>dis:{score.dis}</p>
-            </div> */}
-
+        <MainLayOut>
+            <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
+                <h1 className="text-xl py-6">나만의 OTT를 확인해 봅시다~ 📺</h1>
             {end ? 
-                    (<div className="quiz-container">
-                        <h1>당신에게 어울리는 OTT는 바로~ <b>{makeName(Object.keys(score)[0])}</b></h1>
-                        <div className="orders">
-                            <span><b style={{color: "#0088FE" }}>1위</b> {makeName(Object.keys(score)[0])}</span>
-                            <span><b style={{color: "#00C49F" }}>2위</b> {makeName(Object.keys(score)[1])}</span>
-                            <span><b style={{color: "#FFBB28" }}>3위</b> {makeName(Object.keys(score)[2])}</span>
+                    (
+                    <div className="border-solid border-2 border-cyan-500 rounded-md px-6 py-6 relative">
+                        <h1 className="flex items-end font-semibold text-center text-xl py-4">당신에게 어울리는 OTT는 바로~ <b className="pl-2 text-2xl underline">{makeName(Object.keys(score)[0])}</b></h1>
+                        <div className="flex flex-col text-xl">
+                            <span className="py-2"><b style={{color: "#0088FE" }}>1위</b> {makeName(Object.keys(score)[0])}</span>
+                            <span className="py-2"><b style={{color: "#00C49F" }}>2위</b> {makeName(Object.keys(score)[1])}</span>
+                            <span className="py-2"><b style={{color: "#FFBB28" }}>3위</b> {makeName(Object.keys(score)[2])}</span>
                         </div>
                         <div className="circle-chart">
                             <ResponsiveContainer width="100%" height="100%">
@@ -162,27 +151,27 @@ const Recommend = () => {
                                     fill="#8884d8"
                                     dataKey="value"
                                 >
-                                    {data.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    {data.map((_, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                     ))}
                                 </Pie>
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
-                    </div>) : (
-                    <div className="quiz-container" key={'ques' + current}> 
-                        <span className="number"><p>0{current + 1}</p>/<p>0{ques.length}</p></span>
-                        <h1>{ques[current].title}</h1>
-                        <div className="btns-group">
-                            <button onClick={onHandleClick} id='yes'><b>Yes, </b><p>{ques[current].answer.yes}</p></button>
-                            <button onClick={onHandleClick} id='no'><b>No, </b><p>{ques[current].answer.no}</p></button>
+                    </div>
+                    ) : (
+                    <div className="border-solid border-2 border-cyan-500 rounded-md px-6 py-6" key={'ques' + current}> 
+                        <span className="flex text-base gap-2 font-bold"><p>0{current + 1}</p>/<p>0{ques.length}</p></span>
+                        <h1 className="font-semibold text-center text-xl py-4">{ques[current].title}</h1>
+                        <div className="flex items-center gap-5 pt-6">
+                            <button className="flex-1 bg-gray-100 rounded-md py-4 hover:bg-white border-solid border" onClick={onHandleClick} id='yes'><b className="text-lg pt-4 pb-2">Yes, </b><p className="text-base pt-2 pb-4">{ques[current].answer.yes}</p></button>
+                            <button className="flex-1 bg-gray-100 rounded-md py-4 hover:bg-white border-solid border" onClick={onHandleClick} id='no'><b className="text-lg pt-4 pb-2">No, </b><p className="text-base pt-2 pb-4">{ques[current].answer.no}</p></button>
                         </div>
                     </div>
                     )
-            }    
-        </div>
-      <Footer/>
-    </div>
+            }
+            </section>
+        </MainLayOut>
   )
 }
 

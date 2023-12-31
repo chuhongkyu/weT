@@ -50,12 +50,11 @@ const IndexPage = ({data: initialData }:Props) => {
 
   return(
     <MainLayOut>
-      <Nav/>
       <Banner/>
-      <div className="mx-8 max-w-5xl py-20 sm:mx-auto">
+      <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
         <h1 className="text-xl">HOME</h1>
         <Capsule onHandleCategory={handleCategory}/>
-        <section className="py-2 bg-white rounded-lg shadow relative">
+        <div className="py-2 bg-white rounded-lg shadow relative">
           {session?.user && <ButtonWriteIcon/>}
           <h5 className="text-xl px-6 py-4">우리들의 추억을 공유해 봐요 📺</h5>
           <List data={currentItems} />
@@ -64,8 +63,8 @@ const IndexPage = ({data: initialData }:Props) => {
             currentNumber={currentPage} 
             handleClick={handleClick}
           />
-        </section>
-      </div>
+        </div>
+      </section>
     </MainLayOut>
   )
 };
