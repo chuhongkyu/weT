@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "styles/Home.module.scss";
 
 interface IProps {
     pageNumbers: number[];

@@ -39,7 +39,7 @@ const Detail = ({ data }:any) => {
       });
       if (response.ok) {
         // 성공적으로 게시글이 작성된 경우, 홈 화면으로 이동합니다.
-        routes.push('/home');
+        routes.push('/');
       } else {
         // 에러가 발생한 경우, 상세 화면으로 이동합니다.
         routes.push('/detail');

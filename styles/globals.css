@@ -214,3 +214,18 @@ li {
 .comment-list:not(:last-of-type){
 	border-bottom: 1px solid rgba(107, 114, 128, 0.228);
 }
+
+.ql-container.ql-snow {
+	height: 458px;
+}
+
+.google::before{
+	content: '';
+	display: block;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: url('/icon/social/google_icon.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

@@ -1,17 +1,13 @@
-import styles from "styles/Login.module.scss";
-import Nav from 'components/Nav';
 import LoginContainer from "components/login/LoginContainer"
-import Footer from "components/Footer"
+import MainLayOut from "components/MainLayOut";
 
 export default function Login() {
 
   return (
-    <div id={styles.Login}>
-      <Nav/>
-      <div className={styles.wrapper}>
+    <MainLayOut>
+      <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
         <LoginContainer/>
-      </div>
-      <Footer/>
-    </div>
+      </section>
+    </MainLayOut>
   )
 }

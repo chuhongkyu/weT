@@ -1,5 +1,4 @@
-import styles from "styles/Detail.module.scss"
-
+'use client'
 interface IData {
     id: string;
     comment: string;

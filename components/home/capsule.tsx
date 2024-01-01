@@ -1,3 +1,5 @@
+'use client'
+
 import { MouseEvent, useEffect, useState } from "react";
 
 const categoryGroup = [
@@ -54,12 +56,12 @@ export default function Capsule({ onHandleCategory }: Props){
     }, [categorys]);
 
     return(
-        <div>
-            <div className="space-x-5 space-y-2 py-4">
+        <div className="overflow-x-scroll">
+            <div className="space-x-5 py-4 flex">
                 {categorys?.map((el, index)=>{
                     return(
                         <button 
-                            className="py-2 px-5 rounded-full text-sm text-cyan-500 hover:text-gray-100 border border-cyan-500 hover:bg-cyan-500 duration-300"
+                            className="py-2 px-5 whitespace-nowrap rounded-full text-sm text-cyan-500 hover:text-gray-100 border border-cyan-500 hover:bg-cyan-500 duration-300"
                             key={el.id + index + "ID"}
                             id={el.id} 
                             onClick={(e)=> onHandleCategoryClick(e)}>

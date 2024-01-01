@@ -1,16 +1,12 @@
-import Nav from "components/Nav";
-import Footer from "components/Footer"
-import styles from "styles/Register.module.scss";
 import SelectContainer from "components/register/SelectContainer";
+import MainLayOut from "components/MainLayOut";
 
 export default function Register() {
     return (
-        <div id={styles.Register}>
-            <Nav/>
-            <div className={styles.wrapper}>
+        <MainLayOut>
+            <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
                 <SelectContainer/>
-            </div>
-            <Footer/>
-        </div>
+            </section>
+        </MainLayOut>
     )
 }

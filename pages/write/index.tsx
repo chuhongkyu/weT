@@ -1,11 +1,9 @@
-import Nav from 'components/Nav';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import styles from 'styles/Write.module.scss';
-import Footer from "components/Footer"
 import { useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
+import MainLayOut from 'components/MainLayOut';
 
 const ReactQuill = dynamic( () => import('react-quill'), {
   ssr : false
@@ -110,72 +108,59 @@ const Write = () => {
     };
   }, []);
 
-  const remainingChars = 0 + content.length;
+  // const remainingChars = 0 + content.length;
 
-  return (<div id={styles.Write}>
-            <Nav/>
-            <div className={styles.wrapper}>
-                <h1 className={styles.title}>글 작성</h1>
-                <form onSubmit={handleSubmit} action="/api/new" method="POST" className={styles.form}>
-                    <label htmlFor="title" className={styles.label}>
-                        제목:
-                    </label>
-                    <div className={styles.input_container}>
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder={"제목을 입력해 주세요."}
-                            value={title}
-                            onChange={handleTitleChange}
-                        />
-                    </div>
-                    <label htmlFor="category" className={styles.label}>
-                        카테고리:
-                    </label>
-                    <div className={styles.select_category}>
-                        <select id="category" name="category" value={category} onChange={handleCategoryChange}>
-                            {/* <option value="" >카테고리 선택</option> */}
-                            <option value="default">전체</option>
-                            <option value="netflix">NETFLIX</option>
-                            <option value="disney plus">DISNEY PLUS</option>
-                            <option value="watcha">WATCHA</option>
-                            <option value="tving">TVING</option>
-                            <option value="wave">WAVE</option>
-                        </select>
-                    </div>
-                    <label htmlFor="content" className={styles.label}>
-                        내용 :
-                    </label>
-                    <div className={styles.textarea_content}>
-                        <ReactQuill 
-                        style={{ height: "89%" }}
-                        onChange={handleContentChange}/>
-                        {/* <textarea
-                            id="content"
-                            name="content"
-                            className={styles.textarea}
-                            value={content}
-                            rows={5}
-                            onChange={handleContentChange}
-                            placeholder={"내용을 입력해 주세요."}
-                        />*/}
-                        <p className={styles.count_number}>
-                            <span className={styles.current}>{remainingChars}</span>/<span> 500</span>
-                        </p>
-                    </div>
-                    <div className={styles.buttons}>
-                        <button 
-                            type="submit"
-                            className={styles.button}
-                            data-disabled={check}
-                        >
-                            제출하기
-                        </button>
-                    </div>   
-                </form>
-            </div>
-            <Footer/>
-        </div>);
+  return (
+      <MainLayOut>
+        <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
+          <h1 className="text-3xl py-6">글 작성</h1>
+          <form onSubmit={handleSubmit} action="/api/new" method="POST">
+              <label htmlFor="title" className="text-2xl">
+                  제목:
+              </label>
+              <div className="my-4 bg-gray-200 rounded-md">
+                  <input
+                      id="title"
+                      className="p-4 w-full text-base"
+                      type="text"
+                      name="title"
+                      placeholder={"제목을 입력해 주세요."}
+                      value={title}
+                      maxLength={25}
+                      onChange={handleTitleChange}
+                  />
+              </div>
+              <label htmlFor="category" className="text-2xl">
+                  카테고리:
+              </label>
+              <div className="my-4 bg-gray-200 rounded-md w-40 text-base">
+                  <select id="category" className="p-4 w-full" name="category" value={category} onChange={handleCategoryChange}>
+                      {/* <option value="" >카테고리 선택</option> */}
+                      <option value="default">전체</option>
+                      <option value="netflix">NETFLIX</option>
+                      <option value="disney plus">DISNEY PLUS</option>
+                      <option value="watcha">WATCHA</option>
+                      <option value="tving">TVING</option>
+                      <option value="wave">WAVE</option>
+                  </select>
+              </div>
+              <label className="text-2xl">
+                  내용 :
+              </label>
+              <div className="my-4 bg-gray-200">
+                  <ReactQuill 
+                    style={{ height: "500px"}}
+                    onChange={handleContentChange}/>
+              </div>
+              <button
+                type="submit" 
+                className={`rounded-lg text-base px-4 py-4 text-center w-full ${check ? "cursor-not-allowed text-gray-200 bg-cyan-700" : "cursor-pointer text-white bg-cyan-500"}`} data-disabled={check}
+                >제출하기
+              </button>
+          </form>
+        </section>              
+      </MainLayOut>
+    );
 };
 
 export default Write;

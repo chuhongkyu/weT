@@ -1,6 +1,5 @@
 import Banner from "components/Banner";
 import MainLayOut from "components/MainLayOut";
-import Nav from "components/Nav";
 import ButtonWriteIcon from "components/home/ButtonWriteIcon";
 import Pagination from "components/home/Pagination";
 import Capsule from "components/home/capsule";
@@ -15,8 +14,7 @@ interface Props {
 }
 
 const IndexPage = ({data: initialData }:Props) => {
-
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const [data, setData] = useState<IData[]>(initialData);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(5);

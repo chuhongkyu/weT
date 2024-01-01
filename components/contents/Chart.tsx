@@ -9,17 +9,21 @@ interface IChart {
     number: number;
 }
 
-const COLORS = ['#0088FE', '#00C49F', '#ed1c01', '#ff42d6', '#d53201'];
+interface IProps {
+    data: IData[]
+}
+
+const COLORS = ['#1509f1', '#0088FE', '#1f1e1e', '#ed0154', '#d51d01'];
 
 const style = {
-    top: 250,
-    left: 300,
+    top: 30,
+    left: 0,
     lineHeight: "24px"
-  };
-  
+};
 
-const Chart = (data:any) => {
-    const [dummy, setDummy] = useState<IData[]>(data.data)
+
+const Chart = ({data}:IProps) => {
+    const [dummy, setDummy] = useState<IData[]>(data)
     const [chart, setChart] = useState(
         [
             {
@@ -43,6 +47,7 @@ const Chart = (data:any) => {
                 number: 0
             },
         ])
+
     useEffect(()=>{
         setChart([
             {
@@ -67,12 +72,13 @@ const Chart = (data:any) => {
             },
         ])
     },[data])
-  return (
-    <PieChart width={400} height={400}>
+
+    return (
+        <PieChart className="flex-1" width={300} height={220}>
         <Pie
           data={chart}
-          cx={200}
-          cy={200}
+          cx={100}
+          cy={100}
           innerRadius={40}
           outerRadius={80}
           fill="#8884d8"
@@ -80,7 +86,7 @@ const Chart = (data:any) => {
           dataKey="number"
         >
           {chart.map((entry:IChart, index:number) => (
-            <Cell key={`cell-${entry.category}`} name={entry.category.toUpperCase()} fill={COLORS[index % COLORS.length]}/>
+            <Cell id={`cell-${entry.category}`} key={`cell-${entry.category}`} name={entry.category.toUpperCase()} fill={COLORS[index % COLORS.length]}/>
           ))}
         </Pie>
         <Legend

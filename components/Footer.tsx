@@ -7,19 +7,19 @@ export default function Footer(){
             <div className={styles.wrapper}>
                 <ul className={styles.top}>
                     <li className={styles.logo}>
-                        <Link href={'/home'}>We T</Link>
+                        <Link href={'/'}>We T</Link>
                     </li>
                     <li>
-                        <Link href={'/home'}>기업소개</Link>
+                        <Link href={'/'}>기업소개</Link>
                     </li>
                     <li>
-                        <Link href={'/home'}>고객센터</Link>
+                        <Link href={'/'}>고객센터</Link>
                     </li>
                     <li>
-                        <Link href={'/home'}>이용약관</Link>
+                        <Link href={'/'}>이용약관</Link>
                     </li>
                     <li>
-                        <Link href={'/home'}>개인정보처리방침</Link>
+                        <Link href={'/'}>개인정보처리방침</Link>
                     </li>
                 </ul>
                 <p className={styles.bottom}>
