@@ -26,7 +26,6 @@ const LoginForm = () => {
     });
     
     const [clear, setClear] = useState(clearFromState);
-    const routes = useRouter()
     const [isLoading, setLoading] = useState(false);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,11 +40,9 @@ const LoginForm = () => {
 
         const result = await signIn('credentials', {
             email, password
-            // 필요한 경우 다른 필드도 추가할 수 있습니다.
         });
 
         if (result?.error) {
-            // 로그인 실패 시 오류 메시지를 처리할 수 있습니다.
             setLoading(false)
             console.error(result.error);
         }

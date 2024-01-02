@@ -14,7 +14,7 @@ export default function SelectContainer(): JSX.Element {
               로컬 회원가입 or 구글 아이디 <br/>회원가입을 지원합니다.
             </h1>
             <div className="w-full text-white bg-cyan-500 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-3 text-center">
-              <Link href="/register/local" >
+              <Link href="/register/local" className="w-full block h-full" >
                 Sign Up
               </Link> 
             </div>
