@@ -27,7 +27,7 @@ const options = {
       async authorize(credentials: Record<"email" | "password", string> | undefined): Promise<User | null> {
         const client = await connectDB;
         const db = client.db('forum');
-        const user = credentials ? await db.collection('user_cred').findOne({ email: credentials.email }) : null;
+        const user = credentials ? await db.collection('user_information').findOne({ email: credentials.email }) : null;
         if (!user) {
           console.log('해당 이메일은 없음');
           return null;

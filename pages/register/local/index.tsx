@@ -2,6 +2,7 @@ import { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "next/router";
 import MainLayOut from "components/MainLayOut";
 import Link from "next/link";
+import Loading from "components/Loading";
 
 interface RegisterFormValues {
   name: string;
@@ -38,6 +39,7 @@ export default function Local(): JSX.Element {
   const [formErrors, setFormErrors] = useState<Partial<RegisterErrorForm>>({});
   const [clear, setClear] = useState(clearFromState);
   const [allClear, setAllClear] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -51,8 +53,11 @@ export default function Local(): JSX.Element {
       window.alert('폼을 완성해 주세요.')
       return
     }
-
+    
     const { name, email_title, email_domain, password } = formValues;
+
+    setLoading(true)
+
     fetch("/api/auth/signup", {
       method: "POST",
       headers: {
@@ -64,14 +69,16 @@ export default function Local(): JSX.Element {
         if (response.ok) {
           // 회원가입 성공 시 처리
           console.log("성공")
-          routes.push('/');
+          routes.push('/register/success');
         } else {
           // 회원가입 실패 시 처리
+          setLoading(false)
         }
     })
     .catch((error) => {
       console.error(error);
     });
+    
   };
 
   //너는 유효성 검사
@@ -160,7 +167,8 @@ export default function Local(): JSX.Element {
               WeT
           </Link>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
-            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+           
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8 relative">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                 로그인
               </h1>
@@ -268,7 +276,11 @@ export default function Local(): JSX.Element {
                     회원가입
                   </button>
               </form>
+              {isLoading && <div className="w-full h-full top-0 z-10 left-0 bg-white opacity-60 flex flex-col justify-center items-center absolute">
+                 <Loading/>
+              </div>}
             </div>
+
           </div>
         </div>
       </section>
