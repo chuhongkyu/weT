@@ -1,11 +1,8 @@
 import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import styles from "styles/Write.module.scss";
 import { connectDB } from "utils/database";
-import Footer from "components/Footer"
 import { useSession } from "next-auth/react";
-import Nav from "components/Nav";
 import dynamic from "next/dynamic";
 import 'react-quill/dist/quill.snow.css';
 import MainLayOut from "components/MainLayOut";
@@ -88,7 +85,7 @@ const Edit = ({ data }:any) => {
     }, [content])
 
     if (status === "loading") {
-      return <div className={styles.container}>Loading...</div>
+      return <div className="text-base">Loading...</div>
     }
 
     

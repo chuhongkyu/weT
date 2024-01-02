@@ -1,12 +1,13 @@
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import LoginForm from './LoginForm'
+import Loading from 'components/Loading'
 
 export default function LoginContainer() {
   const { data: session, status } = useSession()
 
   if (status === "loading") {
-    return <div className="text-2xl flex justify-center text-center py-6">Loading...</div>
+    return <Loading/>
   }
 
   if (session?.user) {

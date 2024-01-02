@@ -92,7 +92,7 @@ export default function Comment(props:any){
                         placeholder={"댓글 남기기"}>
                     </textarea>
                     <div className="absolute bottom-2 right-2 flex items-center">
-                        <p className={styles.current}>{commentInput.length}</p>/ 
+                        <p className="">{commentInput.length}</p>/ 
                         <b>{limitLength}</b>
                     </div>
                 </div>

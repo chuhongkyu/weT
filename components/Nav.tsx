@@ -1,8 +1,5 @@
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
-import Menu from "./Menu";
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { lockScroll, unlockScroll} from "utils/help"
 import { usePathname } from "next/navigation";

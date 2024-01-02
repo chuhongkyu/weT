@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import styles from "styles/Detail.module.scss";
 import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import { connectDB } from "utils/database";

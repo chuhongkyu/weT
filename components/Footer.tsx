@@ -1,35 +1,23 @@
-import styles from "styles/Layout.module.scss";
 import Link from "next/link";
 
 export default function Footer(){
     return(
-        <div id={styles.Footer}>
-            <div className={styles.wrapper}>
-                <ul className={styles.top}>
-                    <li className={styles.logo}>
-                        <Link href={'/'}>We T</Link>
-                    </li>
-                    <li>
-                        <Link href={'/'}>기업소개</Link>
-                    </li>
-                    <li>
-                        <Link href={'/'}>고객센터</Link>
-                    </li>
-                    <li>
-                        <Link href={'/'}>이용약관</Link>
-                    </li>
-                    <li>
-                        <Link href={'/'}>개인정보처리방침</Link>
-                    </li>
-                </ul>
-                <p className={styles.bottom}>
-                    (주)미스터추 (대표이사:추홍규) | 서울특별시 마포구 추홍규 300 롯데월드타워 18층 | 통신판매번호 : 010-서울마파-3147
-                    <br/>
-                    유료직업소개사업등록번호 : (국내) 제$$$-$$$302-14-5-00018호 | 사업자등록번호 : 25-865-202151 | 02-0090-0000
-                    <br/>
+        <footer
+            className="flex flex-col items-center text-center text-white bg-cyan-400">
+                <div className="container p-6">
+                    <div className="flex justify-center items-center">
+                        <img className="w-6 h-6" src="/img/img_cat2.png" alt="logo"/>
+                        <p className="pl-2 flex items-center justify-center">
+                            <span className="mr-4">사업자등록번호 : 25-865-202151</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    className="w-full p-4 text-center bg-cyan-600">
                     © MR.CHU, Inc.
-                </p>
-            </div>
-        </div>
+                    <a target="_blank" href="https://mrchu.netlify.app" rel="noopener noreferrer" className="pl-4 text-white">(주)미스터추 (대표이사:추홍규)</a>
+                </div>
+        </footer>
     )
 }
