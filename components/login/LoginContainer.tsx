@@ -1,4 +1,6 @@
-import { signIn, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
+import Link from 'next/link'
+import LoginForm from './LoginForm'
 
 export default function LoginContainer() {
   const { data: session, status } = useSession()
@@ -15,18 +17,14 @@ export default function LoginContainer() {
       )
   }
 
+  
   return (
-    <div className="py-12 flex flex-col justify-center items-center">
-      <div className="text-3xl">
-          어서오세요~<br/>
-          로그인 해주세요.
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <Link href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
+              <img className="w-8 h-8 mr-2" src="/img/img_cat2.png" alt="logo"/>
+              WeT
+          </Link>
+          <LoginForm/>
       </div>
-      <div className="py-6">
-        {/* <Link className={styles.local} href={"/register/local"}><span>We T 회원가입</span></Link> */}
-        <button className="google flex items-center text-base py-4 px-6 rounded-full border-gray-300 border-2" onClick={() => signIn('google')}>
-          <span className="ml-5">구글 이메일 로그인</span>
-        </button>
-      </div>
-    </div>
   )
 }

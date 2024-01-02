@@ -219,11 +219,15 @@ li {
 	height: 458px;
 }
 
-.google::before{
+.google span::before{
 	content: '';
 	display: block;
-	width: 1.5rem;
-	height: 1.5rem;
+	width: 1.2rem;
+	height: 1.2rem;
+	position: absolute;
+	top: 50%;
+	left: 1rem;
+	transform: translateY(-50%);
 	background: url('/icon/social/google_icon.png');
 	background-position: center center;
 	background-repeat: no-repeat;
