@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 export default function SelectContainer(): JSX.Element {
 
-  
   return (
     <div className="py-12 flex flex-col justify-center items-center">
        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
