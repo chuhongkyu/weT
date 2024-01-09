@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://we-t-ott.vercel.app
+
+# Sitemaps
+Sitemap: https://we-t-ott.vercel.app/sitemap.xml
