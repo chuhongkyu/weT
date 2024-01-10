@@ -2,7 +2,11 @@
 module.exports = {
   darkMode: 'media',
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        noto: ['var(--font-noto)'],
+      },
+    },
   },
   variants: {
     extend: {},
