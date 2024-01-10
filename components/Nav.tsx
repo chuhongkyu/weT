@@ -50,6 +50,11 @@ export default function Nav(){
                         : 
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
+                                <Link href="/mypage" className="pt-1 block">
+                                    <img className="mr-2 w-6 h-6 rounded-full" src="/img/img_cat2.png"  alt={session?.user?.email + ""}/>
+                                </Link>
+                            </li>
+                            <li>
                                 <span className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500 cursor-pointer" onClick={()=> signOut()}>로그아웃</span>
                             </li>
                         </ul>}

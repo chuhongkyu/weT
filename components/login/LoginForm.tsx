@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import { FormEvent, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link';

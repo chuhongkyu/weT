@@ -60,7 +60,7 @@ const Detail = ({ data }:any) => {
         <header className="mb-4 lg:mb-6 not-format">
             <address className="flex items-center mb-6 not-italic">
                 <div className="inline-flex items-center mr-3 text-sm text-gray-900">
-                    <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.png" alt="Jese Leos"/>
+                    <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.png" alt={data.email}/>
                     <div>
                         <p className="text-xl font-bold text-gray-900">{data.email ? data.email.substring(0, 10) + '...' : "익명"}</p>
                         <p className="text-base text-gray-500 dark:text-gray-400">{data.category}</p>
