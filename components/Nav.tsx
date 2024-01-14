@@ -32,7 +32,7 @@ export default function Nav(){
             <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
                 <div className="relative max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 pt-4">
                     <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse pb-4">
-                        <img src="/img/img_cat2.png" className="h-8" alt="logo"/>
+                        <img src="/img/img_cat2.webp" className="h-8" alt="logo"/>
                         <span className="self-center text-2xl font-semibold whitespace-nowrap">We T</span>
                     </a>
 
@@ -51,7 +51,7 @@ export default function Nav(){
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
                                 <Link href="/mypage" className="pt-1 block">
-                                    <img className="mr-2 w-6 h-6 rounded-full" src="/img/img_cat2.png"  alt={session?.user?.email + ""}/>
+                                    <img className="mr-2 w-6 h-6 rounded-full" src="/img/img_cat2.webp"  alt={session?.user?.email + ""}/>
                                 </Link>
                             </li>
                             <li>

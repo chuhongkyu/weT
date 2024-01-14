@@ -29,7 +29,6 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
       response.status(200).json({ message: '로그인 성공!' });
     } catch (error) {
-      console.error(error);
       response.status(500).json({ message: '서버 에러가 발생했습니다.' });
     }
   }
