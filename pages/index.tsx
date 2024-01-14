@@ -49,8 +49,8 @@ const IndexPage = ({data: initialData }:Props) => {
   return(
     <MainLayOut>
       <Banner/>
-      <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
-        <h1 className="text-xl">HOME</h1>
+      <section className="max-w-5xl py-20 sm:mx-auto">
+        <h1 className="px-6 text-xl md:px-0">HOME</h1>
         <Capsule onHandleCategory={handleCategory}/>
         <div className="py-2 bg-white rounded-lg shadow relative">
           {session?.user && <ButtonWriteIcon/>}

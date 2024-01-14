@@ -57,7 +57,7 @@ export default function Capsule({ onHandleCategory }: Props){
 
     return(
         <div className="overflow-x-scroll">
-            <div className="space-x-5 py-4 flex">
+            <div className="space-x-5 py-4 flex pl-6 md:pl-0">
                 {categorys?.map((el, index)=>{
                     return(
                         <button 
