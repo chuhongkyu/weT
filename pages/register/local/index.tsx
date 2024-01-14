@@ -163,7 +163,7 @@ export default function Local(): JSX.Element {
       <section className="mx-8 max-w-5xl sm:mx-auto py-20">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <Link href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
-              <img className="w-8 h-8 mr-2" src="/img/img_cat2.png" alt="logo"/>
+              <img className="w-8 h-8 mr-2" src="/img/img_cat2.webp" alt="logo"/>
               WeT
           </Link>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
@@ -173,7 +173,7 @@ export default function Local(): JSX.Element {
                 로그인
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
-                  {/* 이메일 */}
+                  {/* 이름 */}
                   <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900" htmlFor="name">이름</label>
                         <input

@@ -72,7 +72,6 @@ const Write = () => {
     }
   }
 
-
   useEffect(() => {
     if(title !== ''){
         setCheck(false)
@@ -80,12 +79,6 @@ const Write = () => {
         setCheck(true)
     }
   }, [title])
-
-  useEffect(() => {
-    if (!session?.user) {
-      router.push('/login');
-    }
-  }, []);
 
   const preventGoBack = () => {
     history.pushState(null, "", location.href);
@@ -109,6 +102,15 @@ const Write = () => {
   }, []);
 
   // const remainingChars = 0 + content.length;
+  useEffect(() => {
+    if (!session?.user) {
+      router.push('/login');
+    }
+  }, [session, router]);
+
+  if (!session?.user) {
+    return null;
+  }
 
   return (
       <MainLayOut>
