@@ -10,8 +10,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
     const client = await connectDB;
     const db = client.db('forum');
 
-    console.log(hash)
-    console.log(request.body)
+    // console.log(hash)
+    // console.log(request.body)
     try {
       const result = await db.collection('user_information').insertOne(request.body);
       response.status(200).json(result);

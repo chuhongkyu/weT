@@ -6,7 +6,7 @@ export default function Footer(){
             className="flex flex-col items-center text-center text-white bg-cyan-400">
                 <div className="container p-6">
                     <div className="flex justify-center items-center">
-                        <img className="w-6 h-6" src="/img/img_cat2.png" alt="logo"/>
+                        <img className="w-6 h-6" src="/img/img_cat2.webp" alt="logo"/>
                         <p className="pl-2 flex items-center justify-center">
                             <span className="mr-4">사업자등록번호 : 25-865-202151</span>
                         </p>
