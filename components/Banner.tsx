@@ -54,13 +54,16 @@ export default function Banner(){
                                 >
                                     <div className="content">
                                         <div className="content-child">
-                                            <Image fill src={img.background} alt={"1" + index}/>
-                                            {img.text ? (
+                                            <Image 
+                                                fill className="h-full w-full"
+                                                priority={true} src={img.background} alt={"1" + index}
+                                            />
+                                            {img.text && 
                                                 <div className="texts">
                                                     <h5>{img.text}</h5>
                                                     <p>{img.text2}</p>
                                                 </div>
-                                            ):null}
+                                            }
                                         </div>
                                     </div>
                                 </SwiperSlide>
