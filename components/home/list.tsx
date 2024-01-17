@@ -11,7 +11,7 @@ export default function List({ data }: IListProps) {
   return (
     <ul className="flex flex-col">
       {data?.map((item: IData) => (
-          <li key={item._id} className="item px-6 pt-2 flex-1">
+          <li key={item._id} className="item px-6 pt-2 flex-1 pb-8">
             <Link href={`/detail/${item._id}`}>
               <div className="py-4 md:flex items-center justify-between">
                 <h5 className="font-semibold text-lg">{item.title}</h5>
@@ -19,7 +19,7 @@ export default function List({ data }: IListProps) {
                   <p className="">{item.time}</p>
                 </div>
               </div>
-              <p className="text-base text-gray-700 pb-8 no-style" dangerouslySetInnerHTML={{__html: item.content.length >= 230 ? `${item.content.substring(0, 230)}...` : item.content }}></p>
+              <p className="text-base line-clamp-3 text-ellipsis text-gray-700 no-style" dangerouslySetInnerHTML={{__html: item.content }}></p>
             </Link>
           </li>
         ))
