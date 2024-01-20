@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import { connectDB } from "utils/database";
@@ -8,10 +8,9 @@ import MainLayOut from "components/MainLayOut";
 
 const Detail = ({ data }:any) => {
   const { data: session, status } = useSession()
-
+  const [open, setOpen] = useState(false)
   const routes = useRouter()
-  const onHandleWrite = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
+  const onHandleWrite = (id: string) => {
     routes.push(`/edit/${id}`);
   };
 
@@ -48,6 +47,10 @@ const Detail = ({ data }:any) => {
     }
   }
 
+  const onOpenHandle = () => {
+    setOpen(!open)
+  }
+
   useEffect(()=>{
     console.log("이메일",session?.user?.email)
   },[])
@@ -58,34 +61,50 @@ const Detail = ({ data }:any) => {
     <MainLayOut>
       <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
         <header className="mb-4 lg:mb-6 not-format">
-            <address className="flex items-center mb-6 not-italic">
-                <div className="inline-flex items-center mr-3 text-sm text-gray-900">
-                    <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.webp" alt={data.email}/>
-                    <div>
-                        <p className="text-xl font-bold text-gray-900">{data.email ? data.email.substring(0, 10) + '...' : "익명"}</p>
-                        <p className="text-base text-gray-500 dark:text-gray-400">{data.category}</p>
-                        <p className="text-base text-gray-500 dark:text-gray-400">{data.title}</p>
-                    </div>
-                </div>
-            </address>
+            <div className="relative flex justify-between">
+              <address className="flex items-center mb-6 not-italic">
+                  <div className="inline-flex items-center mr-3 text-sm text-gray-900">
+                      <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.webp" alt={data.email}/>
+                      <div>
+                          <p className="text-xl font-bold text-gray-900">{data.email ? data.email.substring(0, 10) + '...' : "익명"}</p>
+                          <p className="text-base text-gray-500 dark:text-gray-400">{data.category}</p>
+                          <p className="text-base text-gray-500 dark:text-gray-400">{data.title}</p>
+                      </div>
+                  </div>
+              </address>
+              {session?.user?.email == data.email &&
+              <>
+              <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3"
+                  onClick={onOpenHandle}
+                  className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100"
+                  type="button">
+                    <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                        <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                    </svg>
+                  <span className="sr-only">Settings</span>
+              </button>
+              {/* drop down */}
+              <div id="dropdownComment3"
+                  className={`${open ? '': 'hidden'} top-3/4 absolute right-0 z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow`}>
+                  <ul className="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownMenuIconHorizontalButton">
+                      <li onClick={()=> onHandleWrite(data._id)}>
+                          <a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100">Edit</a>
+                      </li>
+                      <li onClick={()=> onHandleDelete(data._id)}>
+                          <a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100">Remove</a>
+                      </li>
+                  </ul>
+              </div>
+              </>}
+            </div>
             <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl">{data.title}</h1>
         </header>
         
         <section className="py-4 mb-4">
           <div className="blog-from text-base" dangerouslySetInnerHTML={{ __html: formattedContent }}></div>
         </section>
-        {session?.user?.email == data.email ? (
-          <>
-            <div className="flex gap-2">
-              <button className="flex items-center justify-center p-0 w-8 h-8 bg-cyan-500 rounded-full hover:bg-cyan-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none" onClick={(e)=> onHandleWrite(data._id, e)}>
-                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" className="w-4 h-4" aria-hidden="true"><path d="M38.406 22.234l11.36 11.36L28.784 54.576l-12.876 4.307c-1.725.577-3.367-1.065-2.791-2.79l4.307-12.876L38.406 22.234zM41.234 19.406l5.234-5.234c1.562-1.562 4.095-1.562 5.657 0l5.703 5.703c1.562 1.562 1.562 4.095 0 5.657l-5.234 5.234L41.234 19.406z"/></svg>
-              </button>
-              <button className="flex items-center justify-center p-0 w-8 h-8 bg-cyan-500 rounded-full hover:bg-cyan-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none" onClick={()=> onHandleDelete(data._id)}>
-                <img className="w-4 h-4" src={'/icon/delete.png'} alt="delete"/>
-              </button>
-            </div>
-          </>
-        ): null}
+
         <Comment parentId={data._id} emailName={session?.user?.email} />   
       </section>
     </MainLayOut>

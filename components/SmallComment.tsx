@@ -16,16 +16,16 @@ export default function SmallComment(props:IData){
                         src="/img/img_cat2.webp"
                         alt={email + "alt"}/>{email.length > 6 ? email.substring(0,6) + "...": email}</p>
                 </div>
-                <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3"
+                {/* <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3"
                     className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
                     type="button">
                       <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
                           <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
                       </svg>
                     <span className="sr-only">Comment settings</span>
-                </button>
+                </button> */}
                 {/* drop down */}
-                <div id="dropdownComment3"
+                {/* <div id="dropdownComment3"
                     className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow ">
                     <ul className="py-1 text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="dropdownMenuIconHorizontalButton">
@@ -39,10 +39,10 @@ export default function SmallComment(props:IData){
                             <a href="#" className="block py-2 px-4 hover:bg-gray-100">Report</a>
                         </li>
                     </ul>
-                </div>
+                </div> */}
             </footer>
             <p>{comment}</p>
-            <div className="flex items-center mt-4 space-x-4">
+            {/* <div className="flex items-center mt-4 space-x-4">
                 <button type="button"
                     className="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400">
                     <svg className="mr-1.5 w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -50,7 +50,7 @@ export default function SmallComment(props:IData){
                     </svg>
                     Reply
                 </button>
-            </div>
+            </div> */}
         </article>
     )
 }
