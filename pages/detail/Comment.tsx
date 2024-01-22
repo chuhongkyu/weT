@@ -45,8 +45,7 @@ export default function Comment(props:any){
         })
     },[])
 
-    const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
+    const handleSubmit = async () => {
         const newTime = makeTime();
         const formData = {
             comment: commentInput,
