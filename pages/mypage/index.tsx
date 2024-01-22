@@ -1,16 +1,44 @@
 import MainLayOut from "components/MainLayOut";
+import List from "components/mypage/list";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const MyPage = () => {
     const router = useRouter();
     const { data: session } = useSession();
+    const [list, setList] = useState([])
+
+    const getList = async() => {
+        try {
+            const response = await fetch('/api/mypage/list', {
+              method: 'POST',
+              body: JSON.stringify(session?.user?.email),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+        
+            if (response.ok) {
+                const data = await response.json();
+                // console.log(data);
+                setList(data)
+            } else {
+              // 에러가 발생한 경우, 상세 화면으로 이동합니다.
+              router.push('/');
+            }
+          } catch (error) {
+            console.error(error);
+          }
+    }
     useEffect(() => {
         if (!session?.user) {
           router.push('/login');
+        }else{
+            getList()
         }
     }, [session, router]);
+
     
     if (!session?.user) {
         return null;
@@ -47,6 +75,12 @@ const MyPage = () => {
                                     />
                             </div>
                         </form>
+
+                        {list && 
+                        <div className="content pt-8">
+                            <h5 className="block mb-2 text-sm font-medium text-gray-900">✏️ 내가 작성한 글</h5>
+                            <List data={list}/>
+                        </div>}
                     </div>
                 </div>
             </section>

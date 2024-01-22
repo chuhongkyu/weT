@@ -1,7 +1,6 @@
 import MainLayOut from "components/MainLayOut";
-import Chart from "components/contents/Chart";
+import Chart from "components/recommend/Chart";
 import RecommendSystem from "components/recommend/recommendSystem";
-import { useState } from "react";
 import { connectDB } from "utils/database";
 import { IData } from "utils/typeGroup";
 
