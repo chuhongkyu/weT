@@ -3,35 +3,23 @@
 import { useState, useEffect } from 'react';
 import { MouseEvent } from 'react'
 import { questions } from "utils/recommendData";
-import { PieChart, ResponsiveContainer, Pie, Cell } from "recharts";
+import { motion } from "framer-motion"
+import Link from 'next/link';
 
 interface IScore {
     [key: string]: number;
 }
-  
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
-  
-const RADIAN = Math.PI / 180;
 
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }:any) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+interface IData {
+    name: string;
+    value: number;
+}
   
-    return (
-      <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-        {`${(percent * 100).toFixed(0)}%`}
-      </text>
-    );
-};
+const COLORS = ['#0088FE', '#4f81ad', '#76a2c8', '#4a5d6f','#44515ef1'];
 
 const RecommendSystem = () => {
     const [current, setCurrent] = useState(0)
-    const [data, setData] = useState([
-        { name: 'Group A', value: 400 },
-        { name: 'Group B', value: 300 },
-        { name: 'Group C', value: 300 },
-    ])
+    const [data, setData] = useState<IData []>([])
     const [ques, setQues] = useState(questions)
     const [end, setEnd] = useState(false);
     const [score, setScore] = useState<IScore>(
@@ -45,22 +33,14 @@ const RecommendSystem = () => {
     );
 
     useEffect(()=>{
-
-        const endData = [
-            { name: Object.keys(score)[0], value: Object.values(score)[0] },
-            { name: Object.keys(score)[1], value: Object.values(score)[1] },
-            { name: Object.keys(score)[2], value: Object.values(score)[2] },
-        ]
         if(end){
-            setSort()
-            setData(endData)
+            const endData = Object.keys(score).map((key) => ({
+                name: key,
+                value: score[key],
+            }));
+            const sortedScore = endData.sort((a, b) => b.value - a.value);
+            setData(sortedScore)
         }
-
-        console.log(
-           "1", Object.keys(score)[0], Object.values(score)[0],
-           "2", Object.keys(score)[1], Object.values(score)[1],
-           "4", Object.keys(score)[3], Object.values(score)[3]
-        )
     },[end])
 
     const makeName = (title:string) =>{
@@ -85,17 +65,8 @@ const RecommendSystem = () => {
         return data
     }
 
-    const setSort = () => {
-        const sortedScore = Object.fromEntries(
-            Object.entries(score).sort(([, valueA], [, valueB]) => valueB - valueA)
-        );
-        setScore(sortedScore);
-    }
-
     const onHandleClick = (e:MouseEvent<HTMLElement>) => {
         const target = e.currentTarget.id;
-        let updatedScore;
-
         if(current < ques.length -1){
             setCurrent((prev) => prev + 1)
         }else{
@@ -121,9 +92,8 @@ const RecommendSystem = () => {
             };
             setScore(updatedScore)
         }else{
-            // console.log(target)
+          
         }
-        // console.log("update",updatedScore)
     }
 
     return(
@@ -133,29 +103,30 @@ const RecommendSystem = () => {
                     <div className="border-solid border-2 border-cyan-500 rounded-md px-6 py-6 relative">
                         <h1 className="flex items-end font-semibold text-center text-xl py-4">당신에게 어울리는 OTT는 바로~ <b className="pl-2 text-2xl underline">{makeName(Object.keys(score)[0])}</b></h1>
                         <div className="flex flex-col text-xl">
-                            <span className="py-2"><b style={{color: "#0088FE" }}>1위</b> {makeName(Object.keys(score)[0])}</span>
-                            <span className="py-2"><b style={{color: "#00C49F" }}>2위</b> {makeName(Object.keys(score)[1])}</span>
-                            <span className="py-2"><b style={{color: "#FFBB28" }}>3위</b> {makeName(Object.keys(score)[2])}</span>
+                            <span className="py-1"><b style={{color: COLORS[0] }}>1위</b> {makeName(Object.keys(score)[0])}</span>
+                            <span className="py-1"><b style={{color: COLORS[1] }}>2위</b> {makeName(Object.keys(score)[1])}</span>
+                            <span className="py-1"><b style={{color: COLORS[2]}}>3위</b> {makeName(Object.keys(score)[2])}</span>
                         </div>
-                        <div className="circle-chart">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <PieChart width={300} height={300}>
-                                <Pie
-                                    data={data}
-                                    cx="50%"
-                                    cy="50%"
-                                    labelLine={false}
-                                    label={renderCustomizedLabel}
-                                    outerRadius={80}
-                                    fill="#8884d8"
-                                    dataKey="value"
-                                >
-                                    {data.map((_, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                    ))}
-                                </Pie>
-                                </PieChart>
-                            </ResponsiveContainer>
+                        <div className="circle-chart pt-5">
+                            <div className="flex flex-col md:flex-row">
+                                {data?.map((el, index) => {
+                                    return(
+                                        <motion.div
+                                            key={el.name + "chartKEY"}
+                                            initial={{width: '0rem'}}
+                                            animate={{width:`${el.value + 5}rem`, transition: {duration: 1 } }}
+                                            className="h-32 flex justify-center items-center" style={{width: '0rem',  background: COLORS[index % COLORS.length]}}>
+                                            <h5 className={`text-white ${index === 0 ? "text-xl": "text-sm"}`}>{makeName(el.name)}</h5>
+                                        </motion.div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                        <div className="pt-5">
+                            <h5 className="text-base pb-5">나만의 OTT를 공유해봐요~</h5>
+                            <Link href={'/write'} className="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                                게시판에 공유하러 가기
+                            </Link>
                         </div>
                     </div>
                     ) : (
