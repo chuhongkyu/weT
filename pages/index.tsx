@@ -3,12 +3,13 @@ import MainLayOut from "components/MainLayOut";
 import dynamic from "next/dynamic";
 import { connectDB } from "utils/database";
 import { IData } from "utils/typeGroup";
+import CategoryContent  from "components/home/CategoryContent"
 
 interface Props {
   data: IData[];
 }
 
-const CategoryContent = dynamic(() => import('components/home/CategoryContent'), { ssr: false })
+// const CategoryContent = dynamic(() => import('components/home/CategoryContent'), { ssr: false })
 
 const IndexPage = ({data: initialData }:Props) => {
   return(

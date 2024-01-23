@@ -1,7 +1,6 @@
 'use client'
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { IData } from "utils/typeGroup";
 
 interface IListProps {
@@ -20,7 +19,7 @@ export default function List({ data }: IListProps) {
                   <p className="">{item.time}</p>
                 </div>
               </div>
-              <p className="text-base line-clamp-3 text-ellipsis text-gray-700 no-style" dangerouslySetInnerHTML={{__html: item.content}}></p>
+              <div className="text-base line-clamp-3 text-ellipsis text-gray-700 no-style" dangerouslySetInnerHTML={{__html: item.content}}></div>
             </Link>
           </li>
         ))
