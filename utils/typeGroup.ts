@@ -14,3 +14,11 @@ export interface IDetail {
     category: string,
     time : string,
 }
+
+export interface IComment {
+    _id : string,
+    comment: string;
+    email:string,
+    time : string,
+    parent : string;
+}

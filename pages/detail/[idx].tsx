@@ -3,18 +3,20 @@ import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import { connectDB } from "utils/database";
 import { useSession } from 'next-auth/react'
-import Comment from "./Comment";
 import MainLayOut from "components/MainLayOut";
 import { OpenBtn } from "components/recommend/OpenBtn";
-import { IDetail } from "utils/typeGroup";
+import { IComment, IDetail } from "utils/typeGroup";
+import CommentWrite from "components/detail/CommentWrite";
+import CommentList from "components/detail/CommentList";
+import CommentCount from "components/detail/CommentCount";
 
 interface Props {
   detailData: IDetail;
+  commentData: IComment[];
 }
 
-const Detail = ({ detailData }:any) => {
+const Detail = ({ detailData, commentData }:Props) => {
   const { data: session } = useSession()
-  console.log("", detailData)
   const routes = useRouter()
 
   const onHandleWrite = (id: string) => {
@@ -24,15 +26,15 @@ const Detail = ({ detailData }:any) => {
   const onHandleDelete = (id:string) =>{
     let __confirmFlag = confirm("글을 삭제하시겠습니까?"); 
     if (__confirmFlag) {
-      console.log("예")
+      //예
       requestDelete(id)
     }else{
-      console.log("아니오")
+      //아니오
     }
   }
 
   const requestDelete = async (id:string) =>{
-    if(!session?.user?.email == detailData.email) return routes.push('/home');
+    if(session?.user?.email != detailData.email) return routes.push('/home');
     const formData = {_id: id,}
     try{
       const response = await fetch('/api/delete', {
@@ -77,8 +79,12 @@ const Detail = ({ detailData }:any) => {
         <section className="py-4 mb-4">
           <div className="blog-from text-base" dangerouslySetInnerHTML={{ __html: detailData?.content}}></div>
         </section>
-
-        <Comment parentId={detailData._id} emailName={session?.user?.email} />   
+          
+        <section className="comment py-4">
+          <CommentCount listData={commentData} />
+          {session?.user?.email && <CommentWrite parentId={detailData._id} />}
+          <CommentList listData={commentData}/>
+        </section>
       </section>
     </MainLayOut>
   )
@@ -102,8 +108,15 @@ export async function getStaticProps({ params }:any) {
     const data = await db.collection('post').findOne({
         _id : new ObjectId(params.idx)
     });
+
+    const comments = await db.collection('comment_collection').find({ parent: new ObjectId(params.idx)}).toArray();
   
-    return { props: { detailData: JSON.parse(JSON.stringify(data)) } };
+    return { props: 
+      { 
+        detailData: JSON.parse(JSON.stringify(data)), 
+        commentData: JSON.parse(JSON.stringify(comments))
+      } 
+    };
 }
 
 export default Detail;
