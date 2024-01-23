@@ -16,7 +16,6 @@ const Edit = ({ data }:any) => {
     const [content, setContent] = useState(data.content);
     const [category, setCategory] = useState(data.category);
     const [check, setCheck] = useState(true)
-    const [current, setCurrent] = useState(content.length);
     const router = useRouter()
     const { data: session, status } = useSession();
     
@@ -79,10 +78,6 @@ const Edit = ({ data }:any) => {
         console.error(error);
       }
     }
-
-    useEffect(()=>{
-      setCurrent(0 + content.length);
-    }, [content])
 
     if (status === "loading") {
       return <div className="text-base">Loading...</div>
