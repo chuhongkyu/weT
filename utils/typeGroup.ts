@@ -5,3 +5,12 @@ export interface IData{
     category: string,
     time : string,
 }
+
+export interface IDetail {
+    _id : any,
+    title: string,
+    content: string,
+    email:string,
+    category: string,
+    time : string,
+}

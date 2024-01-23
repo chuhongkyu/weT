@@ -5,11 +5,18 @@ import { connectDB } from "utils/database";
 import { useSession } from 'next-auth/react'
 import Comment from "./Comment";
 import MainLayOut from "components/MainLayOut";
+import { OpenBtn } from "components/recommend/OpenBtn";
+import { IDetail } from "utils/typeGroup";
 
-const Detail = ({ data }:any) => {
-  const { data: session, status } = useSession()
-  const [open, setOpen] = useState(false)
+interface Props {
+  detailData: IDetail;
+}
+
+const Detail = ({ detailData }:any) => {
+  const { data: session } = useSession()
+  console.log("", detailData)
   const routes = useRouter()
+
   const onHandleWrite = (id: string) => {
     routes.push(`/edit/${id}`);
   };
@@ -25,7 +32,7 @@ const Detail = ({ data }:any) => {
   }
 
   const requestDelete = async (id:string) =>{
-    if(!session?.user?.email == data.email) return routes.push('/home');
+    if(!session?.user?.email == detailData.email) return routes.push('/home');
     const formData = {_id: id,}
     try{
       const response = await fetch('/api/delete', {
@@ -36,26 +43,14 @@ const Detail = ({ data }:any) => {
         }
       });
       if (response.ok) {
-        // 성공적으로 게시글이 작성된 경우, 홈 화면으로 이동합니다.
         routes.push('/');
       } else {
-        // 에러가 발생한 경우, 상세 화면으로 이동합니다.
         routes.push('/detail');
       }
     }catch (error) {
       console.error(error);
     }
   }
-
-  const onOpenHandle = () => {
-    setOpen(!open)
-  }
-
-  useEffect(()=>{
-    console.log("이메일",session?.user?.email)
-  },[])
-
-  const formattedContent = data.content.replace(/\n/g, "<br>");
     
   return (
     <MainLayOut>
@@ -64,48 +59,26 @@ const Detail = ({ data }:any) => {
             <div className="relative flex justify-between">
               <address className="flex items-center mb-6 not-italic">
                   <div className="inline-flex items-center mr-3 text-sm text-gray-900">
-                      <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.webp" alt={data.email}/>
+                      <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.webp" alt={detailData.email}/>
                       <div>
-                          <p className="text-xl font-bold text-gray-900">{data.email ? data.email.substring(0, 10) + '...' : "익명"}</p>
-                          <p className="text-base text-gray-500 dark:text-gray-400">{data.category}</p>
-                          <p className="text-base text-gray-500 dark:text-gray-400">{data.title}</p>
+                          <p className="text-xl font-bold text-gray-900">{detailData.email ? detailData.email.substring(0, 10) + '...' : "익명"}</p>
+                          <p className="text-base text-gray-500 dark:text-gray-400">{detailData.category}</p>
+                          <p className="text-base text-gray-500 dark:text-gray-400">{detailData.title}</p>
                       </div>
                   </div>
               </address>
-              {session?.user?.email == data.email &&
-              <>
-              <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3"
-                  onClick={onOpenHandle}
-                  className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100"
-                  type="button">
-                    <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                        <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
-                    </svg>
-                  <span className="sr-only">Settings</span>
-              </button>
-              {/* drop down */}
-              <div id="dropdownComment3"
-                  className={`${open ? '': 'hidden'} top-3/4 absolute right-0 z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow`}>
-                  <ul className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownMenuIconHorizontalButton">
-                      <li onClick={()=> onHandleWrite(data._id)}>
-                          <a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100">Edit</a>
-                      </li>
-                      <li onClick={()=> onHandleDelete(data._id)}>
-                          <a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100">Remove</a>
-                      </li>
-                  </ul>
-              </div>
-              </>}
+              {session?.user?.email == detailData.email &&
+              <OpenBtn id={detailData._id} onHandleDelete={onHandleDelete} onHandleWrite={onHandleWrite}/>
+              }
             </div>
-            <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl">{data.title}</h1>
+            <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl">{detailData.title}</h1>
         </header>
         
         <section className="py-4 mb-4">
-          <div className="blog-from text-base" dangerouslySetInnerHTML={{ __html: formattedContent }}></div>
+          <div className="blog-from text-base" dangerouslySetInnerHTML={{ __html: detailData?.content}}></div>
         </section>
 
-        <Comment parentId={data._id} emailName={session?.user?.email} />   
+        <Comment parentId={detailData._id} emailName={session?.user?.email} />   
       </section>
     </MainLayOut>
   )
@@ -130,7 +103,7 @@ export async function getStaticProps({ params }:any) {
         _id : new ObjectId(params.idx)
     });
   
-    return { props: { data: JSON.parse(JSON.stringify(data)) } };
+    return { props: { detailData: JSON.parse(JSON.stringify(data)) } };
 }
 
 export default Detail;
