@@ -95,6 +95,10 @@ li {
   font-family: inherit;
 }
 
+strong{
+	font-weight: 600;
+}
+
 #Banner{
     display: flex;
     justify-content: center;
@@ -166,13 +170,18 @@ li {
 	border-bottom: 1px solid rgba(107, 114, 128, 0.228);
 }
 
+
 .no-style{
 	font-size: 1rem !important;
     line-height: 1.5rem !important;
 }
-.no-style br{
+
+.no-style br,
+.no-style a ,
+.no-style strong{
 	display: none;
 }
+
 
 .comment-list:first-of-type{
 	border-top: 1px solid rgba(107, 114, 128, 0.228);
@@ -204,4 +213,34 @@ li {
 .mobile-menu{
 	position: absolute;
 	top: 100%;
+}
+
+.editor-container .quill .ql-italic{
+	display: none;
+}
+
+
+.blog-from a{
+	text-decoration: underline;
+	color: #06b6d4;
+}
+
+.blog-from li{
+	list-style: circle;
+}
+
+.blog-from ol{
+	padding-left: 1.5rem;
+}
+
+.blog-from h1{
+	font-size: 1.5rem;
+}
+
+.blog-from h2{
+	font-size: 1.4rem;
+}
+
+.blog-from h3{
+	font-size: 1.3rem;
 }

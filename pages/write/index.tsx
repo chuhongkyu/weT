@@ -115,28 +115,27 @@ const Write = () => {
   return (
       <MainLayOut>
         <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
-          <h1 className="text-3xl py-6">글 작성</h1>
+          <h1 className="text-xl font-bold leading-tight tracking-tight mb-5 text-gray-900 md:text-2xl">✏️ 글 작성</h1>
           <form onSubmit={handleSubmit} action="/api/new" method="POST">
-              <label htmlFor="title" className="text-2xl">
+              <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">
                   제목:
               </label>
-              <div className="my-4 bg-gray-200 rounded-md">
-                  <input
-                      id="title"
-                      className="p-4 w-full text-base"
-                      type="text"
-                      name="title"
-                      placeholder={"제목을 입력해 주세요."}
-                      value={title}
-                      maxLength={25}
-                      onChange={handleTitleChange}
-                  />
-              </div>
-              <label htmlFor="category" className="text-2xl">
+              <input
+                  id="title"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 mb-5"
+                  type="text"
+                  name="title"
+                  placeholder={"제목을 입력해 주세요."}
+                  value={title}
+                  maxLength={25}
+                  onChange={handleTitleChange}
+              />
+           
+              <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900">
                   카테고리:
               </label>
-              <div className="my-4 bg-gray-200 rounded-md w-40 text-base">
-                  <select id="category" className="p-4 w-full" name="category" value={category} onChange={handleCategoryChange}>
+              <div className="w-52">
+                  <select id="category" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 mb-5" name="category" value={category} onChange={handleCategoryChange}>
                       {/* <option value="" >카테고리 선택</option> */}
                       <option value="default">전체</option>
                       <option value="netflix">NETFLIX</option>
@@ -146,10 +145,10 @@ const Write = () => {
                       <option value="wave">WAVE</option>
                   </select>
               </div>
-              <label className="text-2xl">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                   내용 :
               </label>
-              <div className="my-4 bg-gray-200">
+              <div className="my-4 bg-gray-200 editor-container">
                   <ReactQuill 
                     style={{ height: "500px"}}
                     onChange={handleContentChange}/>
