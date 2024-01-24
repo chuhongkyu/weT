@@ -23,10 +23,7 @@ export function Popup(){
                         <div className="p-4 md:p-5 space-y-4">
                             <p className="text-base leading-relaxed text-gray-500">
                                 현재 vercel 프로덕션 페이지 - 로컬 회원가입, 로컬 로그인이 작동되지 않습니다.<br/>
-                                빠른 시일내에 수정하도록 하겠습니다.
-                            </p>
-                            <p className="text-base leading-relaxed text-gray-500">
-                                504 timeout / 참고 : <a href="https://stackoverflow.com/questions/75960808/get-504-error-from-credentials-provider-from-next-auth-when-i-try-to-sign-in-aft" target="_black">https://stackoverflow.com/</a>
+                                504 timeout / vercel Pro가 끝났기 때문입니다.
                             </p>
                             <p className="text-base leading-relaxed text-gray-500">
                                 😂 구글 로그인으로 부탁드립니다 ㅠㅠ
