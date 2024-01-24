@@ -1,14 +1,13 @@
 import MainLayOut from "components/MainLayOut";
 import dynamic from "next/dynamic";
 import { connectDB } from "utils/database";
+import Banner from "components/Banner";
 import { IData } from "utils/typeGroup";
 import CategoryContent  from "components/home/CategoryContent"
 
 interface Props {
   data: IData[];
 }
-
-const Banner = dynamic(() => import('components/Banner'), { ssr: false })
 
 const IndexPage = ({data: initialData }:Props) => {
   return(
