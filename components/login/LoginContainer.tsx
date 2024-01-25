@@ -13,7 +13,7 @@ export default function LoginContainer() {
   if (session?.user) {
     return (
         <div className="text-2xl flex justify-center items-center text-center py-6 h-44">
-          구글 메일 <p className="font-bold px-4 underline">{session.user.email}</p> 로 로그인 하였습니다.
+          메일 <p className="font-bold px-4 underline">{session.user.email}</p> 로 로그인 하였습니다.
         </div>
       )
   }
