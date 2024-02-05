@@ -102,7 +102,7 @@ const LoginForm = () => {
                     <span className="ml-5">구글 이메일 로그인</span>
                 </button>
                 <p className="text-sm font-light text-gray-500">
-                    회원가입 <Link href="/register/local" className="font-medium text-cyan-600 hover:underline">Sign up</Link>
+                    회원가입 <Link href="/register" className="font-medium text-cyan-600 hover:underline">Sign up</Link>
                 </p>
                 {isLoading && <div className="w-full h-full top-0 z-10 left-0 bg-white opacity-60 flex flex-col justify-center items-center absolute">
                     <Loading/>
