@@ -1,11 +1,22 @@
-# We_T (OTT 경험 나눔 플랫폼)
+# We T (OTT 경험 나눔 플랫폼)
+
+프로덕션 - (http://ott-we-t.com/)
 
 우리들의 OTT We T 입니다.
 We T는 사용자들이 다양한 OTT 플랫폼들의 콘텐츠를 공유하고 추천하는 플랫폼입니다.
 
 ---
+## 구축 상태
 
-### 기능 설명
+- Oracle VM Ubuntu 가상 머신 환경
+- MongoDB를 사용하여 데이터베이스를 구축
+- Docker 활용
+- NEXT.js로 API와 프론트엔드를 구축.
+- 가비아 - 도메인
+- velog: 기록 Docker설정(https://velog.io/@hongkyu_mr_chu/Docker-NEXT.js)
+---
+
+## 기능 설명
 
 | 기능 | 설명 |
 | --- | --- |
@@ -23,35 +34,21 @@ We T는 사용자들이 다양한 OTT 플랫폼들의 콘텐츠를 공유하고 
 주요 수정 부분
 - 로컬 회원가입, 로컬 로그인 추가
 - scss => tailwind 로 변경
-
 ---
-기능
-- 나만의 OTT 알아보기
-    - O,X 질문
-    - 플랫폼내 OTT 비율 차트
-- 계시판
-    - 카테고리 검색
-    - 검색
-    - 댓글
-    - CRUD
-        - 글쓰기
-        - 읽기
-        - 업데이트
-        - 삭제
-- 회원가입
-    - 자체 회원가입
-    - 로그인
-    - OAuth 로그인
---- 
-##Tools
+
+## Tools
 nex.jt, mongoDB, recharts, tailwind
+
 ---
-## 개선 사항
+## 개발하며 겪은 문제들
+- Velog - 블로그 - (https://velog.io/@hongkyu_mr_chu/dangerousSlysetInnerHTML-did-not-match)
+---
+## 앞으로 해결해야할 문제 504
 
-UX란
-    - 사용자의 실수를 줄여줘야한다.
-    - 글쓰기 페이지에서 브라우저의 뒤로가기를 실행시 경고창이 뜨게 변경함.
+- 최근 프로젝트를 Vercel에 배포하게 되면 로컬 로그인, 로컬 회원가입이 504 Gateway Timeout 오류를 반환하였습니다. 
+이 문제의 근본적인 원인을 파악하기 위해 여러 실험을 진행했습니다. Vercel의 무료 플랜과 관련된 자원 제한이 주요 원인 중 하나로 추정되었습니다. 실제로 Vercel Pro 플랜으로 업그레이드 한 후, 문제가 해결되었습니다.
+Vercel: [Serverless functions have a timeout of only 10 seconds](https://vercel.com/pricing) (300 seconds if you upgrade to pro plan)
+그래서 자체 서버를 구축하여 데이터베이스 요청의 처리 속도와 효율성을 향상시키는 것입니다. 서버리스 아키텍처의 편리함에도 불구하고, 제한된 리소스와 고정된 환경은 때로 예상치 못한 성능 문제를 야기할 수 있음을 깨달았습니다.
 
-   
-
-homepage[https://we-t-ott.vercel.app/]
+2024.02.09 Oracle 서버로 배포
+---
