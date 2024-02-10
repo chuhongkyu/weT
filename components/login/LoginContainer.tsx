@@ -27,7 +27,7 @@ export default function LoginContainer() {
               WeT
           </Link>
           <LoginForm/>
-          {/* <Popup/> */}
+          <Popup/>
       </div>
     </>
   )

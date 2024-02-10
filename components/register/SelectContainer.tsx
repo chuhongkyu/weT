@@ -12,11 +12,11 @@ export default function SelectContainer(): JSX.Element {
               WeT 서비스는<br/>
               구글 아이디 <br/>회원가입을 지원합니다.
             </h1>
-            <div className="w-full text-white bg-cyan-500 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-3 text-center">
+            {/* <div className="w-full text-white bg-cyan-500 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-3 text-center">
               <Link href="/register/local" className="w-full block h-full" >
                 Sign Up
               </Link> 
-            </div>
+            </div> */}
             <button className="relative justify-center google w-full flex items-center border-gray-300 border-2 font-medium rounded-lg text-sm px-5 py-3" onClick={() => signIn('google')}>
                 <span className="ml-5">구글 회원 가입</span>
             </button>

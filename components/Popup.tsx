@@ -22,12 +22,14 @@ export function Popup(){
                     
                         <div className="p-4 md:p-5 space-y-4">
                             <p className="text-base leading-relaxed text-gray-500">
-                                현재 vercel 프로덕션 페이지 - 로컬 회원가입, 로컬 로그인이 작동되지 않습니다.<br/>
-                                504 timeout / vercel Pro가 끝났기 때문입니다.
+                                현재 vercel 페이지 - 로컬 회원가입, 로컬 로그인이 작동되지 않습니다.<br/>
+                                구글 로그인으로 부탁드립니다.<br/>
+                                로컬 회원가입, 로컬 로그인을 원하시는 분들은 프로덕션 페이지를 이용해주세요.
                             </p>
-                            <p className="text-base leading-relaxed text-gray-500">
-                                😂 구글 로그인으로 부탁드립니다 ㅠㅠ
-                            </p>
+                            <br/>
+                            <a href="http://ott-we-t.com/" target="_blank" className="text-base leading-relaxed text-gray-700 underline">
+                                프로덕션 페이지로 가기 (http://ott-we-t.com/)
+                            </a>
                         </div>
                     </div>
                 </div>
