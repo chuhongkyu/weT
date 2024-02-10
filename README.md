@@ -1,6 +1,7 @@
 # We T (OTT 경험 나눔 플랫폼)
 
 프로덕션 - (http://ott-we-t.com/)
+vercel - (https://we-t-ott.vercel.app/)
 
 우리들의 OTT We T 입니다.
 We T는 사용자들이 다양한 OTT 플랫폼들의 콘텐츠를 공유하고 추천하는 플랫폼입니다.
