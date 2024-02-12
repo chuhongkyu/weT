@@ -10,9 +10,10 @@ import Capsule from "./capsule";
 
 interface Props {
     listData: IData[];
-  }
+    categoryCounts: { [category: string]: number };
+}
 
-const CategoryContent = ({ listData }:Props) => {
+const CategoryContent = ({ listData, categoryCounts }:Props) => {
     const { data: session } = useSession()
     const [data, setData] = useState<IData[]>(listData);
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -47,7 +48,7 @@ const CategoryContent = ({ listData }:Props) => {
 
     return(
         <Suspense fallback={null}>
-            <Capsule onHandleCategory={handleCategory}/>
+            <Capsule onHandleCategory={handleCategory} categoryCounts={categoryCounts}/>
             <div className="py-2 bg-white rounded-lg shadow relative">
             {session?.user && <ButtonWriteIcon/>}
             <h5 className="text-xl px-6 py-4">우리들의 추억을 공유해 봐요 📺</h5>

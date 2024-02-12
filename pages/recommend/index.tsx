@@ -1,12 +1,16 @@
 import MainLayOut from "components/MainLayOut";
-import Chart from "components/recommend/Chart";
 import RecommendSystem from "components/recommend/recommendSystem";
+import dynamic from "next/dynamic";
 import { connectDB } from "utils/database";
 import { IData } from "utils/typeGroup";
 
 interface Props {
     data: IData[];
 }
+
+const Chart = dynamic( () => import('components/recommend/Chart'), {
+    ssr : false
+})
 
 const Recommend = ({data: initialData }:Props) => {
     return(

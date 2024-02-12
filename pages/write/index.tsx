@@ -105,7 +105,6 @@ const Write = () => {
     if (!session?.user) {
       router.push('/login');
     }
-    console.log(session)
   }, [session, router]);
 
   if (!session?.user) {
@@ -139,7 +138,7 @@ const Write = () => {
                       {/* <option value="" >카테고리 선택</option> */}
                       <option value="default">전체</option>
                       <option value="netflix">NETFLIX</option>
-                      <option value="disney plus">DISNEY PLUS</option>
+                      <option value="disneyplus">DISNEY PLUS</option>
                       <option value="watcha">WATCHA</option>
                       <option value="tving">TVING</option>
                       <option value="wave">WAVE</option>

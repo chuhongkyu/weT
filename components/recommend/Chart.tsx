@@ -31,7 +31,7 @@ const Chart = ({data}:IProps) => {
                 number: 0
             },
             {
-                category: "disney plus",
+                category: "disneyplus",
                 number: 0
             },
             {

@@ -84,10 +84,6 @@ button{
   	height : var(--app-height, 100vh);
 }
 
-.circle-chart{
-
-}
-
 ul,
 li {
   list-style: none;
@@ -177,11 +173,18 @@ strong{
 }
 
 .no-style br,
-.no-style a ,
+.no-style a,
 .no-style strong{
 	display: none;
 }
 
+.category-btn p {
+	transform: translateY(0.1rem);
+}
+
+.category-btn b {
+	transform: translateY(0.05rem);
+}
 
 .comment-list:first-of-type{
 	border-top: 1px solid rgba(107, 114, 128, 0.228);
