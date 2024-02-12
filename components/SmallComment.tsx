@@ -1,11 +1,11 @@
 'use client'
-interface IData {
+interface IComment {
     id: string;
     comment: string;
     email: string;
 }
 
-export default function SmallComment(props:IData){
+export default function SmallComment(props:IComment){
     const { id, comment, email } = props;
     return(
         <article id={id} className="py-6 mx-6 text-base comment-list">

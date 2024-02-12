@@ -1,14 +1,14 @@
 import { ObjectId } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession } from 'next-auth';
 import { connectDB } from 'utils/database';
 import Nextauth from '../auth/[...nextauth]';
+import { ISession } from 'utils/typeGroup';
+import { getServerSession } from 'next-auth';
 
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
   
-    let session:any = await getServerSession<any>(request, response, Nextauth)
-    // console.log(session.user.email);
+    const session:ISession|null = await getServerSession(Nextauth)
 
     if(session){
       if (request.method === 'POST') {

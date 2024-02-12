@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import NextAuth, { User } from 'next-auth'
+import NextAuth, { AuthOptions, User } from 'next-auth'
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { connectDB } from 'utils/database';
@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt'
 
 const SCRET = process.env.NEXTAUTH_SECRET || ''
 
-const options = {
+export const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
@@ -48,7 +48,7 @@ const options = {
 
   //3. jwt 써놔야 잘됩니다 + jwt 만료일설정
   session: {
-    jwt: true,
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60 //30일
   },
 
@@ -74,5 +74,4 @@ const options = {
   secret : SCRET
 }
 
-export default (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, options)
+export default NextAuth(authOptions)

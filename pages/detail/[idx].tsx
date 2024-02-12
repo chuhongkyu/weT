@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import { connectDB } from "utils/database";
 import { useSession } from 'next-auth/react'
 import MainLayOut from "components/MainLayOut";
 import { OpenBtn } from "components/recommend/OpenBtn";
-import { IComment, IDetail } from "utils/typeGroup";
+import { IComment, IDetail, IParams } from "utils/typeGroup";
 import CommentWrite from "components/detail/CommentWrite";
 import CommentList from "components/detail/CommentList";
 import CommentCount from "components/detail/CommentCount";
@@ -61,19 +60,19 @@ const Detail = ({ detailData, commentData }:Props) => {
             <div className="relative flex justify-between">
               <address className="flex items-center mb-6 not-italic">
                   <div className="inline-flex items-center mr-3 text-sm text-gray-900">
-                      <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.webp" alt={detailData.email}/>
+                      <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.webp" alt={detailData?.email}/>
                       <div>
-                          <p className="text-xl font-bold text-gray-900">{detailData.email ? detailData.email.substring(0, 10) + '...' : "익명"}</p>
-                          <p className="text-base text-gray-500 dark:text-gray-400">{detailData.category}</p>
-                          <p className="text-base text-gray-500 dark:text-gray-400">{detailData.title}</p>
+                          <p className="text-xl font-bold text-gray-900">{detailData?.email ? detailData?.email.substring(0, 10) + '...' : "익명"}</p>
+                          <p className="text-base text-gray-500 dark:text-gray-400">{detailData?.category}</p>
+                          <p className="text-base text-gray-500 dark:text-gray-400">{detailData?.title}</p>
                       </div>
                   </div>
               </address>
-              {session?.user?.email == detailData.email &&
-              <OpenBtn id={detailData._id} onHandleDelete={onHandleDelete} onHandleWrite={onHandleWrite}/>
+              {session?.user?.email == detailData?.email &&
+              <OpenBtn id={detailData?._id + ""} onHandleDelete={onHandleDelete} onHandleWrite={onHandleWrite}/>
               }
             </div>
-            <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl">{detailData.title}</h1>
+            <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl">{detailData?.title}</h1>
         </header>
         
         <section className="py-4 mb-4">
@@ -82,7 +81,7 @@ const Detail = ({ detailData, commentData }:Props) => {
           
         <section className="comment py-4">
           <CommentCount listData={commentData} />
-          {session?.user?.email && <CommentWrite parentId={detailData._id} />}
+          {session?.user?.email && <CommentWrite parentId={detailData?._id + ""} />}
           <CommentList listData={commentData}/>
         </section>
       </section>
@@ -102,7 +101,7 @@ export async function getStaticPaths() {
     return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }:any) {
+export async function getStaticProps({ params }:IParams) {
     const client = await connectDB;
     const db = client.db('forum');
     const data = await db.collection('post').findOne({

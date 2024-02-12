@@ -6,15 +6,16 @@ import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import 'react-quill/dist/quill.snow.css';
 import MainLayOut from "components/MainLayOut";
+import { IDetail, IParams } from "utils/typeGroup";
 
 const ReactQuill = dynamic( () => import('react-quill'), {
   ssr : false
 })
 
-const Edit = ({ data }:any) => {
-    const [title, setTitle] = useState(data.title);
-    const [content, setContent] = useState(data.content);
-    const [category, setCategory] = useState(data.category);
+const Edit = ({ editData }:{ editData :IDetail}) => {
+    const [title, setTitle] = useState(editData.title);
+    const [content, setContent] = useState(editData.content);
+    const [category, setCategory] = useState(editData.category);
     const [check, setCheck] = useState(true)
     const router = useRouter()
     const { data: session, status } = useSession();
@@ -33,8 +34,8 @@ const Edit = ({ data }:any) => {
       setCheck(false)
     };
     
-    const handleContentChange = (event: any) => {
-      setContent(event);
+    const handleContentChange = (value: string ) => {
+      setContent(value);
       setCheck(false)
     };
 
@@ -56,8 +57,9 @@ const Edit = ({ data }:any) => {
         time: newTime,
         email: session?.user ? session?.user.email : "익명"
       }
-      // user 확인
-      if(!session?.user?.email == data.email) return 
+      
+      if(session?.user?.email !== editData.email) return 
+      
       try {
         const response = await fetch('/api/edit', {
           method: 'POST',
@@ -102,7 +104,7 @@ const Edit = ({ data }:any) => {
                         type="text"
                         name="title"
                         maxLength={25}
-                        defaultValue={data.title}
+                        defaultValue={editData.title}
                         placeholder={"제목을 입력해 주세요."}
                         onChange={handleTitleChange}
                     />
@@ -110,7 +112,7 @@ const Edit = ({ data }:any) => {
                       카테고리:
                     </label>
                     <div className="w-52">
-                        <select id="category" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 mb-5" name="category" defaultValue={data.category} onChange={handleCategoryChange}>
+                        <select id="category" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 mb-5" name="category" defaultValue={editData.category} onChange={handleCategoryChange}>
                             {/* <option value="" >카테고리 선택</option> */}
                             <option value="default">전체</option>
                             <option value="netflix">NETFLIX</option>
@@ -127,7 +129,7 @@ const Edit = ({ data }:any) => {
                         <ReactQuill 
                           style={{ height: "500px"}}
                           onChange={handleContentChange}
-                          defaultValue={data.content}
+                          defaultValue={editData.content}
                           />
                     </div>
                     <button
@@ -154,14 +156,14 @@ export async function getStaticPaths() {
     return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }:any) {
+export async function getStaticProps({ params }:IParams) {
     const client = await connectDB;
     const db = client.db('forum');
     const data = await db.collection('post').findOne({
         _id : new ObjectId(params.idx)
     });
   
-    return { props: { data: JSON.parse(JSON.stringify(data)) } };
+    return { props: { editData: JSON.parse(JSON.stringify(data)) } };
 }
 
 export default  Edit;

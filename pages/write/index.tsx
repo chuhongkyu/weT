@@ -30,9 +30,8 @@ const Write = () => {
     setTitle(event.target.value);
   };
 
-  const handleContentChange = (event: any) => {
-    console.log(content)
-    setContent(event);
+  const handleContentChange = (value: string ) => {
+    setContent(value);
   };
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -106,6 +105,7 @@ const Write = () => {
     if (!session?.user) {
       router.push('/login');
     }
+    console.log(session)
   }, [session, router]);
 
   if (!session?.user) {

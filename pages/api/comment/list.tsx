@@ -4,7 +4,10 @@ import { connectDB } from 'utils/database';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
     if (request.method === 'GET') {
-        let parentId:any = request.query.id;
+        let parentId: string | string[] = "";
+        if(request.query.id){
+            return parentId = request.query.id
+        }
         const client = await connectDB;
         const db = client.db('forum');
         try {
