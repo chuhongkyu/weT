@@ -14,6 +14,7 @@ We T는 사용자들이 다양한 OTT 플랫폼들의 콘텐츠를 공유하고 
 - NEXT.js로 API와 프론트엔드를 구축.
 - 가비아 - 도메인
 - velog: 기록 Docker설정(https://velog.io/@hongkyu_mr_chu/Docker-NEXT.js)
+- velog: 기록 CI/CD설정(https://velog.io/@hongkyu_mr_chu/Docker-Git-Actions)
 ---
 
 ## 기능 설명
