@@ -113,6 +113,7 @@ strong{
 	width: 100%;
 	height: max(20.5vw, 280px);
 	position: relative;
+	background: #06b6d4;
 }
 
 #Banner .content-child .texts{

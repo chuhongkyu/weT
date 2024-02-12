@@ -6,20 +6,20 @@ import Image from "next/image";
 
 const Img = [
     {
-        background: "/img/banner_1.png",
+        background: "/img/banner_1.jpg",
         text: "우리들의 OTT",
         text2: "We T"
     },
     {
-        background: "/img/banner_2.png",
+        background: "/img/banner_2.jpg",
         text: "우리들의 OTT",
         text2: "We T"
     },
     {
-        background: "/img/banner_3.png"
+        background: "/img/banner_3.jpg",
     },
     {
-        background: "/img/banner_2.png",
+        background: "/img/banner_2.jpg",
         text: "우리들의 OTT",
         text2: "We T"
     },
@@ -54,8 +54,9 @@ export default function Banner(){
                                 >
                                     <div className="content">
                                         <div className="content-child">
-                                            <Image 
-                                                fill className="h-full w-full"
+                                            <Image
+                                                fill 
+                                                className="h-full w-full"
                                                 priority={true} src={img.background} alt={"1" + index}
                                             />
                                             {img.text && 
