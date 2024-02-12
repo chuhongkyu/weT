@@ -1,5 +1,5 @@
 module.exports = {
-    siteUrl: process.env.SITE_URL || 'https://we-t-ott.vercel.app',
+    siteUrl: process.env.SITE_URL || 'http://ott-we-t.com',
     generateRobotsTxt: true,
     robotsTxtOptions: {
     policies: [
