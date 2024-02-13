@@ -44,7 +44,7 @@ nex.jt, mongoDB, recharts, tailwind
 ## 개발하며 겪은 문제들
 - Velog - 블로그 - (https://velog.io/@hongkyu_mr_chu/dangerousSlysetInnerHTML-did-not-match)
 ---
-## 앞으로 해결해야할 문제 504
+## ~~앞으로 해결해야할 문제 504~~
 
 - 최근 프로젝트를 Vercel에 배포하게 되면 로컬 로그인, 로컬 회원가입이 504 Gateway Timeout 오류를 반환하였습니다. 
 이 문제의 근본적인 원인을 파악하기 위해 여러 실험을 진행했습니다. Vercel의 무료 플랜과 관련된 자원 제한이 주요 원인 중 하나로 추정되었습니다. 실제로 Vercel Pro 플랜으로 업그레이드 한 후, 문제가 해결되었습니다.
