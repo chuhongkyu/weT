@@ -1,5 +1,12 @@
 import { ObjectId } from "mongodb";
 
+export interface IHomeQueryParams {
+    type?: string;
+    category?: string;
+    page?: string;
+    limit?: string;
+}
+
 export interface IData{
     _id : ObjectId,
     title: string,

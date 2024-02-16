@@ -1,7 +1,14 @@
 'use client'
 
 import { MouseEvent, useEffect, useState } from "react";
-import { IData } from "utils/typeGroup";
+import { getCountList } from "utils/api";
+import { useHomeListStore } from "utils/store";
+
+
+interface CategoryCount {
+    _id: string;
+    count: number;
+}
 
 const categoryGroup = [
     {
@@ -42,33 +49,43 @@ const categoryGroup = [
     },
 ]
 
-interface Props {
-    onHandleCategory: (id: string) => void;
-    categoryCounts: { [category: string]: number };
-}
-
-export default function Capsule({ onHandleCategory, categoryCounts }: Props){
-    const [categorys, setCategory] = useState(categoryGroup);
+export default function Capsule(){
+    const [ categorys, setCategories ] = useState(categoryGroup);
+    const { query, setQuery } = useHomeListStore();
 
     const onHandleCategoryClick = (event: MouseEvent<HTMLButtonElement>) =>{
         const _id = event.currentTarget.id;
-        setCategory(
+        setCategories(
             categorys.map((el) => ({
               ...el,
               active: el.id === _id,
             }))
         );
-        onHandleCategory(_id);
+        setQuery({ ...query, page: '1', category: _id === "all" ? undefined : _id });
     }
 
-    useEffect(()=>{
-        setCategory(
-            categorys.map((el) => ({
-              ...el,
-              count: categoryCounts[el.id] ||  0,
-            }))
-        );
-    },[categoryCounts])
+    useEffect(() => {
+        const updateCategoryCounts = async () => {
+            const counts:CategoryCount[] = await getCountList();
+            
+            if (counts) {
+                const allCount = counts.reduce((acc, curr) => acc + curr.count, 0);
+                setCategories((currentCategories) => 
+                    currentCategories.map((category) => {
+                        if (category.id === "all") {
+                            return { ...category, count: allCount };
+                        }
+                        return ({
+                            ...category,
+                            count: counts.find((c) => c._id === category.id)?.count || 0,
+                        })
+                    })
+                );
+            }
+        };
+
+        updateCategoryCounts();
+    }, []);
 
     return(
         <div className="overflow-x-scroll">

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { IData } from "utils/typeGroup";
 
 interface IListProps {
-  data: IData[];
+  data?: IData[];
 }
 
 export default function List({ data }: IListProps) {

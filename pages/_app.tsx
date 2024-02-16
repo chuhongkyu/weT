@@ -2,7 +2,6 @@ import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import { AnimatePresence } from 'framer-motion'
 import { SessionProvider } from 'next-auth/react';
-import { RecoilRoot } from 'recoil';
 import HeadComponent from 'components/Head';
 import { usePathname } from 'next/navigation';
 
@@ -14,11 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <HeadComponent/>
       <SessionProvider session={pageProps.session}>
-        <RecoilRoot>
           <AnimatePresence mode="wait" initial={false}>
             <Component {...pageProps} key={pathname + "KEY"}/>
           </AnimatePresence>
-        </RecoilRoot>
       </SessionProvider>
     </>
     )
