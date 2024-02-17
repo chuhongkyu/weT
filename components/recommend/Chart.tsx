@@ -75,30 +75,30 @@ const Chart = ({data}:IProps) => {
 
     return (
         <PieChart className="flex-1" width={300} height={220}>
-        <Pie
-          data={chart}
-          cx={100}
-          cy={100}
-          innerRadius={40}
-          outerRadius={80}
-          fill="#8884d8"
-          paddingAngle={1}
-          dataKey="number"
-        >
-          {chart.map((entry:IChart, index:number) => (
-            <Cell id={`cell-${entry.category}`} key={`cell-${entry.category}`} name={entry.category.toUpperCase()} fill={COLORS[index % COLORS.length]}/>
-          ))}
-        </Pie>
-        <Legend
-            iconSize={10}
-            width={150}
-            height={140}
-            layout="vertical"
-            verticalAlign="middle"
-            wrapperStyle={style}
-        />
-        <Tooltip />
-    </PieChart>
+            <Pie
+            data={chart}
+            cx={100}
+            cy={100}
+            innerRadius={40}
+            outerRadius={80}
+            fill="#8884d8"
+            paddingAngle={1}
+            dataKey="number"
+            >
+            {chart.map((entry:IChart, index:number) => (
+                <Cell id={`cell-${entry.category}`} key={`cell-${entry.category}`} name={entry.category.toUpperCase()} fill={COLORS[index % COLORS.length]}/>
+            ))}
+            </Pie>
+            <Legend
+                iconSize={10}
+                width={150}
+                height={140}
+                layout="vertical"
+                verticalAlign="middle"
+                wrapperStyle={style}
+            />
+            <Tooltip />
+        </PieChart>
   );
 }
 

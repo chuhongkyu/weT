@@ -88,12 +88,12 @@ export default function Capsule(){
     }, []);
 
     return(
-        <div className="overflow-x-scroll">
-            <div className="space-x-5 py-4 flex pl-6 md:pl-0">
+        <div className="overflow-x-scroll md:overflow-x-hidden">
+            <div className="space-x-2 pt-4 flex pl-6 md:pl-0 md:space-x-5">
                 {categorys?.map((el, index)=>{
                     return(
                         <button 
-                            className={ `${el.active ? 'text-gray-100 bg-cyan-500': 'text-cyan-500' } category-btn py-2 px-5 flex whitespace-nowrap rounded-full text-sm border border-cyan-500 hover:text-gray-100 hover:bg-cyan-500 duration-300` }
+                            className={ `${el.active ? 'text-gray-100 bg-cyan-500': 'text-cyan-500' } category-btn pt-2 pb-1.5 px-5 flex whitespace-nowrap rounded-full text-sm border border-cyan-500 hover:text-gray-100 hover:bg-cyan-500 duration-300` }
                             key={el.id + index + "ID"}
                             id={el.id} 
                             onClick={(e)=> onHandleCategoryClick(e)}>

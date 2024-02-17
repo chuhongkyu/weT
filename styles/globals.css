@@ -130,6 +130,15 @@ strong{
 
 #Banner .content-child .texts p{font-style: italic; font-size: 37px;}
 
+@media screen and (max-width: 680px) {
+	#Banner .content-child{
+		height: 200px;
+	}
+	#Banner .content-child .texts{
+		font-size: 28px;
+	}
+}
+
 .list a{
 	position: relative;
 	transition: 300ms ease-in-out;
@@ -177,14 +186,6 @@ strong{
 .no-style a,
 .no-style strong{
 	display: none;
-}
-
-.category-btn p {
-	transform: translateY(0.1rem);
-}
-
-.category-btn b {
-	transform: translateY(0.05rem);
 }
 
 .comment-list:first-of-type{

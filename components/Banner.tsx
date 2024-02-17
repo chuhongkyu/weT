@@ -33,7 +33,7 @@ export default function Banner(){
                 >
                     <Swiper 
                         modules={[ Pagination, Autoplay]}
-                        spaceBetween={20}
+                        spaceBetween={10}
                         slidesPerView={1.2}
                         centeredSlides={true}
                         loop={true}
