@@ -61,7 +61,7 @@ export default function CommentWrite(props:IComment){
                     id="comment"
                     value={commentInput}
                     onChange={onChange}
-                    rows={6}
+                    rows={4}
                     maxLength={limitLength}
                     className="py-2 px-4 w-full text-sm text-gray-900 border-0 bg-transparent focus:ring-0"
                     placeholder={"댓글 남기기"}>
@@ -71,12 +71,15 @@ export default function CommentWrite(props:IComment){
                     <b>{limitLength}</b>
                 </div>
             </div>
-            <button 
-                onClick={handleSubmit}
-                type="submit"
-                className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-cyan-500 rounded-lg focus:ring-4 focus:ring-cyan-200 hover:bg-cyan-800">
-                제출하기
-            </button>
+            <div className="flex items-center">
+                <button 
+                    onClick={handleSubmit}
+                    type="submit"
+                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-cyan-500 rounded-lg focus:ring-4 focus:ring-cyan-200 hover:bg-cyan-800">
+                    제출하기
+                </button>
+                <p className="text-xs font-medium pl-4">* 댓글은 1분 뒤 최신화 됩니다</p>
+            </div>
         </form>
     )
 }

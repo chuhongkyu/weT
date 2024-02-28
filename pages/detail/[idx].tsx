@@ -98,7 +98,7 @@ export async function getStaticPaths() {
       params: { idx: post._id.toString() },
     }));
   
-    return { paths, fallback: false };
+    return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }:IParams) {
@@ -114,7 +114,8 @@ export async function getStaticProps({ params }:IParams) {
       { 
         detailData: JSON.parse(JSON.stringify(data)), 
         commentData: JSON.parse(JSON.stringify(comments))
-      } 
+      },
+      revalidate: 60
     };
 }
 
