@@ -8,7 +8,7 @@ import { getServerSession } from 'next-auth';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
   
-    const session:ISession|null = await getServerSession(Nextauth)
+    let session:any = await getServerSession<any>(request, response, Nextauth)
 
     if(session){
       if (request.method === 'POST') {
