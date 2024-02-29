@@ -38,12 +38,12 @@ const LoginForm = () => {
         setLoading(true)
 
         const result = await signIn('credentials', {
-            email, password
+            email, password, redirect: false
         });
 
         if (result?.error) {
             setLoading(false)
-            console.error(result.error);
+            alert(result.error)
         }
     }
 

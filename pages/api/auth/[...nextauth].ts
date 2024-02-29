@@ -29,13 +29,11 @@ export const authOptions: AuthOptions = {
         const db = client.db('forum');
         const user = credentials ? await db.collection('user_information').findOne({ email: credentials.email }) : null;
         if (!user) {
-          console.log('해당 이메일은 없음');
-          return null;
+          throw new Error('해당 이메일은 없음');
         }
         const pwcheck = credentials ? await bcrypt.compare(credentials.password, user.password) : null;
         if (!pwcheck) {
-          console.log('비번틀림');
-          return null;
+          throw new Error('비번틀림');
         }
         return {
           id: user._id.toString(),
