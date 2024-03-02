@@ -13,7 +13,7 @@ export default function SmallComment(props:IComment){
                 <div className="flex items-center">
                     <p className="inline-flex items-center mr-3 font-semibold text-sm text-gray-900">
                     <img className="mr-2 w-6 h-6 rounded-full"
-                        src="/img/img_cat2.webp"
+                        src="/img/img_cat2.jpg"
                         alt={email + "alt"}/>{email.length > 6 ? email.substring(0,6) + "...": email}</p>
                 </div>
                 {/* <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3"

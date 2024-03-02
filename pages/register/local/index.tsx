@@ -163,7 +163,11 @@ export default function Local(): JSX.Element {
       <section className="mx-8 max-w-5xl sm:mx-auto py-20">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <Link href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
-              <img className="w-8 h-8 mr-2" src="/img/img_cat2.webp" alt="logo"/>
+              <picture>
+                <source type="image/webp" srcSet={"/img/img_cat2.webp"}/>
+                <source type="image/jpeg" srcSet={"/img/img_cat2.jpg"}/>
+                <img className="w-8 h-8 mr-2" src="/img/img_cat2.webp" alt="logo"/>
+              </picture>
               WeT
           </Link>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">

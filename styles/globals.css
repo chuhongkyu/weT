@@ -101,22 +101,21 @@ strong{
     align-items: center;
     overflow-x: hidden;
     margin-top: calc(64px + 1.5rem);
+	width: 100%;
+}
+
+#Banner .swiper{
+    width: 100%;
 }
 
 #Banner .content{
-	width: 100%;
-	border-radius: 5px;
-	overflow: hidden;
-}
-
-#Banner .content-child{
-	width: 100%;
 	height: max(20.5vw, 280px);
-	position: relative;
 	background: #06b6d4;
+	overflow: hidden;
+	border-radius: 5px;
 }
 
-#Banner .content-child .texts{
+#Banner .content .texts{
 	position: absolute;
 	top: 50%;
 	left: 10%;
@@ -128,13 +127,16 @@ strong{
 	line-height: 150%;
 }
 
-#Banner .content-child .texts p{font-style: italic; font-size: 37px;}
+#Banner .content .texts p{font-style: italic; font-size: 37px;}
 
-@media screen and (max-width: 680px) {
-	#Banner .content-child{
-		height: 200px;
+@media screen and (max-width: 1024px) {
+	#Banner .content{
+		height: 150px;
 	}
-	#Banner .content-child .texts{
+	#Banner .content .texts{
+		font-size: 22px;
+	}
+	#Banner .content .texts p{
 		font-size: 28px;
 	}
 }

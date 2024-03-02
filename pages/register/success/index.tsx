@@ -8,7 +8,11 @@ export default function Register() {
                 <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <Link href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
-                            <img className="w-8 h-8 mr-2" src="/img/img_cat2.webp" alt="logo"/>
+                            <picture>
+                                <source type="image/webp" srcSet={"/img/img_cat2.webp"}/>
+                                <source type="image/jpeg" srcSet={"/img/img_cat2.jpg"}/>
+                                <img className="w-8 h-8 mr-2" src="/img/img_cat2.webp" alt="logo"/>
+                            </picture>
                             WeT
                         </Link>
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">

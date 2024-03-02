@@ -60,7 +60,7 @@ const Detail = ({ detailData, commentData }:Props) => {
             <div className="relative flex justify-between">
               <address className="flex items-center mb-6 not-italic">
                   <div className="inline-flex items-center mr-3 text-sm text-gray-900">
-                      <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.webp" alt={detailData?.email}/>
+                      <img className="mr-4 w-16 h-16 rounded-full" src="/img/img_cat.jpg" alt={detailData?.email}/>
                       <div>
                           <p className="text-xl font-bold text-gray-900">{detailData?.email ? detailData?.email.substring(0, 10) + '...' : "익명"}</p>
                           <p className="text-base text-gray-500 dark:text-gray-400">{detailData?.category}</p>

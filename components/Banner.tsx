@@ -28,50 +28,38 @@ const Img = [
 export default function Banner(){
     return (
         <div id="Banner">
-            <div 
-                style={{width: "100%"}}
-                >
-                    <Swiper 
-                        modules={[ Pagination, Autoplay]}
-                        spaceBetween={10}
-                        slidesPerView={1.2}
-                        centeredSlides={true}
-                        loop={true}
-                        autoplay={{ delay: 5000, disableOnInteraction: false}}
-                        pagination={{ clickable: true }}
-                        grabCursor={true}
-                        breakpoints={{
-                            1024: {
-                                slidesPerView: 1.5,
-                                spaceBetween: 24,
-                            }}
-                        }
-                    >
-                        {Img?.map((img, index)=>{
-                            return(
-                                <SwiperSlide key={index + "Id"} 
-                                // style={{width: "calc(200% / 3)"}}
-                                >
-                                    <div className="content">
-                                        <div className="content-child">
-                                            <Image
-                                                fill 
-                                                className="h-full w-full"
-                                                priority={true} src={img.background} alt={"1" + index}
-                                            />
-                                            {img.text && 
-                                                <div className="texts">
-                                                    <h5>{img.text}</h5>
-                                                    <p>{img.text2}</p>
-                                                </div>
-                                            }
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                            )
-                        })}
-                    </Swiper>
-            </div>
+            <Swiper
+                modules={[ Pagination, Autoplay]}
+                spaceBetween={10}
+                slidesPerView={1.2}
+                centeredSlides={true}
+                loop={true}
+                autoplay={{ delay: 5000, disableOnInteraction: false}}
+                pagination={{ clickable: true }}
+                grabCursor={true}
+                breakpoints={{
+                    1024: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 24,
+                    }}
+                }
+            >
+                {Img?.map((img, index)=>{
+                    return(
+                        <SwiperSlide className="content" key={index + "Id"}>
+                            <Image fill className="h-full w-full" priority={true} 
+                                src={img.background} alt={"1" + index}
+                            />
+                            {img.text && 
+                                <div className="texts">
+                                    <h5>{img.text}</h5>
+                                    <p>{img.text2}</p>
+                                </div>
+                            }
+                        </SwiperSlide>
+                    )
+                })}
+            </Swiper>
         </div>
     )
 }
