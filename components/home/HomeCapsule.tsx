@@ -49,7 +49,7 @@ const categoryGroup = [
     },
 ]
 
-export default function Capsule(){
+export default function HomeCapsule(){
     const [ categorys, setCategories ] = useState(categoryGroup);
     const { query, setQuery } = useHomeListStore();
 

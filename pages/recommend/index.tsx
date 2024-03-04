@@ -1,5 +1,5 @@
 import MainLayOut from "components/common/MainLayOut";
-import RecommendSystem from "components/recommend/RecommendSystem";
+import RecommendationSystem from "components/recommend/RecommendationSystem";
 import dynamic from "next/dynamic";
 import { connectDB } from "utils/database";
 import { IData } from "utils/typeGroup";
@@ -23,7 +23,7 @@ const Recommend = ({data: initialData }:Props) => {
                     </div>
                     <Chart data={initialData}/>
                 </div>
-                <RecommendSystem/>
+                <RecommendationSystem/>
             </section>
         </MainLayOut>
   )

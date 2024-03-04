@@ -7,7 +7,7 @@ interface IListProps {
   data?: IData[];
 }
 
-export default function List({ data }: IListProps) {
+export default function HomeList({ data }: IListProps) {
 
   function stripHtmlTags(htmlString:string) {
     return htmlString.replace(/(<([^>]+)>)/ig, '');
