@@ -47,7 +47,7 @@ export default function Banner(){
                 {Img?.map((img, index)=>{
                     return(
                         <SwiperSlide className="content" key={index + "Id"}>
-                            <Image fill className="h-full w-full" priority={true} 
+                            <Image fill className="h-full w-full" quality={75} priority={true} 
                                 src={img.background} alt={"1" + index}
                             />
                             {img.text && 

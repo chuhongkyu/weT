@@ -9,6 +9,7 @@ export interface IHomeQueryParams {
 
 export interface IData{
     _id : ObjectId,
+    commentsCount: number;
     title: string,
     content: string,
     category: string,

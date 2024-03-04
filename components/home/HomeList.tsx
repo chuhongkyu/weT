@@ -1,16 +1,31 @@
 'use client'
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { IData } from "utils/typeGroup";
+import SkeletonList from "./SkeletonList";
 
 interface IListProps {
   data?: IData[];
 }
 
 export default function HomeList({ data }: IListProps) {
+  const [loading, setLoading] = useState(true);
 
-  function stripHtmlTags(htmlString:string) {
-    return htmlString.replace(/(<([^>]+)>)/ig, '');
+  useEffect(() => {
+    if (data) {
+      setLoading(false);
+    }
+  }, [data]);
+
+  if (loading) {
+    return <SkeletonList />;
+  }
+
+  const stripHtmlTags = (htmlString:string) => {
+    let strippedString = htmlString.replace(/(<([^>]+)>)/ig, '');
+    strippedString = strippedString.replace(/&nbsp;/gi, ' ');
+    return strippedString;
   }
 
   return (
@@ -20,8 +35,9 @@ export default function HomeList({ data }: IListProps) {
             <Link href={`/detail/${item._id}`}>
               <div className="py-4 md:flex items-center justify-between">
                 <h5 className="font-semibold text-lg">{item.title}</h5>
-                <div className="text-gray-500 text-sm">
-                  <p className="">{item.time}</p>
+                <div className="text-gray-500 text-sm flex gap-2">
+                  <p className="">댓글: {item.commentsCount}</p>
+                  <p className="">날짜: {item.time}</p>
                 </div>
               </div>
               <div className="text-base line-clamp-3 text-ellipsis text-gray-700 no-style">{stripHtmlTags(item.content)}</div>
