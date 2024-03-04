@@ -7,7 +7,7 @@ interface IListProps {
   data: IData[];
 }
 
-export default function List({ data }: IListProps) {
+export default function MyPageList({ data }: IListProps) {
   return (
     <ul className="flex flex-col">
       {data?.map((item: IData) => (

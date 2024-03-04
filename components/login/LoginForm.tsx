@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link';
-import Loading from 'components/Loading';
+import Loading from 'components/common/Loading';
 
 interface LoginFormValues {
     email: string;

@@ -5,7 +5,7 @@ import { connectDB } from "utils/database";
 import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import 'react-quill/dist/quill.snow.css';
-import MainLayOut from "components/MainLayOut";
+import MainLayOut from "components/common/MainLayOut";
 import { IDetail, IParams } from "utils/typeGroup";
 
 const ReactQuill = dynamic( () => import('react-quill'), {

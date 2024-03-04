@@ -2,8 +2,8 @@
 
 import { useSession } from "next-auth/react";
 import ButtonWriteIcon from "./ButtonWriteIcon";
-import List from "./list";
-import Capsule from "./capsule";
+import List from "./List";
+import Capsule from "./Capsule";
 import { useEffect } from "react";
 import { useHomeListStore } from "utils/store";
 import Pagination from "./Pagination";

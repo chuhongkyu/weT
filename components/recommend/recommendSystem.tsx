@@ -133,9 +133,9 @@ const RecommendSystem = () => {
                     <div className="border-solid border-2 border-cyan-500 rounded-md px-6 py-6" key={'ques' + current}> 
                         <span className="flex text-base gap-2 font-bold"><p>0{current + 1}</p>/<p>0{ques.length}</p></span>
                         <h1 className="font-semibold text-center text-xl py-4">{ques[current].title}</h1>
-                        <div className="flex items-center gap-5 pt-6">
-                            <button className="flex-1 bg-gray-100 rounded-md py-4 hover:bg-white border-solid border" onClick={onHandleClick} id='yes'><b className="text-lg pt-4 pb-2">Yes, </b><p className="text-base pt-2 pb-4">{ques[current].answer.yes}</p></button>
-                            <button className="flex-1 bg-gray-100 rounded-md py-4 hover:bg-white border-solid border" onClick={onHandleClick} id='no'><b className="text-lg pt-4 pb-2">No, </b><p className="text-base pt-2 pb-4">{ques[current].answer.no}</p></button>
+                        <div className="flex items-stretch gap-5 pt-6">
+                            <button className="flex-1 bg-gray-100 rounded-md px-2 py-4 border-solid border md:px-0 md:hover:bg-white" onClick={onHandleClick} id='yes'><b className="text-lg pt-4 pb-2">Yes, </b><p className="text-base pt-2 pb-4">{ques[current].answer.yes}</p></button>
+                            <button className="flex-1 bg-gray-100 rounded-md px-2 py-4 border-solid border md:px-0 md:hover:bg-white" onClick={onHandleClick} id='no'><b className="text-lg pt-4 pb-2">No, </b><p className="text-base pt-2 pb-4">{ques[current].answer.no}</p></button>
                         </div>
                     </div>
                     )

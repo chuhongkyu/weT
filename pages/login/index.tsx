@@ -1,5 +1,5 @@
 import LoginContainer from "components/login/LoginContainer"
-import MainLayOut from "components/MainLayOut";
+import MainLayOut from "components/common/MainLayOut";
 
 export default function Login() {
 

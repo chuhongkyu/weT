@@ -1,9 +1,9 @@
 'use client'
 
-import Loading from "components/Loading";
-import SmallComment from "components/SmallComment";
+import Loading from "components/common/Loading";
 import React, { Suspense, useEffect, useState } from "react";
 import { IComment } from "utils/typeGroup";
+import SmallComment from "./SmallComment";
 
 interface IProps {
     listData: IComment[]
@@ -20,7 +20,7 @@ export default function CommentList({ listData }:IProps){
         <Suspense fallback={<Loading/>}>
             {lists?.map((list,key)=>{
                 return(
-                    <SmallComment 
+                    <SmallComment
                         id={list._id + ""} 
                         key={key + "_list-num"}
                         comment={list.comment}

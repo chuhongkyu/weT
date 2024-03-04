@@ -1,5 +1,5 @@
-import MainLayOut from "components/MainLayOut";
-import RecommendSystem from "components/recommend/recommendSystem";
+import MainLayOut from "components/common/MainLayOut";
+import RecommendSystem from "components/recommend/RecommendSystem";
 import dynamic from "next/dynamic";
 import { connectDB } from "utils/database";
 import { IData } from "utils/typeGroup";

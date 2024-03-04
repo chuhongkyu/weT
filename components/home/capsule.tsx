@@ -93,12 +93,12 @@ export default function Capsule(){
                 {categorys?.map((el, index)=>{
                     return(
                         <button 
-                            className={ `${el.active ? 'text-gray-100 bg-cyan-500': 'text-cyan-500' } category-btn pt-2 pb-1.5 px-5 flex whitespace-nowrap rounded-full text-sm border border-cyan-500 hover:text-gray-100 hover:bg-cyan-500 duration-300` }
+                            className={ `${el.active ? 'text-gray-100 bg-cyan-500': 'text-cyan-500' } py-1.5 px-5 category-btn flex whitespace-nowrap rounded-full border border-cyan-500 hover:text-gray-100 hover:bg-cyan-500 duration-300` }
                             key={el.id + index + "ID"}
                             id={el.id} 
                             onClick={(e)=> onHandleCategoryClick(e)}>
-                            <p>{el.text}</p>
-                            <b className="pl-1">{el.count}</b>
+                            <p className="text-base">{el.text}</p>
+                            <b className="pl-2 text-sm">{el.count}</b>
                         </button>
                     )
                 })}

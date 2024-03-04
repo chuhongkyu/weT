@@ -1,5 +1,5 @@
-import MainLayOut from "components/MainLayOut";
-import Banner from "components/Banner";
+import MainLayOut from "components/common/MainLayOut";
+import Banner from "components/home/Banner";
 import { Suspense } from "react";
 import MainSection from "components/home/MainSection";
 

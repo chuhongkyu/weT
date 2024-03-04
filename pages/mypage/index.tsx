@@ -1,5 +1,5 @@
-import MainLayOut from "components/MainLayOut";
-import List from "components/mypage/list";
+import MainLayOut from "components/common/MainLayOut";
+import MyPageList from "components/mypage/MyPageList";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -79,7 +79,7 @@ const MyPage = () => {
                         {list && 
                         <div className="content pt-8">
                             <h5 className="block mb-2 text-sm font-medium text-gray-900">✏️ 내가 작성한 글</h5>
-                            <List data={list}/>
+                            <MyPageList data={list}/>
                         </div>}
                     </div>
                 </div>

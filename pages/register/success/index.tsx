@@ -1,4 +1,4 @@
-import MainLayOut from "components/MainLayOut";
+import MainLayOut from "components/common/MainLayOut";
 import Link from "next/link";
 
 export default function Register() {

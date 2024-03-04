@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
-import MainLayOut from 'components/MainLayOut';
+import MainLayOut from "components/common/MainLayOut";
 
 const ReactQuill = dynamic( () => import('react-quill'), {
   ssr : false

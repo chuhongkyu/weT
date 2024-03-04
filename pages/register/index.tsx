@@ -1,5 +1,5 @@
 import SelectContainer from "components/register/SelectContainer";
-import MainLayOut from "components/MainLayOut";
+import MainLayOut from "components/common/MainLayOut";
 
 export default function Register() {
     return (

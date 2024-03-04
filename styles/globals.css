@@ -141,6 +141,10 @@ strong{
 	}
 }
 
+.category-btn p{
+	transform: translateY(-0.5px);
+}
+
 .list a{
 	position: relative;
 	transition: 300ms ease-in-out;

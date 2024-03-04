@@ -1,8 +1,7 @@
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import LoginForm from './LoginForm'
-import Loading from 'components/Loading'
-import { Popup } from 'components/Popup'
+import Loading from 'components/common/Loading'
 
 export default function LoginContainer() {
   const { data: session, status } = useSession()

@@ -2,7 +2,7 @@ import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import { connectDB } from "utils/database";
 import { useSession } from 'next-auth/react'
-import MainLayOut from "components/MainLayOut";
+import MainLayOut from "components/common/MainLayOut";
 import { OpenBtn } from "components/recommend/OpenBtn";
 import { IComment, IDetail, IParams } from "utils/typeGroup";
 import CommentWrite from "components/detail/CommentWrite";
