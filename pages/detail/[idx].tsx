@@ -8,15 +8,19 @@ import { IComment, IDetail, IParams } from "utils/typeGroup";
 import CommentWrite from "components/detail/CommentWrite";
 import CommentList from "components/detail/CommentList";
 import CommentCount from "components/detail/CommentCount";
+import OtherPost from "components/detail/OtherPost";
 
 interface Props {
   detailData: IDetail;
+  previousPostData: IDetail;
+  nextPostData: IDetail;
   commentData: IComment[];
 }
 
-const Detail = ({ detailData, commentData }:Props) => {
+const Detail = ({ detailData, previousPostData, nextPostData, commentData }:Props) => {
   const { data: session } = useSession()
   const routes = useRouter()
+  console.log(previousPostData, nextPostData)
 
   const onHandleWrite = (id: string) => {
     routes.push(`/edit/${id}`);
@@ -84,6 +88,9 @@ const Detail = ({ detailData, commentData }:Props) => {
           {session?.user?.email && <CommentWrite parentId={detailData?._id + ""} />}
           <CommentList listData={commentData}/>
         </section>
+
+        <OtherPost previousData={previousPostData} nextData={nextPostData}/>
+
       </section>
     </MainLayOut>
   )
@@ -101,22 +108,43 @@ export async function getStaticPaths() {
     return { paths, fallback: true };
 }
 
-export async function getStaticProps({ params }:IParams) {
-    const client = await connectDB;
-    const db = client.db('forum');
-    const data = await db.collection('post').findOne({
-        _id : new ObjectId(params.idx)
-    });
+export async function getStaticProps({ params }: IParams) {
+  const client = await connectDB;
+  const db = client.db('forum');
 
-    const comments = await db.collection('comment_collection').find({ parent: new ObjectId(params.idx)}).toArray();
-  
-    return { props: 
-      { 
-        detailData: JSON.parse(JSON.stringify(data)), 
-        commentData: JSON.parse(JSON.stringify(comments))
-      },
-      revalidate: 60
-    };
+  // 현재 게시물 조회
+  const currentPost = await db.collection('post').findOne({
+      _id: new ObjectId(params.idx)
+  });
+
+  // 이전 게시물 조회
+  const previousPost = await db.collection('post')
+      .find({ _id: { $lt: new ObjectId(params.idx) } })
+      .sort({ _id: -1 }) // 내림차순 정렬
+      .limit(1) // 하나만 선택
+      .toArray();
+
+  // 다음 게시물 조회
+  const nextPost = await db.collection('post')
+      .find({ _id: { $gt: new ObjectId(params.idx) } })
+      .sort({ _id: 1 }) // 오름차순 정렬
+      .limit(1) // 하나만 선택
+      .toArray();
+
+  // 댓글 조회
+  const comments = await db.collection('comment_collection')
+      .find({ parent: new ObjectId(params.idx) })
+      .toArray();
+
+  return { 
+    props: { 
+      detailData: JSON.parse(JSON.stringify(currentPost)),
+      commentData: JSON.parse(JSON.stringify(comments)),
+      previousPostData: previousPost[0] ? JSON.parse(JSON.stringify(previousPost[0])) : null,
+      nextPostData: nextPost[0] ? JSON.parse(JSON.stringify(nextPost[0])) : null
+    },
+    revalidate: 60
+  };
 }
 
 export default Detail;
