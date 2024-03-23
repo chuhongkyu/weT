@@ -25,8 +25,15 @@ export default function HomeList({ data }: IListProps) {
   const stripHtmlTags = (htmlString:string) => {
     let strippedString = htmlString.replace(/(<([^>]+)>)/ig, '');
     strippedString = strippedString.replace(/&nbsp;/gi, ' ');
+
+    strippedString = strippedString.replace(/&amp;/gi, '&');
+    strippedString = strippedString.replace(/&lt;/gi, '<');
+    strippedString = strippedString.replace(/&gt;/gi, '>');
+    strippedString = strippedString.replace(/&quot;/gi, '"');
+    strippedString = strippedString.replace(/&apos;/gi, "'");
+
     return strippedString;
-  }
+  };
 
   return (
     <ul className="flex flex-col">
