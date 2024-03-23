@@ -1,11 +1,12 @@
 'use client'
 
+import { ObjectId } from "mongodb";
 import React, { useState } from "react";
 
 const limitLength = 200
 
 interface IComment {
-    parentId: string;
+    parentId: ObjectId
 }
 
 export default function CommentWrite(props:IComment){

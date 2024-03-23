@@ -6,21 +6,20 @@ import MainLayOut from "components/common/MainLayOut";
 import { OpenBtn } from "components/recommend/OpenBtn";
 import { IComment, IDetail, IParams } from "utils/typeGroup";
 import CommentWrite from "components/detail/CommentWrite";
-import CommentList from "components/detail/CommentList";
-import CommentCount from "components/detail/CommentCount";
 import OtherPost from "components/detail/OtherPost";
+import { Suspense } from "react";
+import Loading from "components/common/Loading";
+import CommentContainer from "components/detail/CommentContainer";
 
-interface Props {
+interface IProps {
   detailData: IDetail;
   previousPostData: IDetail;
   nextPostData: IDetail;
-  commentData: IComment[];
 }
 
-const Detail = ({ detailData, previousPostData, nextPostData, commentData }:Props) => {
+const Detail = ({ detailData, previousPostData, nextPostData }:IProps) => {
   const { data: session } = useSession()
   const routes = useRouter()
-  console.log(previousPostData, nextPostData)
 
   const onHandleWrite = (id: string) => {
     routes.push(`/edit/${id}`);
@@ -84,13 +83,12 @@ const Detail = ({ detailData, previousPostData, nextPostData, commentData }:Prop
         </section>
           
         <section className="comment py-4">
-          <CommentCount listData={commentData} />
-          {session?.user?.email && <CommentWrite parentId={detailData?._id + ""} />}
-          <CommentList listData={commentData}/>
+          <Suspense fallback={<Loading/>}>
+            <CommentContainer id={detailData?._id}/>
+          </Suspense>
         </section>
 
         <OtherPost previousData={previousPostData} nextData={nextPostData}/>
-
       </section>
     </MainLayOut>
   )
@@ -131,15 +129,9 @@ export async function getStaticProps({ params }: IParams) {
       .limit(1) // 하나만 선택
       .toArray();
 
-  // 댓글 조회
-  const comments = await db.collection('comment_collection')
-      .find({ parent: new ObjectId(params.idx) })
-      .toArray();
-
   return { 
     props: { 
       detailData: JSON.parse(JSON.stringify(currentPost)),
-      commentData: JSON.parse(JSON.stringify(comments)),
       previousPostData: previousPost[0] ? JSON.parse(JSON.stringify(previousPost[0])) : null,
       nextPostData: nextPost[0] ? JSON.parse(JSON.stringify(nextPost[0])) : null
     },

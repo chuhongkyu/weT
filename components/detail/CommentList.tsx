@@ -1,33 +1,32 @@
 'use client'
 
-import Loading from "components/common/Loading";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IComment } from "utils/typeGroup";
 import SmallComment from "./SmallComment";
 
 interface IProps {
-    listData: IComment[]
+    data: IComment[]
 }
 
-export default function CommentList({ listData }:IProps){
-    const [lists, setLists] = useState(listData)
+export default function CommentList({ data }:IProps){
+    const [list, setList] = useState(data)
 
     useEffect(()=>{
-        setLists(listData) 
-    },[lists])
+        setList(data) 
+    },[data])
 
     return(
-        <Suspense fallback={<Loading/>}>
-            {lists?.map((list,key)=>{
+        <>
+            {list?.map((item,key)=>{
                 return(
                     <SmallComment
-                        id={list._id + ""} 
+                        id={item._id + ""} 
                         key={key + "_list-num"}
-                        comment={list.comment}
-                        email={list.email}
+                        comment={item.comment}
+                        email={item.email}
                     />
                 )
             })}
-        </Suspense>
+        </>
     )
 }
