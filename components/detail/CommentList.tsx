@@ -25,7 +25,7 @@ export default function CommentList({ listData }:IProps){
                         key={key + "_list-num"}
                         comment={list.comment}
                         email={list.email}
-                        />
+                    />
                 )
             })}
         </Suspense>

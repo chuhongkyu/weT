@@ -17,7 +17,7 @@ export default function CommentCount({ listData }:IProps){
         <Suspense fallback={null}>
             {listData?.length != 0 ?
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-lg lg:text-2xl font-bold text-gray-900">댓글 ({listData?.length})</h2>
+                <h2 className="text-base font-bold text-gray-900">댓글 <span className="text-sm">({listData?.length})</span></h2>
             </div> : null}
         </Suspense>
     )

@@ -1,8 +1,6 @@
 'use client'
 
-import Loading from "components/common/Loading";
-import SmallComment from "components/detail/SmallComment";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const limitLength = 200
 

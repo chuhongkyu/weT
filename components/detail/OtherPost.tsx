@@ -11,8 +11,8 @@ const OtherPost = ({previousData, nextData}: {previousData: IDetail, nextData: I
                         <li className="item py-2 flex-1">
                             <Link href={`/detail/${previousData._id}`}>
                                 <div className="py-2 flex">
-                                    <p className="pr-2">이전 글</p>
-                                    <p>{previousData.title}</p>
+                                    <p className="pr-2 font-bold">이전 글</p>
+                                    <p>{previousData.title.length > 18 ? previousData.title.substring(0,18) + "..." : previousData.title}</p>
                                 </div>
                             </Link>
                         </li>
@@ -21,8 +21,8 @@ const OtherPost = ({previousData, nextData}: {previousData: IDetail, nextData: I
                         <li className="item py-2 flex-1">
                             <Link href={`/detail/${nextData._id}`}>
                                 <div className="py-2 flex">
-                                    <p className="pr-2">다음 글</p>
-                                    <p>{nextData.title}</p>
+                                    <p className="pr-2 font-bold">다음 글</p>
+                                    <p>{nextData.title.length > 18 ? nextData.title.substring(0,18) + "..." : nextData.title}</p>
                                 </div>
                             </Link>
                         </li>

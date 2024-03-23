@@ -1,4 +1,8 @@
 'use client'
+
+import React, { useState } from "react";
+import CommentUserPost from "./CommentUserPost";
+
 interface IComment {
     id: string;
     comment: string;
@@ -7,15 +11,47 @@ interface IComment {
 
 export default function SmallComment(props:IComment){
     const { id, comment, email } = props;
+    const [ userPost, setUserPost] = useState([])
+    const [ modal, setModal] = useState(false)
+
+    const onClick = () => {
+        getUserPost()
+        setModal(true)
+    }
+
+    const getUserPost = async() => {
+        try {
+            const response = await fetch('/api/mypage/list', {
+              method: 'POST',
+              body: JSON.stringify(email),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+        
+            if (response.ok) {
+                const data = await response.json();
+                setUserPost(data)
+            } else {
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return(
-        <article id={id} className="py-6 mx-6 text-base comment-list">
-            <footer className="flex justify-between items-center mb-2">
-                <div className="flex items-center">
+        <article id={id} className="py-6 text-base comment-list md:mx-6" onMouseLeave={()=> setModal(false)}>
+            <footer className="flex justify-between items-center mb-2 relative">
+                <div 
+                    className="flex items-center cursor-pointer hover:-translate-y-1 transition duration-300" 
+                    onClick={onClick}
+                >
                     <p className="inline-flex items-center mr-3 font-semibold text-sm text-gray-900">
                     <img className="mr-2 w-6 h-6 rounded-full"
                         src="/img/img_cat2.jpg"
                         alt={email + "alt"}/>{email.length > 6 ? email.substring(0,6) + "...": email}</p>
                 </div>
+                {modal && <CommentUserPost post={userPost}/>}
                 {/* <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3"
                     className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
                     type="button">
