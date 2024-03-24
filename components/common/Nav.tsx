@@ -60,7 +60,7 @@ export default function Nav(){
                             </li>
                         </ul>}
                         </div>
-                        <button onClick={onClick} data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center px-2 pb-4 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100" aria-controls="navbar-sticky" aria-expanded="false">
+                        <button onClick={onClick} data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center px-2 pb-4 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden" aria-controls="navbar-sticky" aria-expanded="false">
                             <span className="sr-only">menu</span>
                             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>

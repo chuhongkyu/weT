@@ -131,13 +131,25 @@ strong{
 
 @media screen and (max-width: 1024px) {
 	#Banner .content{
-		height: 150px;
+		height: 200px;
 	}
 	#Banner .content .texts{
 		font-size: 22px;
 	}
 	#Banner .content .texts p{
 		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: 680px) {
+	#Banner .content{
+		height: 120px;
+	}
+	#Banner .content .texts{
+		font-size: 20px;
+	}
+	#Banner .content .texts p{
+		font-size: 24px;
 	}
 }
 
@@ -223,7 +235,7 @@ strong{
 
 .mobile-menu{
 	position: absolute;
-	top: 100%;
+	top: calc(100% - 10px);
 }
 
 .editor-container .quill .ql-italic{
