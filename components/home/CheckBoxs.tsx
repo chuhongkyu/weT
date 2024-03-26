@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useHomeListStore } from "utils/store";
+import { HomeListStoreState } from "utils/store";
 
-const CheckBoxs = () => {
-    const { query, setQuery } = useHomeListStore();
+const CheckBoxs = ({ query, setQuery }:HomeListStoreState) => {
 
     const [formData, setFormData] = useState({
         latest: true,

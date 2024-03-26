@@ -6,22 +6,11 @@ import { IData } from "utils/typeGroup";
 import SkeletonList from "./SkeletonList";
 
 interface IListProps {
-  data?: IData[];
+  lists?: IData[];
+  totalCount: number;
 }
 
-export default function HomeList({ data }: IListProps) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (data) {
-      setLoading(false);
-    }
-  }, [data]);
-
-  if (loading) {
-    return <SkeletonList />;
-  }
-
+export default function HomeList({ data }: { data: IListProps}) {
   const stripHtmlTags = (htmlString:string) => {
     let strippedString = htmlString.replace(/(<([^>]+)>)/ig, '');
     strippedString = strippedString.replace(/&nbsp;/gi, ' ');
@@ -37,7 +26,7 @@ export default function HomeList({ data }: IListProps) {
 
   return (
     <ul className="flex flex-col">
-      {data?.map((item: IData) => (
+      {data?.lists?.map((item: IData) => (
           <li key={item._id + ""} className="item px-6 pt-2 flex-1 pb-8">
             <Link href={`/detail/${item._id}`}>
               <div className="py-4 md:flex items-center justify-between">

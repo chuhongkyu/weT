@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useHomeListStore } from "utils/store";
+import { HomeListStoreState, useHomeListStore } from "utils/store";
+import { IData } from "utils/typeGroup";
 
-export default function Pagination(){
-    const { query, setQuery, data } = useHomeListStore();
+interface IProps extends HomeListStoreState{
+    data: IListProps
+}
+
+interface IListProps {
+    list?: IData[];
+    totalCount: number;
+}
+
+export default function Pagination({query, setQuery, data}:IProps){
     const [ pageNumbers, setPageNumbers] = useState<number[]>([]);
 
     const makePages = (totalCount: number, itemsPerPage: number): number[] => {

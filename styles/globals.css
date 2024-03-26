@@ -100,7 +100,7 @@ strong{
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
-    margin-top: calc(64px + 1.5rem);
+    margin-top: 64px;
 	width: 100%;
 }
 
@@ -109,16 +109,18 @@ strong{
 }
 
 #Banner .content{
+	display: flex;
+	justify-content: center;
+	width: 100%;
 	height: max(20.5vw, 280px);
 	background: #06b6d4;
 	overflow: hidden;
-	border-radius: 5px;
 }
 
 #Banner .content .texts{
 	position: absolute;
 	top: 50%;
-	left: 10%;
+	left: 20%;
 	transform: translateY(-50%);
 	z-index: 2;
 	color: #fff;
@@ -131,10 +133,11 @@ strong{
 
 @media screen and (max-width: 1024px) {
 	#Banner .content{
-		height: 200px;
+		height: 260px;
 	}
 	#Banner .content .texts{
 		font-size: 22px;
+		left: 20px;
 	}
 	#Banner .content .texts p{
 		font-size: 28px;
@@ -143,7 +146,7 @@ strong{
 
 @media screen and (max-width: 680px) {
 	#Banner .content{
-		height: 120px;
+		height: 200px;
 	}
 	#Banner .content .texts{
 		font-size: 20px;

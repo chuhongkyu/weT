@@ -2,7 +2,7 @@
 
 import { MouseEvent, useEffect, useState } from "react";
 import { getCountList } from "utils/api";
-import { useHomeListStore } from "utils/store";
+import { HomeListStoreState, useHomeListStore } from "utils/store";
 
 
 interface CategoryCount {
@@ -49,9 +49,8 @@ const categoryGroup = [
     },
 ]
 
-export default function HomeCapsule(){
+export default function HomeCapsule({ query, setQuery }:HomeListStoreState){
     const [ categorys, setCategories ] = useState(categoryGroup);
-    const { query, setQuery } = useHomeListStore();
 
     const onHandleCategoryClick = (event: MouseEvent<HTMLButtonElement>) =>{
         const _id = event.currentTarget.id;
@@ -89,7 +88,7 @@ export default function HomeCapsule(){
 
     return(
         <div className="overflow-x-scroll md:overflow-x-hidden">
-            <div className="space-x-2 pt-4 flex pl-6 md:pl-0 md:space-x-5">
+            <div className="space-x-2 pt-4 flex pl-6 md:pl-0 md:space-x-2">
                 {categorys?.map((el, index)=>{
                     return(
                         <button 
