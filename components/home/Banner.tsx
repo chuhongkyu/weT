@@ -6,22 +6,26 @@ import Image from "next/image";
 
 const Img = [
     {
-        background: "/img/banner_1.jpg",
+        background: "/img/banner_1_mobile.jpg",
         text: "우리들의 OTT",
-        text2: "We T"
+        text2: "We T",
+        color: "rgba(0,216,254)"
     },
     {
-        background: "/img/banner_2.jpg",
+        background: "/img/banner_2_mobile.jpg",
         text: "우리들의 OTT",
-        text2: "We T"
+        text2: "We T",
+        color: "rgba(0,190,224)"
     },
     {
-        background: "/img/banner_3.jpg",
+        background: "/img/banner_3_mobile.jpg",
+        color: "rgba(0,0,0)"
     },
     {
-        background: "/img/banner_2.jpg",
+        background: "/img/banner_1_mobile.jpg",
         text: "우리들의 OTT",
-        text2: "We T"
+        text2: "We T",
+        color: "rgba(0,216,254)"
     },
 ]
 
@@ -30,24 +34,16 @@ export default function Banner(){
         <div id="Banner">
             <Swiper
                 modules={[ Pagination, Autoplay]}
-                spaceBetween={10}
-                slidesPerView={1.2}
-                centeredSlides={true}
+                slidesPerView={1}
                 loop={true}
                 autoplay={{ delay: 5000, disableOnInteraction: false}}
                 pagination={{ clickable: true }}
                 grabCursor={true}
-                breakpoints={{
-                    1024: {
-                        slidesPerView: 1.5,
-                        spaceBetween: 24,
-                    }}
-                }
             >
                 {Img?.map((img, index)=>{
                     return(
-                        <SwiperSlide className="content" key={index + "Id"}>
-                            <Image width={320} height={200} className="h-full w-full" quality={75} priority={true} 
+                        <SwiperSlide className="content" key={index + "Id"} style={{backgroundColor: img.color}}>
+                            <Image width={425} height={280} className="w-auto h-full" quality={75} priority={true} 
                                 src={img.background} alt={"1" + index}
                             />
                             {img.text && 

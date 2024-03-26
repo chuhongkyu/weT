@@ -1,8 +1,8 @@
-import { IHomeQueryParams } from "./typeGroup";
+const getHomeList = async ({queryKey}:any) => {
+    const [_key, { type, category, page, limit }] = queryKey
 
-const getHomeList = async ({ type = "latest", category, page = '1', limit = '5' }:IHomeQueryParams) => {
     const baseUrl = `/api/home/list`;
-    // console.log(category)
+
     const queryParams = new URLSearchParams({
       ...(type && { type }),
       ...(category && { category }),
@@ -13,9 +13,7 @@ const getHomeList = async ({ type = "latest", category, page = '1', limit = '5' 
     const url = `${baseUrl}?${queryParams}`
 
     try {
-      const response = await fetch(url, {
-        method: "GET",
-      });
+      const response = await fetch(url, { next : { tags: ["list"]}});
   
       const data = await response.json();
       return data;

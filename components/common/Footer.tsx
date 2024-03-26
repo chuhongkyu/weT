@@ -1,4 +1,4 @@
-export default function Footer(){
+function Footer(){
     return(
         <footer
             className="flex flex-col items-center text-center text-white bg-cyan-400">
@@ -18,8 +18,10 @@ export default function Footer(){
                 <div
                     className="w-full p-4 text-center bg-cyan-600">
                     © MR.CHU, Inc.
-                    <a target="_blank" href="https://mrchu.netlify.app" rel="noopener noreferrer" className="pl-4 text-white">(주)미스터추 (대표이사:추홍규)</a>
+                    <a target="_blank" href="https://mrchu.netlify.app" rel="noopener noreferrer" className="pl-4 text-white">(주)미스터추 (개발자:추홍규)</a>
                 </div>
         </footer>
     )
 }
+
+export default Footer
