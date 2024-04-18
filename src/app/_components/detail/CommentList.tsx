@@ -4,15 +4,10 @@ import React, { useEffect, useState } from "react";
 import { IComment } from "@/utils/typeGroup";
 import SmallComment from "./SmallComment";
 
-interface IProps {
-    data: IComment[]
-}
-
-export default function CommentList({ data }:IProps){
-    const [list, setList] = useState(data)
-
+export default function CommentList({data}:{data: IComment[]}){
+    const [ list, setList] = useState<IComment[]>([])
     useEffect(()=>{
-        setList(data) 
+        setList(data)
     },[data])
 
     return(

@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { noto } from '@/utils/font';
 import MainLayOut from '@/app/_components/common/MainLayOut';
 import AuthSession from '@/app/_components/common/AuthSession';
+import RQProvider from './_components/common/RQProvider';
 
 type Props = {
   children: React.ReactNode,
@@ -14,11 +15,15 @@ export default function RootLayout({
     <html lang="ko">
       <HeadComponent/>
       <body className={noto.className}>
-        <AuthSession>
+        {/* <AuthSession> */}
+          <RQProvider>  
           <MainLayOut>
+          
           {children}
+          
           </MainLayOut>
-        </AuthSession>
+          </RQProvider>
+        {/* </AuthSession> */}
       </body>
     </html>
   )

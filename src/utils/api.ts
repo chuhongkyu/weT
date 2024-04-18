@@ -43,20 +43,33 @@ const getCountList = async () => {
 };
 
 const getDetailList = async ({ queryKey }:any) => {
-  const [_key, { idx }] = queryKey;
+  const [_key, idx ] = queryKey;
   const url = `${process.env.NEXTAUTH_URL}/api/detail/${idx}`
 
-  try {
-    const response = await fetch(url, { next : { tags: ["detail", idx]}});
-
-    const data = await response.json();
-    return data;
-
-  } catch (error) {
-    console.error("API 호출 Detail:", error);
-    return null;
+  const response = await fetch(url, 
+    { next : { tags: ['detail', idx]}}
+  );
+  const data = await response.json();
+  if (!response.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
   }
+
+  return data;
 };
 
 
-export { getHomeList, getCountList, getDetailList }
+const getCommentList = async({ queryKey }:any) => {
+  const [_key, id ] = queryKey;
+  const url = `${process.env.NEXTAUTH_URL}/api/comment/list?id=${id}`;
+
+  const response = await fetch(url, { next: { revalidate: 30, tags: ['comment'] }});
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  const data = await response.json();
+  return data
+}
+
+export { getHomeList, getCountList, getDetailList, getCommentList }

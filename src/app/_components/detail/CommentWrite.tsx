@@ -7,10 +7,11 @@ const limitLength = 200
 
 interface IComment {
     parentId: ObjectId
+    email: string;
 }
 
 export default function CommentWrite(props:IComment){
-    const { parentId } = props;
+    const { parentId, email } = props;
     
     const [commentInput, setComment] = useState<string>('')
     const onChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,6 +33,7 @@ export default function CommentWrite(props:IComment){
             comment: commentInput,
             time: newTime,
             parent: parentId,
+            email: email
         }
 
         try {

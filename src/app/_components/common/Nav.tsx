@@ -9,7 +9,7 @@ import { signOut, useSession } from "next-auth/react";
 const MobileMenu = lazy(() => import('./MobileMenu'));
 
 export default function Nav(){
-    const { data: session } = useSession();
+    // const { data: session } = useSession();
     const [menu, setMenu] = useState(false)
     const pathname = usePathname()
 
@@ -41,7 +41,7 @@ export default function Nav(){
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                         <div className="hidden md:flex">
   
-                        {!session?.user ? 
+                        {/* {!session?.user ? 
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
                                 <Link href="/login" className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500">로그인</Link>
@@ -60,7 +60,7 @@ export default function Nav(){
                             <li>
                                 <span className="block pt-2 pb-6 px-3 text-gray-900 md:hover:bg-transparent md:hover:text-cyan-500 cursor-pointer" onClick={()=> signOut()}>로그아웃</span>
                             </li>
-                        </ul>}
+                        </ul>} */}
                         </div>
                         <button onClick={onClick} data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center px-2 pb-4 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden" aria-controls="navbar-sticky" aria-expanded="false">
                             <span className="sr-only">menu</span>

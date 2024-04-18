@@ -17,7 +17,6 @@ const MainSection = () => {
     const { query, setQuery } = useHomeListStore();
     const { isPending, data, error } = useQuery({ queryKey: ['list', query], queryFn: getHomeList})
     console.log(data)
-
     return(
         <section className="max-w-5xl md:pb-20 sm:mx-auto">
             {/* <h1 className="px-6 text-xl md:px-0">HOME</h1> */}

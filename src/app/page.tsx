@@ -6,9 +6,7 @@ const IndexPage = () => {
   return(
     <>
       <Banner/>
-      <RQProvider>
-        <MainSection/>
-      </RQProvider>
+      <MainSection/>
     </>
   )
 };
