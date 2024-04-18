@@ -1,8 +1,10 @@
-import RQProvider from "@/app/_components/common/RQProvider";
 import MainSection from "@/app/_components/home/MainSection";
 import Banner from "@/app/_components/home/Banner";
+import { auth } from "@/auth";
   
-const IndexPage = () => {
+export default async function IndexPage(){
+  const session = auth()
+  // console.log(session)
   return(
     <>
       <Banner/>
@@ -10,5 +12,3 @@ const IndexPage = () => {
     </>
   )
 };
-
-export default IndexPage;

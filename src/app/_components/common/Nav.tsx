@@ -10,6 +10,7 @@ const MobileMenu = lazy(() => import('./MobileMenu'));
 
 export default function Nav(){
     // const { data: session } = useSession();
+    // console.log(session)
     const [menu, setMenu] = useState(false)
     const pathname = usePathname()
 

@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { connectDB } from "./utils/database";
+import { connectDB } from "@/utils/database";
 import bcrypt from 'bcrypt'
 
 const SCRET = process.env.NEXTAUTH_SECRET || ''
@@ -10,10 +10,11 @@ export const {
   handlers: { GET, POST },
   auth,
   signIn,
+  signOut,
 } = NextAuth({
   pages: {
     signIn: '/login',
-    newUser: '/sinup',
+    newUser: '/signup',
   },
   providers: [
     GoogleProvider({
@@ -32,9 +33,25 @@ export const {
       //직접 DB에서 아이디,비번 비교하고 
       //아이디,비번 맞으면 return 결과, 틀리면 return null 해야함
       async authorize(credentials:any) {
-        const client = await connectDB;
-        const db = client.db('forum');
-        const user = credentials ? await db.collection('user_information').findOne({ email: credentials.email }) : null;
+
+        const authResponse = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: credentials.email,
+            password: credentials.password,
+          }),
+        });
+
+        if (!authResponse.ok) {
+          return null;
+        }
+
+        const responseData = await authResponse.json();
+
+        const user = responseData
         if (!user) {
           throw new Error('해당 이메일은 없음');
         }

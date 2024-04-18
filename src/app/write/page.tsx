@@ -112,7 +112,6 @@ const Write = () => {
   }
 
   return (
-      <MainLayOut>
         <section className="mx-8 max-w-5xl py-20 sm:mx-auto">
           <h1 className="text-xl font-bold leading-tight tracking-tight mb-5 text-gray-900 md:text-2xl">✏️ 글 작성</h1>
           <form onSubmit={handleSubmit} action="/api/new" method="POST">
@@ -159,7 +158,6 @@ const Write = () => {
               </button>
           </form>
         </section>              
-      </MainLayOut>
     );
 };
 

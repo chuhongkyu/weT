@@ -12,19 +12,17 @@ export default function RootLayout({
   children
 }: Props) {
   return (
-    <html lang="ko">
-      <HeadComponent/>
-      <body className={noto.className}>
-        {/* <AuthSession> */}
+    // <AuthSession>
+      <html lang="ko">
+        <HeadComponent/>
+        <body className={noto.className}>
           <RQProvider>  
-          <MainLayOut>
-          
-          {children}
-          
-          </MainLayOut>
+            <MainLayOut>
+            {children}
+            </MainLayOut>
           </RQProvider>
-        {/* </AuthSession> */}
-      </body>
-    </html>
+        </body>
+      </html>
+    // </AuthSession>
   )
 }
